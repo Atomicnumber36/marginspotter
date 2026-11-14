@@ -116,6 +116,43 @@ def listing_type(item):
         kind = "ended"
     return kind, offer_flag, request_flag, buy, bid, next_bid, start_price, bid_count
 
+def condition_signals(description):
+    """Conservative Swedish/Danish text signals; not a visual or AI inspection."""
+    import re
+    text = (description or "").lower()
+    if not text:
+        return {"grade": "unknown", "label": "Ikke vurderet", "confidence": "low", "signals": [], "source": "description"}
+    patterns = [
+        ("defect", r"\\b(?:defekt|trasig|fungerar inte|fungerer ikke|ej fungerande|reservdel|skadad|sprucken|broken|not working|does not work)\\b", "Mulig fejl eller skade"),
+        ("untested", r"\\b(?:otestad|ej testad|inte testad|okänd funktion|utestet|ikke testet|untested)\\b", "Ikke funktionstestet"),
+        ("wear", r"\\b(?:repor|repad|slitage|sliten|ridser|slid|gulnad|gulnet|buckla|bulor|skav|scratches)\\b", "Kosmetisk slid omtalt"),
+        ("positive", r"\\b(?:fungerar fint|fungerar bra|fullt fungerande|fungerer perfekt|testad och fungerar|tested working)\\b", "Sælger oplyser, at varen fungerer"),
+        ("complete", r"\\b(?:komplett|complete in box|\\bcib\\b|originalkartong|original box|original æske)\\b", "Komplethed eller original æske omtalt"),
+    ]
+    signals = [{"type": kind, "text": label} for kind, pattern, label in patterns if re.search(pattern, text)]
+    kinds = {x["type"] for x in signals}
+    if "defect" in kinds:
+        grade, label = "risk", "Mulig defekt"
+    elif "untested" in kinds:
+        grade, label = "untested", "Utestet"
+    elif "wear" in kinds:
+        grade, label = "wear", "Slid omtalt"
+    elif "positive" in kinds:
+        grade, label = "claimed_working", "Fungerer ifølge sælger"
+    else:
+        grade, label = "unknown", "Stand ukendt"
+    return {"grade": grade, "label": label, "confidence": "low", "signals": signals, "source": "description"}
+
+
+def description_text(item):
+    value = pick(item, "description", "Description", "itemDescription", "ItemDescription",
+                 "longDescription", "LongDescription")
+    if isinstance(value, str):
+        import re
+        return re.sub(r"<[^>]+>", " ", value).strip()[:4000]
+    return ""
+
+
 def normalize(item, query):
     if not isinstance(item, dict):
         return None
@@ -139,7 +176,7 @@ def normalize(item, query):
     return {"id": str(item_id), "query": query, "title": str(title), "url": url,
             "price": price, "currency": "SEK", "shipping": None,
             "pricingStatus": "unverified", "source": "Tradera",
-            "imageUrl": image_url(item), "listingType": kind, "offersAllowed": offer_flag, "purchaseRequestAllowed": request_flag, "buyNowPrice": buy, "currentBid": bid, "nextBid": next_bid, "startPrice": start_price, "bidCount": bid_count, "endDate": end_date}
+            "imageUrl": image_url(item), "description": description_text(item), "condition": condition_signals(description_text(item)), "listingType": kind, "offersAllowed": offer_flag, "purchaseRequestAllowed": request_flag, "buyNowPrice": buy, "currentBid": bid, "nextBid": next_bid, "startPrice": start_price, "bidCount": bid_count, "endDate": end_date}
 
 def enrich(listings, headers):
     """Read-only detail lookup for uncertain items, with a 12-hour local cache."""
@@ -151,7 +188,7 @@ def enrich(listings, headers):
             pass
     now = dt.datetime.now(dt.timezone.utc)
     pending = []
-    keys = ("listingType", "offersAllowed", "purchaseRequestAllowed", "buyNowPrice", "currentBid", "nextBid", "startPrice", "bidCount", "endDate")
+    keys = ("description", "condition", "listingType", "offersAllowed", "purchaseRequestAllowed", "buyNowPrice", "currentBid", "nextBid", "startPrice", "bidCount", "endDate")
     for item in listings.values():
         old = previous.get(item["id"], {})
         checked = old.get("detailCheckedAt")
@@ -167,7 +204,7 @@ def enrich(listings, headers):
                     if old.get(key) is not None:
                         item[key] = old[key]
             item["detailCheckedAt"] = checked
-        elif item["listingType"] == "unknown" or item["offersAllowed"] is None or item["purchaseRequestAllowed"] is None:
+        elif not item.get("description") or item["listingType"] == "unknown":
             pending.append(item)
     for item in pending[:40]:
         request = urllib.request.Request(
