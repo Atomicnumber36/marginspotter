@@ -16,7 +16,7 @@
 <div><label for="fees">Salgsomkostninger (kr.)</label><input id="fees" type="number" min="0" step=".01" value="0"></div>
 <div><label for="buffer">Prisbuffer (%)</label><input id="buffer" type="number" min="0" max="100" step="1" value="10"></div>
 </div><div id="result" aria-live="polite" style="margin-top:16px"></div></section>
-<section><h2>Fund fra Tradera</h2><p class="hint">Auktion, Køb nu og Foreslå pris vurderes forskelligt. Et bud er aldrig en garanteret købspris.</p><p id="feed-status">Automatisk søgning afventer Tradera API-adgang. Ingen annoncer er hentet endnu.</p><div id="feed"></div></section><section><h2>Mine Spottere</h2><div id="items"></div></section>
+<section><h2>Fund fra Tradera</h2><p id="live-status" class="muted">Direkte søgning er ikke tilsluttet endnu.</p><div id="live-feed"></div><p class="hint">Auktion, Køb nu og Foreslå pris vurderes forskelligt. Et bud er aldrig en garanteret købspris.</p><p id="feed-status">Automatisk søgning afventer Tradera API-adgang. Ingen annoncer er hentet endnu.</p><div id="feed"></div></section><section><h2>Mine Spottere</h2><div id="items"></div></section>
 </main><script>
 const key='marginspotter.products.v1';const $=id=>document.getElementById(id);const money=n=>new Intl.NumberFormat('da-DK',{style:'currency',currency:'DKK'}).format(n);let products=[];
 try{const saved=JSON.parse(localStorage.getItem(key)||'[]');if(Array.isArray(saved))products=saved}catch{}
@@ -28,7 +28,30 @@ function render(){const selected=$('product').value;$('product').replaceChildren
 $('items').replaceChildren();if(!products.length)$('items').append(el('p','Ingen produkter endnu.'));
 products.forEach(p=>{const box=el('div','','item');box.append(el('strong',p.name),el('div','Minimumsafkast: '+(p.target??20)+' % · opdateret '+p.date,'meta'),el('div','Forventet salgspris: '+(p.loose===null?'Ikke angivet':money(p.loose)),'meta'),el('div','Andre navne: '+(p.aliases||'Ingen')+' · Udeluk: '+(p.excluded||'Ingen'),'meta'));const edit=el('button','Rediger Spotter','secondary');edit.type='button';edit.onclick=()=>{const a=prompt('Forventet salgspris i kr.',p.loose??'');if(a===null)return;const t=prompt('Minimumsafkast i procent',p.target??20);if(t===null)return;const valid=s=>s.trim()!==''&&Number.isFinite(Number(s))&&Number(s)>=0;if(!valid(a)||!valid(t)){alert('Angiv gyldig salgspris og minimumsafkast (0 eller højere).');return}const aliases=prompt('Alternative søgenavne, adskilt med komma',p.aliases||'');if(aliases===null)return;const excluded=prompt('Udelukkede ord, adskilt med komma',p.excluded||'');if(excluded===null)return;p.aliases=aliases;p.excluded=excluded;p.loose=Number(a);p.target=Number(t);p.date=new Date().toLocaleDateString('en-CA');persist();render()};const remove=el('button','Slet','danger');remove.type='button';remove.onclick=()=>{if(confirm('Slet '+p.name+'?')){products=products.filter(x=>x.id!==p.id);persist();render()}};const actions=el('div','','actions');actions.append(edit,remove);box.append(actions);$('items').append(box)});calculate()}
 function calculate(){const p=products.find(x=>x.id===$('product').value);const out=$('result');out.replaceChildren();if(!p){out.append(el('p','Opret en Spotter for at beregne en handel.'));return}const market=p.loose,target=Number.isFinite(Number(p.target))?Number(p.target):20;if(market===null){out.append(el('p','Indtast først en markedspris for denne stand.'));return}const purchase=num('purchase'),shipping=num('shipping'),fees=num('fees'),buffer=num('buffer');if([purchase,shipping,fees,buffer].some(x=>x===null||!Number.isFinite(x)||x<0)||buffer>100){out.append(el('p','Angiv gyldige beløb og en buffer mellem 0 og 100 %.'));return}const resale=market*(1-buffer/100),invested=purchase+shipping,profit=resale-fees-invested,roi=invested>0?profit/invested*100:null,maxBuy=(resale-fees)/(1+target/100)-shipping;out.append(el('div','Forsigtig salgspris: '+money(resale),'meta'),el('div','Forventet fortjeneste: '+money(profit),'stat'),el('div','Afkast: '+(roi===null?'Ikke beregneligt ved 0 kr. investering':roi.toFixed(1)+' %'),roi!==null&&roi>=target?'positive':'negative'),el('div','Maks. købspris for '+target+' % afkast: '+(maxBuy>=0?money(maxBuy):'Ingen rentabel købspris'),'meta'));if(Date.now()-new Date(p.date+'T12:00:00').getTime()>30*86400000)out.append(el('p','Bemærk: Markedsprisen er over 30 dage gammel.'))}
-$('form').addEventListener('submit',e=>{e.preventDefault();const loose=num('loose'),cib=null;if([loose,cib].some(v=>v!==null&&(!Number.isFinite(v)||v<0))){alert('Priser skal være positive tal.');return}products.push({id:crypto.randomUUID?crypto.randomUUID():String(Date.now())+Math.random(),name:$('name').value.trim(),aliases:$('aliases').value.trim(),excluded:$('excluded').value.trim(),platform:'',region:'',loose,cib,target:num('target'),date:new Date().toLocaleDateString('en-CA')});persist();$('form').reset();render()});['product','purchase','shipping','fees','buffer'].forEach(id=>$(id).addEventListener('input',calculate));render();
+$('form').addEventListener('submit',e=>{e.preventDefault();const loose=num('loose'),cib=null;if([loose,cib].some(v=>v!==null&&(!Number.isFinite(v)||v<0))){alert('Priser skal være positive tal.');return}products.push({id:crypto.randomUUID?crypto.randomUUID():String(Date.now())+Math.random(),name:$('name').value.trim(),aliases:$('aliases').value.trim(),excluded:$('excluded').value.trim(),platform:'',region:'',loose,cib,target:num('target'),date:new Date().toLocaleDateString('en-CA')});persist();$('form').reset();render();searchSpotter(products[products.length-1])});['product','purchase','shipping','fees','buffer'].forEach(id=>$(id).addEventListener('input',calculate));render();
+
+
+// On-demand only: searches are initiated solely by a Spotter creation or explicit button.
+const SEARCH_ENDPOINT=''; // Set to deployed Cloudflare Worker URL (never put App Key here).
+async function searchSpotter(p){
+ const status=$('live-status'),feed=$('live-feed');feed.replaceChildren();
+ if(!SEARCH_ENDPOINT){status.textContent='Live søgning afventer tilslutning af sikker API-forbindelse.';return}
+ status.textContent='Søger på Tradera efter '+p.name+'…';
+ try{
+  const response=await fetch(SEARCH_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({query:p.name})});
+  const data=await response.json();if(!response.ok)throw Error(data.error||'API-fejl');
+  let count=0;
+  for(const item of data.listings||[]){
+   if(classifyTitle(p,item.title)!=='review')continue;
+   const card=el('div','','item feed-card'),a=el('a',item.title);
+   a.href=item.url;a.target='_blank';a.rel='noopener noreferrer';
+   card.append(a,el('div',item.price===null?'Pris ukendt':item.price+' SEK','meta'),
+     el('div','Muligt match – kontrollér udgave, stand, fragt og valuta før vurdering','muted'));
+   feed.append(card);count++;
+  }
+  status.textContent=count+' mulige matches for '+p.name+'. Priser er ikke verificerede.';
+ }catch(err){status.textContent='Tradera-søgningen fejlede: '+err.message}
+}
 
 // Conservative title filter: candidate results are never treated as verified product identity.
 function normalized(s){return String(s||'').normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim()}
