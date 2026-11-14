@@ -123,7 +123,14 @@ function renderFeed(){
   a.href=listing.url;a.target='_blank';a.rel='noopener noreferrer';
   const detail=el('div','','listing-detail');
   const validPhoto=url=>typeof url==='string'&&/^https:\/\/(?:[a-z0-9-]+\.)*(?:tradera\.com|tradera\.net)\//i.test(url);
-  const photos=[...new Set([...(Array.isArray(listing.imageUrls)?listing.imageUrls:[]),listing.imageUrl].filter(validPhoto))].slice(0,12);
+  const quality=url=>/\/(?:images|original|large)\//i.test(url)?0:/\/medium\//i.test(url)?1:/\/(?:thumbs|minithumb)\//i.test(url)?3:2;
+  const variants=[...(Array.isArray(listing.imageUrls)?listing.imageUrls:[]),listing.imageUrl].filter(validPhoto);
+  const bestPhotos=new Map();
+  for(const url of variants){
+    const key=new URL(url).pathname.split('/').pop();
+    if(!bestPhotos.has(key)||quality(url)<quality(bestPhotos.get(key)))bestPhotos.set(key,url);
+  }
+  const photos=[...bestPhotos.values()].sort((a,b)=>quality(a)-quality(b)).slice(0,12);
   if(photos.length){
     const gallery=el('div','','listing-gallery');
     const img=document.createElement('img');img.alt='Annoncefoto: '+String(listing.title||'Tradera-annonce');img.loading='lazy';img.decoding='async';img.className='listing-image';
