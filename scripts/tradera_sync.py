@@ -67,7 +67,10 @@ def listing_type(item):
     type_text = str(raw_type).lower() if isinstance(raw_type, str) else ""
     type_code = int(raw_type) if isinstance(raw_type, (int, float)) and raw_type in (1, 3) else None
     buy = amount(pick(item, "buyItNowPrice", "BuyItNowPrice", "buyNowPrice", "BuyNowPrice"))
-    bid = amount(pick(item, "maxBid", "MaxBid", "nextBid", "NextBid", "currentBid", "CurrentBid"))
+    bid = amount(pick(item, "maxBid", "MaxBid", "currentBid", "CurrentBid"))
+    next_bid = amount(pick(item, "nextBid", "NextBid"))
+    start_price = amount(pick(item, "startPrice", "StartPrice", "openingPrice", "OpeningPrice"))
+    bid_count = amount(pick(item, "bidCount", "BidCount", "numberOfBids", "NumberOfBids", "totalBids", "TotalBids"))
     buy_flag = flag(item, "isBuyItNow", "IsBuyItNow", "buyItNow", "BuyItNow")
     auction_flag = flag(item, "isAuction", "IsAuction")
     offer_flag = flag(item, "acceptsOffers", "AcceptsOffers", "allowOffers", "AllowOffers", "isMakeOfferEnabled", "IsMakeOfferEnabled", "canMakeOffer", "CanMakeOffer")
@@ -92,13 +95,13 @@ def listing_type(item):
         kind = "auction"
     elif buy is not None and bid is None:
         kind = "buy_now"
-    elif bid is not None and buy is None:
+    elif (bid is not None or next_bid is not None or start_price is not None or (bid_count is not None and bid_count > 0)) and buy is None:
         kind = "auction"
-    elif buy is not None and bid is not None:
+    elif buy is not None and (bid is not None or next_bid is not None or start_price is not None or (bid_count is not None and bid_count > 0)):
         kind = "auction_buy_now"
     else:
         kind = "unknown"
-    return kind, offer_flag, request_flag, buy, bid
+    return kind, offer_flag, request_flag, buy, bid, next_bid, start_price, bid_count
 
 def normalize(item, query):
     if not isinstance(item, dict):
@@ -107,17 +110,69 @@ def normalize(item, query):
     title = pick(item, "title", "shortDescription", "name")
     if not item_id or not title:
         return None
-    kind, offer_flag, request_flag, buy, bid = listing_type(item)
+    kind, offer_flag, request_flag, buy, bid, next_bid, start_price, bid_count = listing_type(item)
     end_date = pick(item, "endDate", "EndDate", "endsAt", "EndsAt", "endTime", "EndTime")
     if not isinstance(end_date, str):
         end_date = None
-    price = buy if kind == "buy_now" else (bid if bid is not None else buy)
+    price = buy if kind == "buy_now" else (bid if bid is not None else (next_bid if next_bid is not None else (start_price if start_price is not None else buy)))
     raw_url = pick(item, "itemUrl", "url", "link")
     url = raw_url if isinstance(raw_url, str) and raw_url.startswith("https://www.tradera.com/") else "https://www.tradera.com/item/" + str(item_id)
     return {"id": str(item_id), "query": query, "title": str(title), "url": url,
             "price": price, "currency": "SEK", "shipping": None,
             "pricingStatus": "unverified", "source": "Tradera",
-            "imageUrl": image_url(item), "listingType": kind, "offersAllowed": offer_flag, "purchaseRequestAllowed": request_flag, "buyNowPrice": buy, "currentBid": bid, "endDate": end_date}
+            "imageUrl": image_url(item), "listingType": kind, "offersAllowed": offer_flag, "purchaseRequestAllowed": request_flag, "buyNowPrice": buy, "currentBid": bid, "nextBid": next_bid, "startPrice": start_price, "bidCount": bid_count, "endDate": end_date}
+
+def enrich(listings, headers):
+    """Read-only detail lookup for uncertain items, with a 12-hour local cache."""
+    previous = {}
+    if OUTPUT.exists():
+        try:
+            previous = {str(x["id"]): x for x in json.loads(OUTPUT.read_text(encoding="utf-8")).get("listings", [])}
+        except (ValueError, KeyError, TypeError):
+            pass
+    now = dt.datetime.now(dt.timezone.utc)
+    pending = []
+    keys = ("listingType", "offersAllowed", "purchaseRequestAllowed", "buyNowPrice", "currentBid", "nextBid", "startPrice", "bidCount", "endDate")
+    for item in listings.values():
+        old = previous.get(item["id"], {})
+        checked = old.get("detailCheckedAt")
+        recent = False
+        if checked:
+            try:
+                recent = (now - dt.datetime.fromisoformat(checked.replace("Z", "+00:00"))).total_seconds() < 12 * 3600
+            except (ValueError, TypeError):
+                pass
+        if recent:
+            for key in keys:
+                if item.get(key) is None or (key == "listingType" and item[key] == "unknown"):
+                    if old.get(key) is not None:
+                        item[key] = old[key]
+            item["detailCheckedAt"] = checked
+        elif item["listingType"] == "unknown" or item["offersAllowed"] is None or item["purchaseRequestAllowed"] is None:
+            pending.append(item)
+    for item in pending[:20]:
+        request = urllib.request.Request(
+            "https://api.tradera.com/v4/items/" + urllib.parse.quote(item["id"], safe=""),
+            headers=headers)
+        try:
+            with urllib.request.urlopen(request, timeout=8) as response:
+                detail = json.load(response)
+            if not isinstance(detail, dict):
+                continue
+            detail = pick(detail, "item", "Item") or detail
+            if not isinstance(detail, dict):
+                continue
+            enriched = normalize({**detail, "id": item["id"], "title": item["title"], "itemUrl": item["url"]}, item["query"])
+            if enriched:
+                for key in keys:
+                    if enriched.get(key) is not None and (key != "listingType" or enriched[key] != "unknown"):
+                        item[key] = enriched[key]
+                if enriched.get("price") is not None:
+                    item["price"] = enriched["price"]
+                item["detailCheckedAt"] = now.isoformat()
+        except (urllib.error.URLError, ValueError, TimeoutError):
+            continue
+
 
 def main():
     app_id, app_key = os.getenv("TRADERA_APP_ID"), os.getenv("TRADERA_APP_KEY")
@@ -152,6 +207,7 @@ def main():
             listing = normalize(raw, query)
             if listing:
                 listings[listing["id"]] = listing
+    enrich(listings, {"X-App-Id": app_id, "X-App-Key": app_key, "Accept": "application/json", "User-Agent": "MarginSpotter/0.1"})
     payload = {"updatedAt": dt.datetime.now(dt.timezone.utc).isoformat(), "status": "ok", "listings": list(listings.values())}
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
