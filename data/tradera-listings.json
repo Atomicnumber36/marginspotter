@@ -1,19 +1,7 @@
 {
-  "updatedAt": "2026-11-14T23:07:47.594806+00:00",
+  "updatedAt": "2026-11-14T23:11:06.572895+00:00",
   "status": "ok",
   "listings": [
-    {
-      "id": "653028738",
-      "query": "Nintendo 64",
-      "title": "Nintendo 64 - Rumble Pak till Nintendo 64",
-      "url": "https://www.tradera.com/item/653028738",
-      "price": 99.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
-    },
     {
       "id": "761007075",
       "query": "Nintendo 64",
@@ -24,7 +12,19 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/444/668250444_4dc1557d-0531-4b48-9e44-dd8d10f5ac1c.jpg"
+    },
+    {
+      "id": "653028738",
+      "query": "Nintendo 64",
+      "title": "Nintendo 64 - Rumble Pak till Nintendo 64",
+      "url": "https://www.tradera.com/item/653028738",
+      "price": 99.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/619/581794619_42b6f677-e30a-42ae-a1c6-137fec57ab2d.jpg"
     },
     {
       "id": "760826391",
@@ -36,7 +36,7 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/643/668107643_0301ae1a-9eca-49e0-9c14-3ed45a7dd107.jpg"
     },
     {
       "id": "760676900",
@@ -48,7 +48,7 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/958/667988958_4e3f7925-04b0-4811-a84b-f826fcf046b2.jpg"
     },
     {
       "id": "756144029",
@@ -60,19 +60,7 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "761221682",
-      "query": "Nintendo 64",
-      "title": "Daikatana Nintendo 64",
-      "url": "https://www.tradera.com/item/761221682",
-      "price": 990.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/719/664437719_c7d29170-9713-4e2d-bd27-dc698d070429.jpg"
     },
     {
       "id": "753032321",
@@ -84,43 +72,7 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "760722363",
-      "query": "Nintendo 64",
-      "title": "FIFA 64 (Nintendo 64)",
-      "url": "https://www.tradera.com/item/760722363",
-      "price": 99.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "752514213",
-      "query": "Nintendo 64",
-      "title": "Bomberman 64 - Nintendo 64",
-      "url": "https://www.tradera.com/item/752514213",
-      "price": 499.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "467716244",
-      "query": "Nintendo 64",
-      "title": "Lamborghini - Nintendo 64",
-      "url": "https://www.tradera.com/item/467716244",
-      "price": 249.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/148/662015148_d9189976-5592-4c90-8bec-d88e6d9ed3e2.jpg"
     },
     {
       "id": "754247365",
@@ -132,79 +84,31 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/831/662943831_7f102e6f-2795-4ae3-b42b-95bd21a0f5cd.jpg"
     },
     {
-      "id": "719909045",
+      "id": "760722363",
       "query": "Nintendo 64",
-      "title": "GT64 Nintendo 64",
-      "url": "https://www.tradera.com/item/719909045",
-      "price": 299.0,
+      "title": "FIFA 64 (Nintendo 64)",
+      "url": "https://www.tradera.com/item/760722363",
+      "price": 99.0,
       "currency": "SEK",
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/548/652173548_e7fc9c37-ff88-4d0d-a8f8-911efaf21998.jpg"
     },
     {
-      "id": "761155823",
+      "id": "752514213",
       "query": "Nintendo 64",
-      "title": "Nintendo 64 - Konsol",
-      "url": "https://www.tradera.com/item/761155823",
-      "price": 1199.0,
+      "title": "Bomberman 64 - Nintendo 64",
+      "url": "https://www.tradera.com/item/752514213",
+      "price": 499.0,
       "currency": "SEK",
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "756834757",
-      "query": "Nintendo 64",
-      "title": "Castlevania - Nintendo 64",
-      "url": "https://www.tradera.com/item/756834757",
-      "price": 1099.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "719902225",
-      "query": "Nintendo 64",
-      "title": "Castlevania Nintendo 64",
-      "url": "https://www.tradera.com/item/719902225",
-      "price": 1799.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "753800801",
-      "query": "Nintendo 64",
-      "title": "Nintendo 64 handkontroll",
-      "url": "https://www.tradera.com/item/753800801",
-      "price": 350.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "735592060",
-      "query": "Nintendo 64",
-      "title": "1080 Nintendo 64",
-      "url": "https://www.tradera.com/item/735592060",
-      "price": 299.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/297/661607297_7e5ebbdf-aa53-409b-aa3c-cec2b4e4cfec.jpg"
     },
     {
       "id": "760439329",
@@ -216,19 +120,31 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/250/667801250_b3c30270-33a2-4736-ad6a-fca25ca1b037.jpg"
     },
     {
-      "id": "755316512",
+      "id": "467716244",
       "query": "Nintendo 64",
-      "title": "Pilotwings 64 - Nintendo 64",
-      "url": "https://www.tradera.com/item/755316512",
-      "price": 179.0,
+      "title": "Lamborghini - Nintendo 64",
+      "url": "https://www.tradera.com/item/467716244",
+      "price": 249.0,
       "currency": "SEK",
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/612/416028612_b0fe204b-7499-4397-ad05-0bc897d1fa8c.jpg"
+    },
+    {
+      "id": "761221682",
+      "query": "Nintendo 64",
+      "title": "Daikatana Nintendo 64",
+      "url": "https://www.tradera.com/item/761221682",
+      "price": 990.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/830/668414830_62c66d0a-f2ef-4abb-8b59-a99376ad640c.jpg"
     },
     {
       "id": "761267703",
@@ -240,43 +156,7 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "751829722",
-      "query": "Nintendo 64",
-      "title": "Mario Party - Nintendo 64",
-      "url": "https://www.tradera.com/item/751829722",
-      "price": 609.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "760448314",
-      "query": "Nintendo 64",
-      "title": "Pilotwings 64 till Nintendo 64",
-      "url": "https://www.tradera.com/item/760448314",
-      "price": 150.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "758539833",
-      "query": "Nintendo 64",
-      "title": "Nintendo 64 handkontroll",
-      "url": "https://www.tradera.com/item/758539833",
-      "price": 288.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/272/668449272_a136a006-dd22-4a28-b9fe-893742da6549.jpg"
     },
     {
       "id": "247021605",
@@ -288,43 +168,7 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "759222300",
-      "query": "Nintendo 64",
-      "title": "Nintendo 64 Konsol",
-      "url": "https://www.tradera.com/item/759222300",
-      "price": 1500.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "756960120",
-      "query": "Nintendo 64",
-      "title": "1080 Nintendo 64",
-      "url": "https://www.tradera.com/item/756960120",
-      "price": 129.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "759775204",
-      "query": "Nintendo 64",
-      "title": "Nintendo 64 Förlängningssladd",
-      "url": "https://www.tradera.com/item/759775204",
-      "price": 10.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/702/219522702_9ca32d5a-89ad-4ab7-aa70-b98b21b2d6d7.jpg"
     },
     {
       "id": "758539734",
@@ -336,7 +180,7 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/354/666339354_b3421e51-e736-485e-9c74-3a82d608f96f.jpg"
     },
     {
       "id": "760323500",
@@ -348,7 +192,31 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/851/667707851_24328eb1-5e2f-4fbf-bd2b-03447757b771.jpg"
+    },
+    {
+      "id": "759775204",
+      "query": "Nintendo 64",
+      "title": "Nintendo 64 Förlängningssladd",
+      "url": "https://www.tradera.com/item/759775204",
+      "price": 10.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/445/667284445_c43db820-831d-4f22-afef-5e1dc44db263.jpg"
+    },
+    {
+      "id": "756960120",
+      "query": "Nintendo 64",
+      "title": "1080 Nintendo 64",
+      "url": "https://www.tradera.com/item/756960120",
+      "price": 129.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/356/665087356_6df23fdb-dd0d-4272-af97-1166e923238b.jpg"
     },
     {
       "id": "761295849",
@@ -360,7 +228,79 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/418/668470418_0b8bfc5f-a041-4173-8bf1-579ee860e6c4.jpg"
+    },
+    {
+      "id": "758539833",
+      "query": "Nintendo 64",
+      "title": "Nintendo 64 handkontroll",
+      "url": "https://www.tradera.com/item/758539833",
+      "price": 288.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/438/666339438_f32677c7-43c7-4ca8-b61b-a89f20096ad9.jpg"
+    },
+    {
+      "id": "759222300",
+      "query": "Nintendo 64",
+      "title": "Nintendo 64 Konsol",
+      "url": "https://www.tradera.com/item/759222300",
+      "price": 1500.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/021/666850021_069686e8-d6b9-4804-a904-2196524b5e05.jpg"
+    },
+    {
+      "id": "735592060",
+      "query": "Nintendo 64",
+      "title": "1080 Nintendo 64",
+      "url": "https://www.tradera.com/item/735592060",
+      "price": 299.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/290/648576290_4d1d6c56-4c66-44c9-a752-59e985b809c5.jpg"
+    },
+    {
+      "id": "719902225",
+      "query": "Nintendo 64",
+      "title": "Castlevania Nintendo 64",
+      "url": "https://www.tradera.com/item/719902225",
+      "price": 1799.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/723/636334723_cf883163-3308-4428-9dea-4c5563e08aa2.jpg"
+    },
+    {
+      "id": "753800801",
+      "query": "Nintendo 64",
+      "title": "Nintendo 64 handkontroll",
+      "url": "https://www.tradera.com/item/753800801",
+      "price": 350.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/709/662591709_409d6d62-0408-4374-90f6-70aa1552620f.jpg"
+    },
+    {
+      "id": "760448314",
+      "query": "Nintendo 64",
+      "title": "Pilotwings 64 till Nintendo 64",
+      "url": "https://www.tradera.com/item/760448314",
+      "price": 150.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/096/667808096_939b70b1-7323-4f92-95dd-6655920aa74f.jpg"
     },
     {
       "id": "760622253",
@@ -372,7 +312,55 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/186/667945186_40ad165a-d869-4a81-b8a8-2d10b65b1bda.jpg"
+    },
+    {
+      "id": "751829722",
+      "query": "Nintendo 64",
+      "title": "Mario Party - Nintendo 64",
+      "url": "https://www.tradera.com/item/751829722",
+      "price": 609.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/106/661085106_c1541cc3-b1e8-43e8-bc29-1579bdde9b37.jpg"
+    },
+    {
+      "id": "719909045",
+      "query": "Nintendo 64",
+      "title": "GT64 Nintendo 64",
+      "url": "https://www.tradera.com/item/719909045",
+      "price": 299.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/151/636340151_a50e3b0f-63ab-4ddd-bb69-07fbae94eebc.jpg"
+    },
+    {
+      "id": "761155823",
+      "query": "Nintendo 64",
+      "title": "Nintendo 64 - Konsol",
+      "url": "https://www.tradera.com/item/761155823",
+      "price": 1199.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/080/668363080_9b3de6f9-7556-4ab0-ba1a-a0833da14a79.jpg"
+    },
+    {
+      "id": "756834757",
+      "query": "Nintendo 64",
+      "title": "Castlevania - Nintendo 64",
+      "url": "https://www.tradera.com/item/756834757",
+      "price": 1099.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/832/664985832_7ffdcf67-aac7-4d8f-b763-c8d459250f82.jpg"
     },
     {
       "id": "753501714",
@@ -384,7 +372,19 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/994/662362994_0cac5134-3887-4666-85cb-ffa750cd097d.jpg"
+    },
+    {
+      "id": "755316512",
+      "query": "Nintendo 64",
+      "title": "Pilotwings 64 - Nintendo 64",
+      "url": "https://www.tradera.com/item/755316512",
+      "price": 179.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/986/655396986_c9de52b1-89d8-45b5-b114-5604f0a74ac8.jpg"
     },
     {
       "id": "756990116",
@@ -396,7 +396,7 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/512/665112512_e9bcde55-4d11-4013-b2d7-d974b79dd24a.jpg"
     },
     {
       "id": "754292239",
@@ -408,31 +408,7 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "755658407",
-      "query": "Nintendo 64",
-      "title": "Worms Armageddon - Nintendo 64",
-      "url": "https://www.tradera.com/item/755658407",
-      "price": 799.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "757449527",
-      "query": "Nintendo 64",
-      "title": "Nintendo 64 Jumper Pak",
-      "url": "https://www.tradera.com/item/757449527",
-      "price": 81.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/252/662980252_1c687d0b-6e9c-419d-839e-f004a8110b16.jpg"
     },
     {
       "id": "761267624",
@@ -444,19 +420,19 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/206/668449206_d6736903-57b5-4980-96ef-a6a1ee045a59.jpg"
     },
     {
-      "id": "760443029",
+      "id": "755658407",
       "query": "Nintendo 64",
-      "title": "Mario Party - Nintendo 64",
-      "url": "https://www.tradera.com/item/760443029",
-      "price": 284.0,
+      "title": "Worms Armageddon - Nintendo 64",
+      "url": "https://www.tradera.com/item/755658407",
+      "price": 799.0,
       "currency": "SEK",
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/145/664059145_5b1ba1ac-ce66-414a-b8c9-16ccee9be091.jpg"
     },
     {
       "id": "760605367",
@@ -468,7 +444,19 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/359/667932359_0796613b-0c64-4c28-9122-3f430fa0e897.jpg"
+    },
+    {
+      "id": "760443029",
+      "query": "Nintendo 64",
+      "title": "Mario Party - Nintendo 64",
+      "url": "https://www.tradera.com/item/760443029",
+      "price": 284.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/225/667804225_c7beb2aa-0a4d-4061-82ae-d54939c381f8.jpg"
     },
     {
       "id": "755062313",
@@ -480,43 +468,7 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "760669562",
-      "query": "Nintendo 64",
-      "title": "Pilotwings 64 (Nintendo 64) instruktionsbok",
-      "url": "https://www.tradera.com/item/760669562",
-      "price": 49.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "752291814",
-      "query": "Nintendo 64",
-      "title": "Ställ/display Nintendo 64",
-      "url": "https://www.tradera.com/item/752291814",
-      "price": 79.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "760395821",
-      "query": "Nintendo 64",
-      "title": "Super Mario 64 till Nintendo 64",
-      "url": "https://www.tradera.com/item/760395821",
-      "price": 150.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/954/663582954_9a4ccafb-a983-434f-9a74-35ca6f84c2d3.jpg"
     },
     {
       "id": "760676843",
@@ -528,55 +480,43 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/904/667988904_cff946c0-c196-4403-9bf6-4b8b57eceb42.jpg"
     },
     {
-      "id": "755062259",
+      "id": "760669562",
       "query": "Nintendo 64",
-      "title": "Snowboard Kids - Nintendo 64",
-      "url": "https://www.tradera.com/item/755062259",
-      "price": 349.0,
+      "title": "Pilotwings 64 (Nintendo 64) instruktionsbok",
+      "url": "https://www.tradera.com/item/760669562",
+      "price": 49.0,
       "currency": "SEK",
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/896/667982896_a39e0a27-2f61-40ed-bb08-9d0474e8a158.jpg"
     },
     {
-      "id": "757165241",
+      "id": "752291814",
       "query": "Nintendo 64",
-      "title": "Pilotwings 64 Nintendo 64 (N64)",
-      "url": "https://www.tradera.com/item/757165241",
-      "price": 699.0,
+      "title": "Ställ/display Nintendo 64",
+      "url": "https://www.tradera.com/item/752291814",
+      "price": 79.0,
       "currency": "SEK",
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/890/661438890_4f4c157d-a895-4999-80db-4e19e2de3d3b.jpg"
     },
     {
-      "id": "760746762",
+      "id": "755597723",
       "query": "Nintendo 64",
-      "title": "Super Mario 64 - Nintendo 64",
-      "url": "https://www.tradera.com/item/760746762",
-      "price": 300.0,
+      "title": "GoldenEye 007 - Nintendo 64",
+      "url": "https://www.tradera.com/item/755597723",
+      "price": 399.0,
       "currency": "SEK",
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "757188990",
-      "query": "Nintendo 64",
-      "title": "Perfect Dark - Nintendo 64",
-      "url": "https://www.tradera.com/item/757188990",
-      "price": 249.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/166/664012166_e3bbb31d-f423-40d7-8048-0ebfef33354e.jpg"
     },
     {
       "id": "760756947",
@@ -588,19 +528,79 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/095/668054095_7e1ad8db-804b-4c9d-a69d-51bb469350e0.jpg"
     },
     {
-      "id": "760913978",
+      "id": "760395821",
       "query": "Nintendo 64",
-      "title": "Nintendo 64 Rumble Pak",
-      "url": "https://www.tradera.com/item/760913978",
-      "price": 650.0,
+      "title": "Super Mario 64 till Nintendo 64",
+      "url": "https://www.tradera.com/item/760395821",
+      "price": 150.0,
       "currency": "SEK",
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/664/667766664_fd9df475-5d71-4752-97df-f4f8d4d62bd2.jpg"
+    },
+    {
+      "id": "759159358",
+      "query": "Nintendo 64",
+      "title": "Paper Mario - Nintendo 64",
+      "url": "https://www.tradera.com/item/759159358",
+      "price": 1800.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/250/666802250_3637afeb-a6f0-4dc7-8b16-99be00909e3c.jpg"
+    },
+    {
+      "id": "755062259",
+      "query": "Nintendo 64",
+      "title": "Snowboard Kids - Nintendo 64",
+      "url": "https://www.tradera.com/item/755062259",
+      "price": 349.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/904/663582904_ed051e29-2cd0-4b2b-b96e-f3d865339c86.jpg"
+    },
+    {
+      "id": "743696231",
+      "query": "Nintendo 64",
+      "title": "Rumble pak Nintendo 64",
+      "url": "https://www.tradera.com/item/743696231",
+      "price": 59.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/138/654752138_405b6f66-1d85-4a4e-bc3e-9b45c4abf052.jpg"
+    },
+    {
+      "id": "757165241",
+      "query": "Nintendo 64",
+      "title": "Pilotwings 64 Nintendo 64 (N64)",
+      "url": "https://www.tradera.com/item/757165241",
+      "price": 699.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/702/642943702_631a230d-3830-4606-86b6-5ee62147da23.jpg"
+    },
+    {
+      "id": "760746762",
+      "query": "Nintendo 64",
+      "title": "Super Mario 64 - Nintendo 64",
+      "url": "https://www.tradera.com/item/760746762",
+      "price": 300.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/880/668045880_7cb2bd49-0450-4256-9a64-d74260b46439.jpg"
     },
     {
       "id": "523122917",
@@ -612,7 +612,7 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/308/467493308_47cded01-fd54-48e7-ae58-93185bacb594.jpg"
     },
     {
       "id": "752106180",
@@ -624,7 +624,7 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/211/661293211_a369e29b-3e14-49b9-a3cb-174fab39d273.jpg"
     },
     {
       "id": "758677218",
@@ -636,31 +636,7 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "757165234",
-      "query": "Game Boy",
-      "title": "Warioland Game Boy",
-      "url": "https://www.tradera.com/item/757165234",
-      "price": 299.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "110230322",
-      "query": "Game Boy",
-      "title": "GAME BOY GALLERY 5 GAMES IN 1 till Nintendo Game Boy",
-      "url": "https://www.tradera.com/item/110230322",
-      "price": 169.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/865/666444865_f63ca7dc-3715-4374-a586-22493a2e896f.jpg"
     },
     {
       "id": "761186833",
@@ -672,19 +648,19 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/967/668386967_c9d9c73f-7126-4e25-9616-eb17ac3c3cf8.jpg"
     },
     {
-      "id": "741446727",
+      "id": "757165234",
       "query": "Game Boy",
-      "title": "Game Boy Wars till game boy GB",
-      "url": "https://www.tradera.com/item/741446727",
-      "price": 99.0,
+      "title": "Warioland Game Boy",
+      "url": "https://www.tradera.com/item/757165234",
+      "price": 299.0,
       "currency": "SEK",
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/537/657063537_65132993-1b3a-4217-bcb1-65bc8b11a56b.jpg"
     },
     {
       "id": "635864672",
@@ -696,19 +672,19 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/770/566936770_c26d1a52-76a6-4682-a377-e545b02808db.jpg"
     },
     {
-      "id": "632702940",
+      "id": "110230322",
       "query": "Game Boy",
-      "title": "E.T. Nintendo Game Boy Color",
-      "url": "https://www.tradera.com/item/632702940",
-      "price": 79.0,
+      "title": "GAME BOY GALLERY 5 GAMES IN 1 till Nintendo Game Boy",
+      "url": "https://www.tradera.com/item/110230322",
+      "price": 169.0,
       "currency": "SEK",
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/619/100066619_528f8a9e-dc0d-4a37-a6a0-0ea8bded17f1.jpg"
     },
     {
       "id": "755924084",
@@ -720,79 +696,31 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/872/664269872_d442fc57-4237-4ca9-9e61-a65cb6eb4181.jpg"
     },
     {
-      "id": "611658845",
+      "id": "741446727",
       "query": "Game Boy",
-      "title": "PINOCCHIO till Nintendo Game Boy",
-      "url": "https://www.tradera.com/item/611658845",
-      "price": 169.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "752152501",
-      "query": "Game Boy",
-      "title": "Kwirk Game Boy",
-      "url": "https://www.tradera.com/item/752152501",
-      "price": 130.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "761083978",
-      "query": "Game Boy",
-      "title": "Nintendo Game Boy Advance",
-      "url": "https://www.tradera.com/item/761083978",
-      "price": 900.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "759480675",
-      "query": "Game Boy",
-      "title": "Looney Tunes - Nintendo Game Boy",
-      "url": "https://www.tradera.com/item/759480675",
+      "title": "Game Boy Wars till game boy GB",
+      "url": "https://www.tradera.com/item/741446727",
       "price": 99.0,
       "currency": "SEK",
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/091/653031091_a6777a15-ed1b-498a-a6a5-b4605fb26a97.jpg"
     },
     {
-      "id": "753378423",
+      "id": "632702940",
       "query": "Game Boy",
-      "title": "Tetris till Nintendo Game Boy",
-      "url": "https://www.tradera.com/item/753378423",
-      "price": 700.0,
+      "title": "E.T. Nintendo Game Boy Color",
+      "url": "https://www.tradera.com/item/632702940",
+      "price": 79.0,
       "currency": "SEK",
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "756046737",
-      "query": "Game Boy",
-      "title": "Catz till Game Boy Advance",
-      "url": "https://www.tradera.com/item/756046737",
-      "price": 129.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/463/564246463_2d0965af-c708-4db3-bcd9-8b54fcd898c1.jpg"
     },
     {
       "id": "760156142",
@@ -804,31 +732,31 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/820/667580820_d6a4ef3d-c273-448e-9722-aea2061b7cdc.jpg"
     },
     {
-      "id": "611657418",
+      "id": "611658845",
       "query": "Game Boy",
-      "title": "BATTLETOADS till Nintendo Game Boy",
-      "url": "https://www.tradera.com/item/611657418",
-      "price": 329.0,
+      "title": "PINOCCHIO till Nintendo Game Boy",
+      "url": "https://www.tradera.com/item/611658845",
+      "price": 169.0,
       "currency": "SEK",
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/879/546126879_4ff85840-e2d3-4248-9df4-12b5094ee12b.jpg"
     },
     {
-      "id": "611636363",
+      "id": "753378423",
       "query": "Game Boy",
-      "title": "YOSHI till Nintendo Game Boy",
-      "url": "https://www.tradera.com/item/611636363",
-      "price": 295.0,
+      "title": "Tetris till Nintendo Game Boy",
+      "url": "https://www.tradera.com/item/753378423",
+      "price": 700.0,
       "currency": "SEK",
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/468/662270468_74c35010-b3a5-4511-a20c-fde9b81f22ec.jpg"
     },
     {
       "id": "754292182",
@@ -840,67 +768,79 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/195/662980195_57da283d-4ba2-42b8-ba88-6582af122f8e.jpg"
     },
     {
-      "id": "753367401",
+      "id": "752152501",
+      "query": "Game Boy",
+      "title": "Kwirk Game Boy",
+      "url": "https://www.tradera.com/item/752152501",
+      "price": 130.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/320/661330320_6bd2efa5-df8f-4b41-8461-2495ecc4ecab.jpg"
+    },
+    {
+      "id": "761083978",
       "query": "Game Boy",
       "title": "Nintendo Game Boy Advance",
-      "url": "https://www.tradera.com/item/753367401",
-      "price": 3000.0,
+      "url": "https://www.tradera.com/item/761083978",
+      "price": 900.0,
       "currency": "SEK",
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/658/668307658_6aca7a03-f954-43aa-80da-fce72856cc3a.jpg"
     },
     {
-      "id": "680367634",
+      "id": "759480675",
       "query": "Game Boy",
-      "title": "manual Game boy gallery | Svensksåld | Nintendo Game boy",
-      "url": "https://www.tradera.com/item/680367634",
-      "price": 149.0,
+      "title": "Looney Tunes - Nintendo Game Boy",
+      "url": "https://www.tradera.com/item/759480675",
+      "price": 99.0,
       "currency": "SEK",
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/291/667055291_a0c08f27-0fd6-4598-a4fc-62f83f5d03c5.jpg"
     },
     {
-      "id": "752471598",
+      "id": "756046737",
       "query": "Game Boy",
-      "title": "Aladdin Game Boy",
-      "url": "https://www.tradera.com/item/752471598",
-      "price": 250.0,
+      "title": "Catz till Game Boy Advance",
+      "url": "https://www.tradera.com/item/756046737",
+      "price": 129.0,
       "currency": "SEK",
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/064/664363064_cf08fe42-3895-496f-8e7a-971dbe0b70b4.jpg"
     },
     {
-      "id": "741539908",
+      "id": "611636363",
       "query": "Game Boy",
-      "title": "Game Boy Camera till game boy - röd - kamera",
-      "url": "https://www.tradera.com/item/741539908",
-      "price": 390.0,
+      "title": "YOSHI till Nintendo Game Boy",
+      "url": "https://www.tradera.com/item/611636363",
+      "price": 295.0,
       "currency": "SEK",
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/183/546107183_b96ed3ef-77e7-4803-a5d1-058ec6f12f7f.jpg"
     },
     {
-      "id": "758671461",
+      "id": "611657418",
       "query": "Game Boy",
-      "title": "Caesar's Palace II - Game Boy Color",
-      "url": "https://www.tradera.com/item/758671461",
-      "price": 265.0,
+      "title": "BATTLETOADS till Nintendo Game Boy",
+      "url": "https://www.tradera.com/item/611657418",
+      "price": 329.0,
       "currency": "SEK",
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/676/546125676_c08c3baa-323b-4a53-ae79-ff6c6ccc558e.jpg"
     },
     {
       "id": "760955663",
@@ -912,115 +852,67 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/237/668209237_dda66f6b-2da6-4eb7-8898-07e61a6622e2.jpg"
     },
     {
-      "id": "759497515",
+      "id": "753367401",
       "query": "Game Boy",
-      "title": "Pokémon Blue Version till Game Boy",
-      "url": "https://www.tradera.com/item/759497515",
-      "price": 299.0,
+      "title": "Nintendo Game Boy Advance",
+      "url": "https://www.tradera.com/item/753367401",
+      "price": 3000.0,
       "currency": "SEK",
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/063/662262063_36325d82-55e0-4891-83c1-edb0458efa6d.jpg"
     },
     {
-      "id": "615107042",
+      "id": "680367634",
       "query": "Game Boy",
-      "title": "Spelkassett skyddsfodral - Nintendo Game Boy / Game Boy Color",
-      "url": "https://www.tradera.com/item/615107042",
-      "price": 29.0,
+      "title": "manual Game boy gallery | Svensksåld | Nintendo Game boy",
+      "url": "https://www.tradera.com/item/680367634",
+      "price": 149.0,
       "currency": "SEK",
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/275/604612275_e0d57344-d278-4103-ae7d-fc30808f5a3e.jpg"
     },
     {
-      "id": "754918581",
+      "id": "741539908",
       "query": "Game Boy",
-      "title": "Manualer för Game Boy Advance Wireless Adapter och Game Boy Advance SP",
-      "url": "https://www.tradera.com/item/754918581",
-      "price": 50.0,
+      "title": "Game Boy Camera till game boy - röd - kamera",
+      "url": "https://www.tradera.com/item/741539908",
+      "price": 390.0,
       "currency": "SEK",
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/360/653103360_5980830c-83b6-40b6-9953-eb7c97edc396.jpg"
     },
     {
-      "id": "753440975",
+      "id": "752471598",
       "query": "Game Boy",
-      "title": "Nintendo Game Boy - Soccer",
-      "url": "https://www.tradera.com/item/753440975",
-      "price": 299.0,
+      "title": "Aladdin Game Boy",
+      "url": "https://www.tradera.com/item/752471598",
+      "price": 250.0,
       "currency": "SEK",
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/690/661575690_5a9a1d98-fb5c-430b-94f9-b71af39fea42.jpg"
     },
     {
-      "id": "758579833",
+      "id": "761304761",
       "query": "Game Boy",
-      "title": "Disney's TaleSpin Game Boy",
-      "url": "https://www.tradera.com/item/758579833",
-      "price": 359.0,
+      "title": "Pokémon Blue Version - Game Boy",
+      "url": "https://www.tradera.com/item/761304761",
+      "price": 180.0,
       "currency": "SEK",
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "760620904",
-      "query": "Game Boy",
-      "title": "Dragon's Lair - Game Boy",
-      "url": "https://www.tradera.com/item/760620904",
-      "price": 299.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "654665255",
-      "query": "Game Boy",
-      "title": "Klustar / SCN / Nintendo Game boy color",
-      "url": "https://www.tradera.com/item/654665255",
-      "price": 99.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "610781059",
-      "query": "Game Boy",
-      "title": "Gameboy Game Boy Card Hero Japanskt!",
-      "url": "https://www.tradera.com/item/610781059",
-      "price": 99.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "759629429",
-      "query": "Game Boy",
-      "title": "Bamse - Nintendo Game Boy",
-      "url": "https://www.tradera.com/item/759629429",
-      "price": 3490.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/800/668476800_f265771b-e928-4581-b722-11663efc73d5.jpg"
     },
     {
       "id": "757468582",
@@ -1032,55 +924,43 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/867/665486867_2c8e2857-170a-440a-9d39-6f96c54648ad.jpg"
     },
     {
-      "id": "755316510",
+      "id": "758671461",
       "query": "Game Boy",
-      "title": "Chicken Run Game Boy Color",
-      "url": "https://www.tradera.com/item/755316510",
-      "price": 89.0,
+      "title": "Caesar's Palace II - Game Boy Color",
+      "url": "https://www.tradera.com/item/758671461",
+      "price": 265.0,
       "currency": "SEK",
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/681/666440681_944fe153-0c8e-42e4-99d9-d02983093c60.jpg"
     },
     {
-      "id": "761209398",
+      "id": "759497515",
       "query": "Game Boy",
-      "title": "Pokemon Blue til Game Boy",
-      "url": "https://www.tradera.com/item/761209398",
-      "price": 603.0,
+      "title": "Pokémon Blue Version till Game Boy",
+      "url": "https://www.tradera.com/item/759497515",
+      "price": 299.0,
       "currency": "SEK",
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/715/667067715_321528a1-7f59-4cd4-8218-43965200a3e9.jpg"
     },
     {
-      "id": "759922228",
+      "id": "615107042",
       "query": "Game Boy",
-      "title": "Lego Bionicle till Game Boy Advance",
-      "url": "https://www.tradera.com/item/759922228",
-      "price": 70.0,
+      "title": "Spelkassett skyddsfodral - Nintendo Game Boy / Game Boy Color",
+      "url": "https://www.tradera.com/item/615107042",
+      "price": 29.0,
       "currency": "SEK",
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "757165239",
-      "query": "Game Boy",
-      "title": "FIFA 2000 Game Boy",
-      "url": "https://www.tradera.com/item/757165239",
-      "price": 169.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/183/549140183_fc391139-8cfa-42e5-a9c2-d8e3aefa4ae6.jpg"
     },
     {
       "id": "761105278",
@@ -1092,67 +972,43 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/941/668323941_db7fec58-90fa-415c-93e1-9708a7b54ff2.jpg"
     },
     {
-      "id": "176874916",
+      "id": "757165239",
       "query": "Game Boy",
-      "title": "DONKEY KONG till Nintendo Game Boy",
-      "url": "https://www.tradera.com/item/176874916",
-      "price": 549.0,
+      "title": "FIFA 2000 Game Boy",
+      "url": "https://www.tradera.com/item/757165239",
+      "price": 169.0,
       "currency": "SEK",
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/897/657062897_51ab5939-9e4a-42b9-bb64-622fbb592651.jpg"
     },
     {
-      "id": "760958155",
+      "id": "754918581",
       "query": "Game Boy",
-      "title": "Dragon Tales: Dragon Adventures - Game Boy Color",
-      "url": "https://www.tradera.com/item/760958155",
-      "price": 99.0,
+      "title": "Manualer för Game Boy Advance Wireless Adapter och Game Boy Advance SP",
+      "url": "https://www.tradera.com/item/754918581",
+      "price": 50.0,
       "currency": "SEK",
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/426/663470426_51e3db5d-c96a-4d17-b7f3-ec0a48e996a4.jpg"
     },
     {
-      "id": "760756539",
+      "id": "759629429",
       "query": "Game Boy",
-      "title": "Pokemon Game Boy Spel",
-      "url": "https://www.tradera.com/item/760756539",
-      "price": 500.0,
+      "title": "Bamse - Nintendo Game Boy",
+      "url": "https://www.tradera.com/item/759629429",
+      "price": 3490.0,
       "currency": "SEK",
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "757165238",
-      "query": "Game Boy",
-      "title": "Super Breakout (Game Boy)",
-      "url": "https://www.tradera.com/item/757165238",
-      "price": 279.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "753368283",
-      "query": "Game Boy",
-      "title": "Nintendo Game Boy Color - Limegrön",
-      "url": "https://www.tradera.com/item/753368283",
-      "price": 4500.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/038/667169038_d93674b2-79f2-40db-aca2-ab12a5f0ff45.jpg"
     },
     {
       "id": "760135794",
@@ -1164,43 +1020,187 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/843/667563843_0b4b5548-3b92-4d58-bffa-a709a340e97e.jpg"
     },
     {
-      "id": "611658259",
+      "id": "753440975",
       "query": "Game Boy",
-      "title": "ELEVATOR ACTION till Nintendo Game Boy",
-      "url": "https://www.tradera.com/item/611658259",
-      "price": 439.0,
+      "title": "Nintendo Game Boy - Soccer",
+      "url": "https://www.tradera.com/item/753440975",
+      "price": 299.0,
       "currency": "SEK",
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/020/646115020_2bd606df-f424-4c64-b251-98e2369626f1.jpg"
     },
     {
-      "id": "611632876",
+      "id": "758579833",
       "query": "Game Boy",
-      "title": "SHADOW WARRIORS till Nintendo Game Boy",
-      "url": "https://www.tradera.com/item/611632876",
-      "price": 769.0,
+      "title": "Disney's TaleSpin Game Boy",
+      "url": "https://www.tradera.com/item/758579833",
+      "price": 359.0,
       "currency": "SEK",
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/608/658047608_42f57a09-7f57-4130-9d60-fc0d13b0b271.jpg"
     },
     {
-      "id": "760201277",
+      "id": "760620904",
       "query": "Game Boy",
-      "title": "Tetris till Nintendo Game Boy",
-      "url": "https://www.tradera.com/item/760201277",
-      "price": 199.0,
+      "title": "Dragon's Lair - Game Boy",
+      "url": "https://www.tradera.com/item/760620904",
+      "price": 299.0,
       "currency": "SEK",
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/733/667213733_6cd83b30-b249-41d3-8c0f-570fde932b74.jpg"
+    },
+    {
+      "id": "610781059",
+      "query": "Game Boy",
+      "title": "Gameboy Game Boy Card Hero Japanskt!",
+      "url": "https://www.tradera.com/item/610781059",
+      "price": 99.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/797/545355797_e79baa97-99bc-4f03-b8fd-02031b718b1d.jpg"
+    },
+    {
+      "id": "654665255",
+      "query": "Game Boy",
+      "title": "Klustar / SCN / Nintendo Game boy color",
+      "url": "https://www.tradera.com/item/654665255",
+      "price": 99.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/854/583194854_052d342b-3bdb-4e0e-aa0d-7294f1c88d88.jpg"
+    },
+    {
+      "id": "756335610",
+      "query": "Game Boy",
+      "title": "Pokémon Red Version till Game Boy",
+      "url": "https://www.tradera.com/item/756335610",
+      "price": 2700.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/256/656534256_b0fc0b2e-823b-4000-966c-eb6216ddbe90.jpg"
+    },
+    {
+      "id": "755316510",
+      "query": "Game Boy",
+      "title": "Chicken Run Game Boy Color",
+      "url": "https://www.tradera.com/item/755316510",
+      "price": 89.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/107/655397107_4eefd9da-a164-46b9-b849-c7ad1faf82ba.jpg"
+    },
+    {
+      "id": "761209398",
+      "query": "Game Boy",
+      "title": "Pokemon Blue til Game Boy",
+      "url": "https://www.tradera.com/item/761209398",
+      "price": 603.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/055/668405055_8ea97872-87e0-47cb-82bf-7ca850f7cda3.jpg"
+    },
+    {
+      "id": "760958155",
+      "query": "Game Boy",
+      "title": "Dragon Tales: Dragon Adventures - Game Boy Color",
+      "url": "https://www.tradera.com/item/760958155",
+      "price": 99.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/271/599853271_93bea1b5-adb7-428c-b5fa-3aa56d852e10.jpg"
+    },
+    {
+      "id": "760059590",
+      "query": "Game Boy",
+      "title": "Interact Plug N' Play AdapterPak för Game Boy Advance och Game Boy Color",
+      "url": "https://www.tradera.com/item/760059590",
+      "price": 29.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/462/667505462_7b21980d-54c7-4f49-aa3a-532f55c1f2d1.jpg"
+    },
+    {
+      "id": "759922228",
+      "query": "Game Boy",
+      "title": "Lego Bionicle till Game Boy Advance",
+      "url": "https://www.tradera.com/item/759922228",
+      "price": 70.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/745/667397745_1f19e9ad-89ba-4ab2-94c9-d7190638f00c.jpg"
+    },
+    {
+      "id": "755118392",
+      "query": "Game Boy",
+      "title": "Godzilla: Domination! - Game Boy Advance (GBA)",
+      "url": "https://www.tradera.com/item/755118392",
+      "price": 205.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/346/663628346_782ac469-f6ce-4eff-b9d4-5b9bc299e0cf.jpg"
+    },
+    {
+      "id": "757280976",
+      "query": "Game Boy",
+      "title": "Kirby's Pinball Land - Game Boy",
+      "url": "https://www.tradera.com/item/757280976",
+      "price": 249.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/861/657197861_9522f229-755b-4bc4-9685-9d5d5c5b86a6.jpg"
+    },
+    {
+      "id": "176874916",
+      "query": "Game Boy",
+      "title": "DONKEY KONG till Nintendo Game Boy",
+      "url": "https://www.tradera.com/item/176874916",
+      "price": 549.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/846/161108846_e610b068-8c37-4030-a78c-23149e5e554d.jpg"
+    },
+    {
+      "id": "754027616",
+      "query": "Game Boy",
+      "title": "Tennis - Nintendo Game Boy",
+      "url": "https://www.tradera.com/item/754027616",
+      "price": 120.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/620/662770620_0ed9cc1a-0d59-48b2-a819-c923a56ad318.jpg"
     },
     {
       "id": "760610855",
@@ -1212,7 +1212,7 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/466/667936466_8a123908-258a-4bf4-bb01-f8aef73e931c.jpg"
     },
     {
       "id": "760441172",
@@ -1224,7 +1224,7 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/826/667802826_5e64ef25-7b83-411f-abc7-382fdce516fc.jpg"
     },
     {
       "id": "427760521",
@@ -1236,7 +1236,7 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/658/379103658_03f40591-f86c-4def-8e67-624f4064ece3.jpg"
     },
     {
       "id": "760760751",
@@ -1248,79 +1248,7 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "753188443",
-      "query": "PlayStation 2",
-      "title": "De Utrolige - Playstation 2",
-      "url": "https://www.tradera.com/item/753188443",
-      "price": 79.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "753580459",
-      "query": "PlayStation 2",
-      "title": "Catwoman - PlayStation 2",
-      "url": "https://www.tradera.com/item/753580459",
-      "price": 102.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "760170339",
-      "query": "PlayStation 2",
-      "title": "Driv3r - PlayStation 2",
-      "url": "https://www.tradera.com/item/760170339",
-      "price": 10.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "755084725",
-      "query": "PlayStation 2",
-      "title": "Bionicle - PlayStation 2",
-      "url": "https://www.tradera.com/item/755084725",
-      "price": 23.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "759838576",
-      "query": "PlayStation 2",
-      "title": "Stuntman - PlayStation 2",
-      "url": "https://www.tradera.com/item/759838576",
-      "price": 39.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "759431557",
-      "query": "PlayStation 2",
-      "title": "Black - PlayStation 2",
-      "url": "https://www.tradera.com/item/759431557",
-      "price": 71.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/074/668057074_dbaf2a87-07f4-4b42-8751-5e467f70f707.jpg"
     },
     {
       "id": "753974815",
@@ -1332,79 +1260,7 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "760052318",
-      "query": "PlayStation 2",
-      "title": "Gun - PlayStation 2",
-      "url": "https://www.tradera.com/item/760052318",
-      "price": 79.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "758841310",
-      "query": "PlayStation 2",
-      "title": "Catz - PlayStation 2",
-      "url": "https://www.tradera.com/item/758841310",
-      "price": 52.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "758742474",
-      "query": "PlayStation 2",
-      "title": "Scaler - PlayStation 2",
-      "url": "https://www.tradera.com/item/758742474",
-      "price": 99.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "760228507",
-      "query": "PlayStation 2",
-      "title": "Ratatouille - PlayStation 2",
-      "url": "https://www.tradera.com/item/760228507",
-      "price": 59.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "755834969",
-      "query": "PlayStation 2",
-      "title": "Amplitude - PlayStation 2",
-      "url": "https://www.tradera.com/item/755834969",
-      "price": 178.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "758740009",
-      "query": "PlayStation 2",
-      "title": "Bionicle - PlayStation 2",
-      "url": "https://www.tradera.com/item/758740009",
-      "price": 89.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/811/662731811_5aae9646-fef6-4b85-83ba-87175d355eda.jpg"
     },
     {
       "id": "758050056",
@@ -1416,31 +1272,79 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/221/665958221_d5e508b2-ee61-405b-977c-7e316e7d576c.jpg"
     },
     {
-      "id": "760372719",
+      "id": "755834969",
       "query": "PlayStation 2",
-      "title": "Gun - PlayStation 2",
-      "url": "https://www.tradera.com/item/760372719",
-      "price": 199.0,
+      "title": "Amplitude - PlayStation 2",
+      "url": "https://www.tradera.com/item/755834969",
+      "price": 178.0,
       "currency": "SEK",
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/885/664198885_21c4faeb-cd9b-4619-b89b-b755bfcb8d1d.jpg"
     },
     {
-      "id": "759246664",
+      "id": "760228507",
       "query": "PlayStation 2",
-      "title": "BLACK PlayStation 2",
-      "url": "https://www.tradera.com/item/759246664",
-      "price": 120.0,
+      "title": "Ratatouille - PlayStation 2",
+      "url": "https://www.tradera.com/item/760228507",
+      "price": 59.0,
       "currency": "SEK",
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/635/667635635_93375c18-9f68-40e2-94d8-4e4d1301652c.jpg"
+    },
+    {
+      "id": "759431557",
+      "query": "PlayStation 2",
+      "title": "Black - PlayStation 2",
+      "url": "https://www.tradera.com/item/759431557",
+      "price": 71.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/678/667017678_c8f6a0e8-55c5-435e-aa99-75e17d9426c7.jpg"
+    },
+    {
+      "id": "753188443",
+      "query": "PlayStation 2",
+      "title": "De Utrolige - Playstation 2",
+      "url": "https://www.tradera.com/item/753188443",
+      "price": 79.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/202/662134202_646e9b49-abab-4ea6-a725-034c6bd2a777.jpg"
+    },
+    {
+      "id": "753580459",
+      "query": "PlayStation 2",
+      "title": "Catwoman - PlayStation 2",
+      "url": "https://www.tradera.com/item/753580459",
+      "price": 102.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/977/654612977_98996e0c-8692-4e19-aa59-1150027f97f0.jpg"
+    },
+    {
+      "id": "760170339",
+      "query": "PlayStation 2",
+      "title": "Driv3r - PlayStation 2",
+      "url": "https://www.tradera.com/item/760170339",
+      "price": 10.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/246/667592246_de00a687-8605-4755-918d-f041bb2dccc0.jpg"
     },
     {
       "id": "760499945",
@@ -1452,55 +1356,43 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/858/667845858_4d4cec0e-af83-45ef-bec0-9b3811c2bb63.jpg"
     },
     {
-      "id": "753397775",
+      "id": "759246664",
       "query": "PlayStation 2",
-      "title": "Tengai - PlayStation 2",
-      "url": "https://www.tradera.com/item/753397775",
-      "price": 2572.0,
+      "title": "BLACK PlayStation 2",
+      "url": "https://www.tradera.com/item/759246664",
+      "price": 120.0,
       "currency": "SEK",
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/893/666869893_c1a90aab-e261-407a-931c-be4d8fea1e5c.jpg"
     },
     {
-      "id": "753927353",
+      "id": "755084725",
       "query": "PlayStation 2",
-      "title": "PlayStation 2 Bruksanvisning",
-      "url": "https://www.tradera.com/item/753927353",
-      "price": 75.0,
+      "title": "Bionicle - PlayStation 2",
+      "url": "https://www.tradera.com/item/755084725",
+      "price": 23.0,
       "currency": "SEK",
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/427/663601427_635ca3fb-e6d7-4fab-b691-4455918e30b3.jpg"
     },
     {
-      "id": "760925191",
+      "id": "759838576",
       "query": "PlayStation 2",
-      "title": "Driv3r - Playstation 2",
-      "url": "https://www.tradera.com/item/760925191",
-      "price": 50.0,
+      "title": "Stuntman - PlayStation 2",
+      "url": "https://www.tradera.com/item/759838576",
+      "price": 39.0,
       "currency": "SEK",
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "761229966",
-      "query": "PlayStation 2",
-      "title": "ExZeus - PlayStation 2",
-      "url": "https://www.tradera.com/item/761229966",
-      "price": 10.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/926/667334926_ed1604dc-d162-464c-a0f2-ecd07e119f31.jpg"
     },
     {
       "id": "760408634",
@@ -1512,43 +1404,55 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/372/667777372_814c9a6f-725d-4c96-acfc-fff208eb9830.jpg"
     },
     {
-      "id": "760422081",
+      "id": "760372719",
       "query": "PlayStation 2",
-      "title": "Stuntman - PlayStation 2",
-      "url": "https://www.tradera.com/item/760422081",
-      "price": 10.0,
+      "title": "Gun - PlayStation 2",
+      "url": "https://www.tradera.com/item/760372719",
+      "price": 199.0,
       "currency": "SEK",
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/409/667748409_da3cd3dc-4258-4b3b-b5ec-cb500374bfaa.jpg"
     },
     {
-      "id": "760179509",
+      "id": "758841310",
       "query": "PlayStation 2",
-      "title": "Boogie - PlayStation 2",
-      "url": "https://www.tradera.com/item/760179509",
-      "price": 20.0,
+      "title": "Catz - PlayStation 2",
+      "url": "https://www.tradera.com/item/758841310",
+      "price": 52.0,
       "currency": "SEK",
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/906/666558906_a4a020f8-3434-4bf3-ae2b-e3572f9aca38.jpg"
     },
     {
-      "id": "757187646",
+      "id": "758742474",
       "query": "PlayStation 2",
-      "title": "XIII - PlayStation 2",
-      "url": "https://www.tradera.com/item/757187646",
-      "price": 39.0,
+      "title": "Scaler - PlayStation 2",
+      "url": "https://www.tradera.com/item/758742474",
+      "price": 99.0,
       "currency": "SEK",
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/198/666489198_b4c1e990-c9db-4ad6-9325-5ecf1ae50416.jpg"
+    },
+    {
+      "id": "760052318",
+      "query": "PlayStation 2",
+      "title": "Gun - PlayStation 2",
+      "url": "https://www.tradera.com/item/760052318",
+      "price": 79.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/380/667499380_26b6152a-4582-4d60-9987-eb5a8dc53010.jpg"
     },
     {
       "id": "757224204",
@@ -1560,55 +1464,79 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/928/665295928_d5c69f10-fb9d-49d1-9b2a-9052e22e8b4e.jpg"
     },
     {
-      "id": "759917904",
+      "id": "757187646",
       "query": "PlayStation 2",
-      "title": "Stuntman till PlayStation 2",
-      "url": "https://www.tradera.com/item/759917904",
-      "price": 45.0,
+      "title": "XIII - PlayStation 2",
+      "url": "https://www.tradera.com/item/757187646",
+      "price": 39.0,
       "currency": "SEK",
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/100/665267100_03797098-746a-461f-9311-6b1eecc37f02.jpg"
     },
     {
-      "id": "760911456",
+      "id": "760179509",
       "query": "PlayStation 2",
-      "title": "Driv3r - PlayStation 2",
-      "url": "https://www.tradera.com/item/760911456",
-      "price": 125.0,
+      "title": "Boogie - PlayStation 2",
+      "url": "https://www.tradera.com/item/760179509",
+      "price": 20.0,
       "currency": "SEK",
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/121/665644121_25256aec-348d-46fa-8371-4d44ec1db9e3.jpg"
     },
     {
-      "id": "761207356",
+      "id": "753927353",
       "query": "PlayStation 2",
-      "title": "Barnyard - PlayStation 2",
-      "url": "https://www.tradera.com/item/761207356",
+      "title": "PlayStation 2 Bruksanvisning",
+      "url": "https://www.tradera.com/item/753927353",
+      "price": 75.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/711/662695711_c9764b42-452f-4257-9c0b-e6dc1501be34.jpg"
+    },
+    {
+      "id": "760925191",
+      "query": "PlayStation 2",
+      "title": "Driv3r - Playstation 2",
+      "url": "https://www.tradera.com/item/760925191",
+      "price": 50.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/230/668186230_0eeb7f83-cc90-47fe-b8df-b81055e77e6a.jpg"
+    },
+    {
+      "id": "761229966",
+      "query": "PlayStation 2",
+      "title": "ExZeus - PlayStation 2",
+      "url": "https://www.tradera.com/item/761229966",
       "price": 10.0,
       "currency": "SEK",
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/311/668421311_c3598b3c-c929-4c71-9921-bbe3f91582f5.jpg"
     },
     {
-      "id": "753492269",
+      "id": "758740009",
       "query": "PlayStation 2",
-      "title": "Manhunt - PlayStation 2",
-      "url": "https://www.tradera.com/item/753492269",
-      "price": 1500.0,
+      "title": "Bionicle - PlayStation 2",
+      "url": "https://www.tradera.com/item/758740009",
+      "price": 89.0,
       "currency": "SEK",
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/503/666487503_079c1a52-4d0e-451c-993c-ec7f2e3d25b5.jpg"
     },
     {
       "id": "753160770",
@@ -1620,7 +1548,7 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/117/662113117_146671ff-0d57-49a5-96b7-6c659156a6f8.jpg"
     },
     {
       "id": "760451500",
@@ -1632,7 +1560,7 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/214/666748214_0a94dd2e-967a-47db-9349-c0e49f3d477a.jpg"
     },
     {
       "id": "761182436",
@@ -1644,43 +1572,55 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/491/668383491_521a8441-c209-437e-abe3-7d427ea5d66b.jpg"
     },
     {
-      "id": "760191182",
+      "id": "753492269",
       "query": "PlayStation 2",
-      "title": "Madagaskar - PlayStation 2",
-      "url": "https://www.tradera.com/item/760191182",
+      "title": "Manhunt - PlayStation 2",
+      "url": "https://www.tradera.com/item/753492269",
+      "price": 1500.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/309/662355309_c9e9e227-3ef8-409d-9886-2620544051fa.jpg"
+    },
+    {
+      "id": "760422081",
+      "query": "PlayStation 2",
+      "title": "Stuntman - PlayStation 2",
+      "url": "https://www.tradera.com/item/760422081",
       "price": 10.0,
       "currency": "SEK",
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/941/667787941_23cf655d-fc4f-46a7-b6cf-5bbd8c19968d.jpg"
     },
     {
-      "id": "754778333",
+      "id": "759917904",
       "query": "PlayStation 2",
-      "title": "Drakengard - PlayStation 2",
-      "url": "https://www.tradera.com/item/754778333",
-      "price": 1400.0,
+      "title": "Stuntman till PlayStation 2",
+      "url": "https://www.tradera.com/item/759917904",
+      "price": 45.0,
       "currency": "SEK",
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/881/667394881_df7a7c58-b71b-40fc-9806-448d93470535.jpg"
     },
     {
-      "id": "760948848",
+      "id": "753397775",
       "query": "PlayStation 2",
-      "title": "Fahrenheit - PlayStation 2",
-      "url": "https://www.tradera.com/item/760948848",
-      "price": 10.0,
+      "title": "Tengai - PlayStation 2",
+      "url": "https://www.tradera.com/item/753397775",
+      "price": 2572.0,
       "currency": "SEK",
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/573/662285573_9341c344-5016-4f69-9dca-67d33a14dec3.jpg"
     },
     {
       "id": "760308230",
@@ -1692,31 +1632,43 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/461/667695461_050dff34-dd93-4cc7-ab40-65170756c079.jpg"
     },
     {
-      "id": "751332153",
+      "id": "754778333",
       "query": "PlayStation 2",
-      "title": "Madagaskar - PlayStation 2",
-      "url": "https://www.tradera.com/item/751332153",
-      "price": 50.0,
+      "title": "Drakengard - PlayStation 2",
+      "url": "https://www.tradera.com/item/754778333",
+      "price": 1400.0,
       "currency": "SEK",
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/506/663361506_d975a343-e1d4-4cfb-b98e-411834fc9e28.jpg"
     },
     {
-      "id": "760094528",
+      "id": "760911456",
       "query": "PlayStation 2",
-      "title": "Eragon - PlayStation 2",
-      "url": "https://www.tradera.com/item/760094528",
-      "price": 150.0,
+      "title": "Driv3r - PlayStation 2",
+      "url": "https://www.tradera.com/item/760911456",
+      "price": 125.0,
       "currency": "SEK",
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/159/668176159_1ab6437b-ef91-49dc-9f72-c169e74dafa9.jpg"
+    },
+    {
+      "id": "761207356",
+      "query": "PlayStation 2",
+      "title": "Barnyard - PlayStation 2",
+      "url": "https://www.tradera.com/item/761207356",
+      "price": 10.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/572/668403572_f88476de-616e-4d21-a57b-d60f1a7a8623.jpg"
     },
     {
       "id": "742693252",
@@ -1728,7 +1680,31 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/694/653996694_bbab0878-7831-46fa-b681-5d31c56e061d.jpg"
+    },
+    {
+      "id": "760792622",
+      "query": "PlayStation 2",
+      "title": "Black - PlayStation 2",
+      "url": "https://www.tradera.com/item/760792622",
+      "price": 60.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/418/668081418_412fc15a-09ac-4a64-bf90-e48c449017bb.jpg"
+    },
+    {
+      "id": "760893983",
+      "query": "PlayStation 2",
+      "title": "Superhjältarna - PlayStation 2",
+      "url": "https://www.tradera.com/item/760893983",
+      "price": 79.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/383/668162383_825435f9-7d6b-4686-83ed-ed7983d20fad.jpg"
     },
     {
       "id": "751332250",
@@ -1740,55 +1716,7 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "751933323",
-      "query": "PlayStation 2",
-      "title": "Blade till Playstation 2",
-      "url": "https://www.tradera.com/item/751933323",
-      "price": 220.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "760190952",
-      "query": "PlayStation 2",
-      "title": "Burnout - PlayStation 2",
-      "url": "https://www.tradera.com/item/760190952",
-      "price": 10.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "761277091",
-      "query": "PlayStation 2",
-      "title": "Fahrenheit PlayStation 2",
-      "url": "https://www.tradera.com/item/761277091",
-      "price": 179.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "759395373",
-      "query": "PlayStation 2",
-      "title": "ICO - PlayStation 2",
-      "url": "https://www.tradera.com/item/759395373",
-      "price": 27.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/326/660695326_cd2cffd0-f654-46e3-9203-d283a5e23487.jpg"
     },
     {
       "id": "753746796",
@@ -1800,7 +1728,79 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/757/662551757_75455cac-0bdd-464c-84c7-2f59b5ddfd8b.jpg"
+    },
+    {
+      "id": "751933323",
+      "query": "PlayStation 2",
+      "title": "Blade till Playstation 2",
+      "url": "https://www.tradera.com/item/751933323",
+      "price": 220.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/859/661161859_9d9c997f-392b-4d6c-8e01-f7a700737025.jpg"
+    },
+    {
+      "id": "760190952",
+      "query": "PlayStation 2",
+      "title": "Burnout - PlayStation 2",
+      "url": "https://www.tradera.com/item/760190952",
+      "price": 10.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/005/667608005_8e2302a6-6b4e-4274-a235-c6ef35cbce16.jpg"
+    },
+    {
+      "id": "761277091",
+      "query": "PlayStation 2",
+      "title": "Fahrenheit PlayStation 2",
+      "url": "https://www.tradera.com/item/761277091",
+      "price": 179.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/697/667003697_1282df45-63ce-49c3-9a7d-7196dd6532c5.jpg"
+    },
+    {
+      "id": "759395373",
+      "query": "PlayStation 2",
+      "title": "ICO - PlayStation 2",
+      "url": "https://www.tradera.com/item/759395373",
+      "price": 27.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/875/666988875_f4cac9a3-3957-451e-8db3-3545b4bea56e.jpg"
+    },
+    {
+      "id": "760191182",
+      "query": "PlayStation 2",
+      "title": "Madagaskar - PlayStation 2",
+      "url": "https://www.tradera.com/item/760191182",
+      "price": 10.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/164/667608164_2d85ddcb-c197-4293-be64-8cb7d4a48838.jpg"
+    },
+    {
+      "id": "761226064",
+      "query": "PlayStation 2",
+      "title": "Up - PlayStation 2",
+      "url": "https://www.tradera.com/item/761226064",
+      "price": 10.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/303/668418303_d2a6ad24-277b-4a0e-a594-cd0d3b92cae2.jpg"
     },
     {
       "id": "760816584",
@@ -1812,7 +1812,7 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/781/668099781_f6c250c1-8bd8-4a0d-b4b2-7ab41099fd3f.jpg"
     },
     {
       "id": "760816684",
@@ -1824,7 +1824,7 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/828/668099828_8e7bba82-6729-475c-8a27-a82bb2fb216e.jpg"
     },
     {
       "id": "760816529",
@@ -1836,7 +1836,7 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/730/668099730_67faa4fa-29a9-4331-b19b-0c6c26386bd0.jpg"
     },
     {
       "id": "760068257",
@@ -1848,7 +1848,7 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/058/667512058_f1ff901c-da60-4832-8b80-e68afac1a862.jpg"
     },
     {
       "id": "760819262",
@@ -1860,19 +1860,7 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "753629551",
-      "query": "Pokémon",
-      "title": "Pokemon Topps POKEMON",
-      "url": "https://www.tradera.com/item/753629551",
-      "price": 27.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/958/668101958_950aed8b-c177-4a3b-8a6f-7d586aac0f48.jpg"
     },
     {
       "id": "753626028",
@@ -1884,7 +1872,7 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/682/662456682_f27717e4-0ae0-4311-8f02-3a3cfd8523ef.jpg"
     },
     {
       "id": "753627713",
@@ -1896,7 +1884,19 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/151/662458151_3b1fec66-88d7-41c2-baa8-d08179d2773e.jpg"
+    },
+    {
+      "id": "753629551",
+      "query": "Pokémon",
+      "title": "Pokemon Topps POKEMON",
+      "url": "https://www.tradera.com/item/753629551",
+      "price": 27.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/611/662459611_fb145b32-edba-4a95-8af8-10aed7cb2e42.jpg"
     },
     {
       "id": "753630554",
@@ -1908,7 +1908,7 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/453/662460453_22dddbd9-fca5-4a75-bb5d-d7c4626b2e88.jpg"
     },
     {
       "id": "753626032",
@@ -1920,7 +1920,7 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/677/662456677_8bd6c1ab-b46c-4171-87de-1dd7ca35518a.jpg"
     },
     {
       "id": "753626041",
@@ -1932,7 +1932,7 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/667/662456667_fb371fb5-abbf-4f83-96a1-030962be3551.jpg"
     },
     {
       "id": "760549023",
@@ -1944,7 +1944,7 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/987/667885987_e666af14-0deb-4954-b275-aee7920f6ab2.jpg"
     },
     {
       "id": "757726588",
@@ -1956,79 +1956,7 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "753629900",
-      "query": "Pokémon",
-      "title": "Pokemon Topps Pokémon Emergency",
-      "url": "https://www.tradera.com/item/753629900",
-      "price": 24.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "753630202",
-      "query": "Pokémon",
-      "title": "Pokemon Topps Pokémon Emergency",
-      "url": "https://www.tradera.com/item/753630202",
-      "price": 24.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "754353625",
-      "query": "Pokémon",
-      "title": "Pokémon - Allt värt att veta om Pokémon, Pokémon Det officiella magasinet och",
-      "url": "https://www.tradera.com/item/754353625",
-      "price": 150.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "754353454",
-      "query": "Pokémon",
-      "title": "Pokémon - Allt värt att veta om Pokémon, Pokémon Det officiella magasinet och",
-      "url": "https://www.tradera.com/item/754353454",
-      "price": 150.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "754353575",
-      "query": "Pokémon",
-      "title": "Pokémon - Allt värt att veta om Pokémon, Pokémon Det officiella magasinet och",
-      "url": "https://www.tradera.com/item/754353575",
-      "price": 150.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "754353758",
-      "query": "Pokémon",
-      "title": "Pokémon - Allt värt att veta om Pokémon, Pokémon Det officiella magasinet och",
-      "url": "https://www.tradera.com/item/754353758",
-      "price": 150.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/184/665696184_321eeac2-5344-4cbf-9a24-80d50b048f8d.jpg"
     },
     {
       "id": "754353687",
@@ -2040,31 +1968,7 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "753629908",
-      "query": "Pokémon",
-      "title": "Pokemon Topps Pokémon Shipwreck",
-      "url": "https://www.tradera.com/item/753629908",
-      "price": 24.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "754353346",
-      "query": "Pokémon",
-      "title": "Pokémon - Allt värt att veta om Pokémon, Pokémon Det officiella magasinet och",
-      "url": "https://www.tradera.com/item/754353346",
-      "price": 150.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/767/663028767_8d6bfab3-a08d-4df5-9fab-100d6ca47972.jpg"
     },
     {
       "id": "753065529",
@@ -2076,7 +1980,103 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/477/662039477_7f22dd38-3cb8-4683-9350-a56eaa44879c.jpg"
+    },
+    {
+      "id": "753629908",
+      "query": "Pokémon",
+      "title": "Pokemon Topps Pokémon Shipwreck",
+      "url": "https://www.tradera.com/item/753629908",
+      "price": 24.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/854/662459854_99007f04-0d2e-4b87-8965-390f78f2581e.jpg"
+    },
+    {
+      "id": "754353346",
+      "query": "Pokémon",
+      "title": "Pokémon - Allt värt att veta om Pokémon, Pokémon Det officiella magasinet och",
+      "url": "https://www.tradera.com/item/754353346",
+      "price": 150.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/500/663028500_871732f5-585d-4d1d-b8b6-7ac0fb9fe5d1.jpg"
+    },
+    {
+      "id": "753629900",
+      "query": "Pokémon",
+      "title": "Pokemon Topps Pokémon Emergency",
+      "url": "https://www.tradera.com/item/753629900",
+      "price": 24.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/867/662459867_e7b11a54-c2ba-450c-9f89-d07b8a575deb.jpg"
+    },
+    {
+      "id": "753630202",
+      "query": "Pokémon",
+      "title": "Pokemon Topps Pokémon Emergency",
+      "url": "https://www.tradera.com/item/753630202",
+      "price": 24.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/132/662460132_d0cd99eb-b2df-463e-bd64-2614209e9552.jpg"
+    },
+    {
+      "id": "754353454",
+      "query": "Pokémon",
+      "title": "Pokémon - Allt värt att veta om Pokémon, Pokémon Det officiella magasinet och",
+      "url": "https://www.tradera.com/item/754353454",
+      "price": 150.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/578/663028578_c3cda818-2742-4af5-b580-67180eb61e2e.jpg"
+    },
+    {
+      "id": "754353575",
+      "query": "Pokémon",
+      "title": "Pokémon - Allt värt att veta om Pokémon, Pokémon Det officiella magasinet och",
+      "url": "https://www.tradera.com/item/754353575",
+      "price": 150.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/677/663028677_9216aedb-43df-4769-8760-0aed612896eb.jpg"
+    },
+    {
+      "id": "754353758",
+      "query": "Pokémon",
+      "title": "Pokémon - Allt värt att veta om Pokémon, Pokémon Det officiella magasinet och",
+      "url": "https://www.tradera.com/item/754353758",
+      "price": 150.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/830/663028830_8b5048a6-958f-4a49-84f0-392890e8865e.jpg"
+    },
+    {
+      "id": "754353625",
+      "query": "Pokémon",
+      "title": "Pokémon - Allt värt att veta om Pokémon, Pokémon Det officiella magasinet och",
+      "url": "https://www.tradera.com/item/754353625",
+      "price": 150.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/715/663028715_f6c0ffc6-4130-4368-9371-b0c1348bfece.jpg"
     },
     {
       "id": "753578373",
@@ -2088,7 +2088,7 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/509/662421509_b342f657-d378-4646-9f14-850dfcc22172.jpg"
     },
     {
       "id": "699636528",
@@ -2100,31 +2100,7 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "711590000",
-      "query": "Pokémon",
-      "title": "Pokémon - Pokémon lider skeppsbrott VHS",
-      "url": "https://www.tradera.com/item/711590000",
-      "price": 99.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "760550793",
-      "query": "Pokémon",
-      "title": "Pokémon-kortbunt med blandade Pokémon och tränarkort",
-      "url": "https://www.tradera.com/item/760550793",
-      "price": 500.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/359/620147359_1bf5a704-d03f-466e-9196-3c9c69c41cde.jpg"
     },
     {
       "id": "761279629",
@@ -2136,19 +2112,7 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "761136330",
-      "query": "Pokémon",
-      "title": "Raikou Pokémon gosedjur från pokémon center",
-      "url": "https://www.tradera.com/item/761136330",
-      "price": 720.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/882/668457882_e56c9cff-7ac9-49d9-bc06-71964e9d7202.jpg"
     },
     {
       "id": "760554066",
@@ -2160,31 +2124,19 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/464/667890464_5de483c9-1def-44d7-8693-1d21d1044932.jpg"
     },
     {
-      "id": "760913876",
+      "id": "761136330",
       "query": "Pokémon",
-      "title": "Pokémon - Det luktar Pokémon! (VHS)",
-      "url": "https://www.tradera.com/item/760913876",
-      "price": 90.0,
+      "title": "Raikou Pokémon gosedjur från pokémon center",
+      "url": "https://www.tradera.com/item/761136330",
+      "price": 720.0,
       "currency": "SEK",
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "760553575",
-      "query": "Pokémon",
-      "title": "Pokémon-kortblandning",
-      "url": "https://www.tradera.com/item/760553575",
-      "price": 215.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/226/668348226_83bda166-90e4-4585-8273-cfe44dfd84f6.jpg"
     },
     {
       "id": "753629903",
@@ -2196,7 +2148,7 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/866/662459866_efbe4e17-2081-4901-9f5c-edd292d2987b.jpg"
     },
     {
       "id": "753624895",
@@ -2208,7 +2160,7 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/676/662455676_0c210816-a8f1-4b82-9141-ac2f18e626c5.jpg"
     },
     {
       "id": "753626991",
@@ -2220,67 +2172,19 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/473/662457473_a6cb1676-12d7-40fc-9d87-38a64c683327.jpg"
     },
     {
-      "id": "748193914",
+      "id": "711590000",
       "query": "Pokémon",
-      "title": "Pokemon Topps Pokémon Shipwreck #EP16",
-      "url": "https://www.tradera.com/item/748193914",
-      "price": 27.0,
+      "title": "Pokémon - Pokémon lider skeppsbrott VHS",
+      "url": "https://www.tradera.com/item/711590000",
+      "price": 99.0,
       "currency": "SEK",
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "753628310",
-      "query": "Pokémon",
-      "title": "Pokemon Topps POKéMON EMERGENCY #EP2",
-      "url": "https://www.tradera.com/item/753628310",
-      "price": 24.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "761087569",
-      "query": "Pokémon",
-      "title": "Pokémon samling",
-      "url": "https://www.tradera.com/item/761087569",
-      "price": 1.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "760471057",
-      "query": "Pokémon",
-      "title": "Pokémon-kort: Pokémon March (Trainer)",
-      "url": "https://www.tradera.com/item/760471057",
-      "price": 5.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
-    },
-    {
-      "id": "760553908",
-      "query": "Pokémon",
-      "title": "Bulk Pokémon",
-      "url": "https://www.tradera.com/item/760553908",
-      "price": 135.0,
-      "currency": "SEK",
-      "shipping": null,
-      "pricingStatus": "unverified",
-      "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/913/629666913_e3d040bf-a610-454b-b24d-d69265ee3d09.jpg"
     },
     {
       "id": "753518162",
@@ -2292,19 +2196,19 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/396/662376396_963fcef7-565d-4e67-9911-584a569f8ad4.jpg"
     },
     {
-      "id": "759576285",
+      "id": "760553908",
       "query": "Pokémon",
-      "title": "Arbok – Pokémon",
-      "url": "https://www.tradera.com/item/759576285",
-      "price": 19.0,
+      "title": "Bulk Pokémon",
+      "url": "https://www.tradera.com/item/760553908",
+      "price": 135.0,
       "currency": "SEK",
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/331/667890331_f9e8905c-a216-4781-977b-c0808af105a7.jpg"
     },
     {
       "id": "761001562",
@@ -2316,7 +2220,7 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/061/668246061_43f0b15f-c3ff-40c5-8b1a-a4753da60301.jpg"
     },
     {
       "id": "760553811",
@@ -2328,19 +2232,19 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/237/667890237_3ca80f4e-b717-4d89-8f1e-927cbb29a215.jpg"
     },
     {
-      "id": "753629902",
+      "id": "760550793",
       "query": "Pokémon",
-      "title": "Pokemon Topps Pokémon – I Choose You!",
-      "url": "https://www.tradera.com/item/753629902",
-      "price": 24.0,
+      "title": "Pokémon-kortbunt med blandade Pokémon och tränarkort",
+      "url": "https://www.tradera.com/item/760550793",
+      "price": 500.0,
       "currency": "SEK",
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/496/667887496_11b3c8fc-1133-4784-8ad6-0e3e799fcfce.jpg"
     },
     {
       "id": "759052974",
@@ -2352,7 +2256,19 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/400/666717400_4285c8ae-d987-41dc-958b-db2fa0c7a0a6.jpg"
+    },
+    {
+      "id": "753629902",
+      "query": "Pokémon",
+      "title": "Pokemon Topps Pokémon – I Choose You!",
+      "url": "https://www.tradera.com/item/753629902",
+      "price": 24.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/865/662459865_ec5e71a6-a038-4b30-b410-97616645f483.jpg"
     },
     {
       "id": "761132030",
@@ -2364,7 +2280,7 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/634/668344634_306002d0-c77e-45d3-bb3e-61393d44d0fd.jpg"
     },
     {
       "id": "753490076",
@@ -2376,7 +2292,19 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/737/662353737_4d59fdc0-8a6a-4a49-9ebd-350d7fb096c9.jpg"
+    },
+    {
+      "id": "760554004",
+      "query": "Pokémon",
+      "title": "Bulk Pokémon",
+      "url": "https://www.tradera.com/item/760554004",
+      "price": 165.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/408/667890408_c0cf468d-3b1d-44d0-bd21-74ddf770dc7b.jpg"
     },
     {
       "id": "748195143",
@@ -2388,7 +2316,19 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/524/658240524_948747d1-bdda-43e9-b791-7e148449dd5b.jpg"
+    },
+    {
+      "id": "753624894",
+      "query": "Pokémon",
+      "title": "Pokemon Topps POKEMON EMERGENCY #EP2",
+      "url": "https://www.tradera.com/item/753624894",
+      "price": 24.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/679/662455679_851b0006-68c6-4ebf-8ac0-41aca5590c6a.jpg"
     },
     {
       "id": "753626037",
@@ -2400,7 +2340,67 @@
       "shipping": null,
       "pricingStatus": "unverified",
       "source": "Tradera",
-      "imageUrl": null
+      "imageUrl": "https://img.tradera.net/thumbs/671/662456671_16839541-026a-4c64-abdf-0764c6d0bd1a.jpg"
+    },
+    {
+      "id": "753630196",
+      "query": "Pokémon",
+      "title": "Pokemon Topps Pokémon Shipwreck #EP16",
+      "url": "https://www.tradera.com/item/753630196",
+      "price": 24.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/138/662460138_23e38c91-6d76-4d8b-a175-e2f8a6cbe795.jpg"
+    },
+    {
+      "id": "733716947",
+      "query": "Pokémon",
+      "title": "Pokemon TCG Tillbehör - Pokemon-mynt: Pokemon Day 2026 30-årsjubileum",
+      "url": "https://www.tradera.com/item/733716947",
+      "price": 46.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/701/647131701_cd970f29-38e8-4c62-aafa-beb5ae375bfe.jpg"
+    },
+    {
+      "id": "760553575",
+      "query": "Pokémon",
+      "title": "Pokémon-kortblandning",
+      "url": "https://www.tradera.com/item/760553575",
+      "price": 215.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/007/667890007_b25921c9-b16c-4c7a-b5a3-773946cafa63.jpg"
+    },
+    {
+      "id": "760913876",
+      "query": "Pokémon",
+      "title": "Pokémon - Det luktar Pokémon! (VHS)",
+      "url": "https://www.tradera.com/item/760913876",
+      "price": 90.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/851/668177851_17536219-6a3d-4b3a-867d-ac20bdc7b79f.jpg"
+    },
+    {
+      "id": "748193914",
+      "query": "Pokémon",
+      "title": "Pokemon Topps Pokémon Shipwreck #EP16",
+      "url": "https://www.tradera.com/item/748193914",
+      "price": 27.0,
+      "currency": "SEK",
+      "shipping": null,
+      "pricingStatus": "unverified",
+      "source": "Tradera",
+      "imageUrl": "https://img.tradera.net/thumbs/597/658239597_79b72166-18b9-4de7-be23-ad82f4180bec.jpg"
     }
   ]
 }
