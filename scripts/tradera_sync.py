@@ -83,6 +83,17 @@ def listing_type(item):
         auction_flag = True
     if type_code == 3 or "buy" in type_text or "fixed" in type_text or "köp" in type_text:
         buy_flag = True
+    # A suggested/negotiable price is a strong fixed-price signal only when
+    # no explicit auction evidence is present. Never inspect seller-written titles.
+    suggested = amount(pick(item, "suggestedPrice", "SuggestedPrice", "proposedPrice", "ProposedPrice", "offerPrice", "OfferPrice"))
+    suggested_label = pick(item, "priceType", "PriceType", "priceLabel", "PriceLabel", "purchaseType", "PurchaseType")
+    has_suggested_label = isinstance(suggested_label, str) and any(
+        term in suggested_label.lower() for term in ("föreslå pris", "föreslaget pris", "foresla pris", "suggested price", "make offer"))
+    auction_evidence = auction_flag is True or bid is not None or next_bid is not None or start_price is not None or (bid_count is not None and bid_count > 0)
+    if (suggested is not None or has_suggested_label) and not auction_evidence:
+        buy_flag = True
+        if offer_flag is None:
+            offer_flag = True
     if ended_flag is True:
         kind = "ended"
     elif type_code == 3:
