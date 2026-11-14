@@ -4,6 +4,7 @@ on:
     branches: [main]
     paths:
       - 'scripts/tradera_sync.py'
+      - 'scripts/ai_condition.py'
       - 'config/tradera-watchlist.json'
       - '.github/workflows/tradera-sync.yml'
   schedule:
@@ -31,6 +32,8 @@ jobs:
         env:
           TRADERA_APP_ID: ${{ secrets.TRADERA_APP_ID || '7762' }}
           TRADERA_APP_KEY: ${{ secrets.TRADERA_APP_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          AI_CONDITION_LIMIT: '5'
           TRADERA_TEST_QUERY: ${{ inputs.query }}
         run: python scripts/tradera_sync.py
       - name: Commit public feed if changed
