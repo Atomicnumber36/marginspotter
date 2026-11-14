@@ -29,7 +29,7 @@ def normalize(item, query):
     title = pick(item, "title", "shortDescription", "name")
     if not item_id or not title:
         return None
-    price = pick(item, "currentBid", "price", "buyItNowPrice")
+    price = pick(item, "buyItNowPrice", "maxBid", "nextBid")
     if isinstance(price, dict):
         price = pick(price, "amount", "value")
     try:
@@ -47,21 +47,25 @@ def main():
     if not app_id or not app_key:
         sys.exit("Missing TRADERA_APP_ID / TRADERA_APP_KEY; existing feed unchanged")
     manual_query = os.getenv("TRADERA_TEST_QUERY", "").strip()
-    queries = [manual_query] if manual_query else []
+    watchlist = json.loads(WATCHLIST.read_text(encoding="utf-8"))
+    configured = watchlist.get("queries", []) if isinstance(watchlist, dict) else None
+    queries = [manual_query] if manual_query else configured
     if not isinstance(queries, list) or not all(isinstance(q, str) and 0 < len(q) <= 120 for q in queries):
         sys.exit("Invalid watchlist")
     if not queries:
-        print("No manual test query supplied; existing feed unchanged")
+        print("No configured watchlist queries; existing feed unchanged")
         return
     listings = {}
     for query in queries[:20]:
-        url = BASE + "?" + urllib.parse.urlencode({"query": query})
+        url = BASE + "?" + urllib.parse.urlencode({"query": query, "pageNumber": 1})
         request = urllib.request.Request(url, headers={"X-App-Id": app_id, "X-App-Key": app_key, "Accept": "application/json", "User-Agent": "MarginSpotter/0.1"})
         try:
             with urllib.request.urlopen(request, timeout=25) as response:
                 data = json.load(response)
         except urllib.error.HTTPError as error:
             sys.exit("Tradera search failed with HTTP " + str(error.code) + "; existing feed unchanged")
+        if isinstance(data, dict) and data.get("errors"):
+            sys.exit("Tradera search returned API errors; existing feed unchanged: " + json.dumps(data["errors"], ensure_ascii=False)[:500])
         candidates = data if isinstance(data, list) else pick(data, "items", "results", "searchResults", "itemList")
         if isinstance(candidates, dict):
             candidates = pick(candidates, "items", "results")
