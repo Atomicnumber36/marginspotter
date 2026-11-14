@@ -25,15 +25,15 @@ def pick(obj, *names):
 def image_url(item):
     """Use only a real Tradera image URL, never an inferred listing image."""
     sources = [
-        pick(item, "imageUrl", "thumbnailUrl", "primaryImageUrl", "image", "thumbnail",
+        pick(item, "thumbnailLink", "ThumbnailLink", "imageUrl", "thumbnailUrl", "primaryImageUrl", "image", "thumbnail",
              "ImageUrl", "ThumbnailUrl", "PrimaryImageUrl", "Image", "Thumbnail"),
-        pick(item, "images", "Images", "imageUrls", "ImageUrls", "pictures", "Pictures"),
+        pick(item, "imageLinks", "ImageLinks", "detailedImageLinks", "DetailedImageLinks", "images", "Images", "imageUrls", "ImageUrls", "pictures", "Pictures"),
     ]
     for source in sources:
         candidates = source if isinstance(source, list) else [source]
         for candidate in candidates:
             if isinstance(candidate, dict):
-                candidate = pick(candidate, "url", "imageUrl", "thumbnailUrl", "src",
+                candidate = pick(candidate, "url", "link", "thumbnailLink", "imageLink", "imageUrl", "thumbnailUrl", "src",
                                  "Url", "ImageUrl", "ThumbnailUrl")
             if isinstance(candidate, str) and candidate.startswith("https://"):
                 parsed = urllib.parse.urlparse(candidate)
