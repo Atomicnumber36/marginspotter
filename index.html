@@ -57,6 +57,7 @@ header{display:flex;justify-content:space-between;align-items:center;gap:14px;pa
 .sale-type{align-self:flex-start;display:inline-block;font-size:.68rem;font-weight:800;padding:4px 8px;border-radius:7px;background:#eef2f5;color:#4c6170}.sale-type.auction{background:#fff1d8;color:#916018}.sale-type.buy_now{background:#e6f5ec;color:#176b47}.sale-type.auction_buy_now{background:#e8effc;color:#315e99}.sale-type.ended{background:#f0eeee;color:#79706e}.sale-option{font-size:.73rem;color:#176b47;font-weight:750}.listing-price{font-size:1rem;color:#233a32}.listing-info{gap:5px}
 .sale-end{font-size:.7rem;color:#73858c}
 .sync-launch{font-size:.78rem;font-weight:700;align-self:center;color:#176b47;text-decoration:underline;text-underline-offset:3px}#sync-status{font-weight:650}
+.deal-breakdown{margin-top:7px;border-top:1px solid #e7eceb;padding-top:9px;font-size:.76rem}.deal-breakdown summary{cursor:pointer;font-weight:650;color:#526d65}.deal-breakdown-rows{display:grid;gap:6px;margin-top:10px}.deal-breakdown-row{display:flex;justify-content:space-between;gap:12px}.deal-breakdown-row strong{text-align:right;white-space:nowrap}.deal-breakdown .muted{font-size:.72rem;margin-top:8px}.deal-metrics{flex-wrap:wrap}.deal-metrics small{max-width:165px;line-height:1.35}
 </style></head><body><main><header><div class="brand"><span class="brand-mark" aria-hidden="true">◎</span><div><h1>Margin<span>Spotter</span></h1></div></div><span id="network-status" class="network-status" aria-live="polite">● Live feed</span></header><nav class="dashboard-nav" aria-label="Hovedmenu" role="tablist"><button type="button" role="tab" data-tab="overview" aria-selected="true">Overblik</button><button type="button" role="tab" data-tab="create" aria-selected="false">+ Opret Spotter</button><button type="button" role="tab" data-tab="deals" aria-selected="false">Fund</button><button type="button" role="tab" data-tab="spotters" aria-selected="false">Mine Spottere</button><button type="button" role="tab" data-tab="tools" aria-selected="false">Beregner</button><button type="button" role="tab" data-tab="settings" aria-selected="false">Indstillinger</button></nav><div id="install-tip" class="install-tip" hidden><span>📱 Gem Margin Spotter på din iPhone: Tryk <strong>Del</strong> i Safari og vælg <strong>Føj til hjemmeskærm</strong>.</span><button type="button" id="dismiss-install" class="secondary" aria-label="Skjul vejledning">×</button></div><div data-panel="overview"><div class="page-heading"><div><span class="eyebrow">DASHBOARD</span><h2>Dine muligheder</h2></div><button type="button" id="overview-create">+ Ny Spotter</button></div><div class="summary-grid" aria-label="Dashboard overblik"><div class="summary-tile"><span>Spottere</span><strong id="summary-spotters">0</strong></div><div class="summary-tile"><span>Annoncer</span><strong id="summary-listings">—</strong></div><div class="summary-tile"><span>Matches</span><strong id="summary-matches">—</strong></div></div></div><section id="spotter-create" data-panel="create"><div class="section-head"><h2>Opret Spotter</h2><span class="eyebrow">01 / Opsætning</span></div><form id="form"><div class="grid">
 <div class="full"><label for="name">Præcist produkt</label><input id="name" required maxlength="120" placeholder="Fx Pokémon Blue til Game Boy"></div><div class="full"><label for="aliases">Alternative søgenavne (valgfrit)</label><input id="aliases" maxlength="300" placeholder="Fx Pokemon Blue, Pokémon Blå"><small>Adskil med komma. Brug kun navne for præcis samme produkt.</small></div><div class="full"><label for="excluded">Ord der skal udelukkes (valgfrit)</label><input id="excluded" maxlength="300" placeholder="Fx reproduction, repro, tom æske"><small>Matchende annoncer markeres som frasorteret.</small></div>
 
@@ -99,7 +100,7 @@ function valuation(listing,p){
  const price=listingDKK(listing),market=Number(p.loose),target=Number(p.target??20);
  if(!valid||price===null||!Number.isFinite(price)||price<0||!Number.isFinite(market)||market<=0||!Number.isFinite(target)||target<0)return null;
  const buy=price,invested=buy+shipping,resale=market*(1-buffer/100),profit=resale-fees-invested;
- return {profit,roi:invested>0?profit/invested*100:null,maxBid:(resale-fees)/(1+target/100)-shipping,rate,shipping,fees,buffer,target,market};
+ return {profit,roi:invested>0?profit/invested*100:null,maxBid:(resale-fees)/(1+target/100)-shipping,rate,shipping,fees,buffer,target,market,buy,invested,resale,netResale:resale-fees};
 }
 function renderFeed(){
  const feed=$('feed');feed.replaceChildren();
@@ -135,11 +136,26 @@ function renderFeed(){
    const {p,v}=best;
    const meets=v.profit>0&&v.roi!==null&&v.roi>=v.target;
    const metrics=el('div','','deal-metrics');
-   const profit=el('div','','deal-profit');profit.append(el('small','Fortjeneste'),el('strong',(v.profit>=0?'+':'')+money(v.profit)));profit.classList.add(v.profit>=0?'positive':'negative');
-   const roi=el('div','','deal-roi');roi.append(el('small','ROI'),el('strong',v.roi===null?'—':Math.round(v.roi)+' %'));
+   const profit=el('div','','deal-profit');profit.append(el('small','Mulig fortjeneste ved annoncepris'),el('strong',(v.profit>=0?'+':'')+money(v.profit)));profit.classList.add(v.profit>=0?'positive':'negative');
+   const roi=el('div','','deal-roi');roi.append(el('small','Afkast på købsomkostninger'),el('strong',v.roi===null?'—':Math.round(v.roi)+' %'));
    metrics.append(profit,roi);info.append(metrics);
-   const foot=el('div','','deal-foot');foot.append(el('span','Maks. bud '+(v.maxBid>=0?money(v.maxBid):'—')));
-   const status=el('span',meets?'Over mål':'Under mål',meets?'decision good':'decision low');foot.append(status);info.append(foot);
+   const foot=el('div','','deal-foot');foot.append(el('span','Din maks. købspris: '+(v.maxBid>=0?money(v.maxBid):'Ingen rentabel pris')));
+   const status=el('span',meets?'Inden for din grænse':'Over din grænse',meets?'decision good':'decision low');foot.append(status);info.append(foot);
+   const breakdown=el('details','','deal-breakdown');
+   breakdown.append(el('summary','Se regnestykket'));
+   const rows=el('div','','deal-breakdown-rows');
+   const addRow=(label,value)=>{const r=el('div','','deal-breakdown-row');r.append(el('span',label),el('strong',value));rows.append(r)};
+   addRow('Annoncepris',money(v.buy));
+   addRow('Købsfragt (skøn)',money(v.shipping));
+   addRow('Samlet investering',money(v.invested));
+   addRow('Forventet salgspris efter buffer',money(v.resale));
+   addRow('Salgsomkostninger (skøn)','−'+money(v.fees));
+   addRow('Forventet udbetaling',money(v.netResale));
+   addRow('Mulig fortjeneste',money(v.profit));
+   addRow('Afkast = fortjeneste / investering',v.roi===null?'—':v.roi.toFixed(1)+' %');
+   addRow('Maks. købspris ved '+v.target+' % afkast',v.maxBid>=0?money(v.maxBid):'—');
+   breakdown.append(rows,el('p','Maks. købspris er beregnet ud fra dit afkastmål – ikke ud fra annoncens pris. Alle beløb er DKK.','muted'));
+   info.append(breakdown);
   }else info.append(el('div','Ingen beregning','muted'));
   const open=el('a','Se annonce ↗','open-listing');open.href=listing.url;open.target='_blank';open.rel='noopener noreferrer';card.append(open);
   feed.append(card);
