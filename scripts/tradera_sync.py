@@ -42,7 +42,24 @@ def image_urls(item):
                 if (host == "tradera.com" or host.endswith(".tradera.com") or
                     host.endswith(".tradera.net")) and candidate not in found:
                     found.append(candidate)
-    return found[:12]
+    def quality(url):
+        path = urllib.parse.urlparse(url).path.lower()
+        if "/images/" in path or "/original/" in path or "/large/" in path:
+            return 0
+        if "/medium/" in path:
+            return 1
+        if "/thumbs/" in path or "/minithumb/" in path:
+            return 3
+        return 2
+    # The API may provide multiple resolutions of the same photo.
+    # Never display low-resolution thumbnail variants when a larger one exists.
+    best = {}
+    for url in found:
+        parsed = urllib.parse.urlparse(url)
+        basename = parsed.path.rsplit("/", 1)[-1]
+        if basename not in best or quality(url) < quality(best[basename]):
+            best[basename] = url
+    return sorted(best.values(), key=quality)[:12]
 
 def image_url(item):
     photos = image_urls(item)
