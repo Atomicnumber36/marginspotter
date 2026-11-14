@@ -46,11 +46,12 @@ def main():
     app_id, app_key = os.getenv("TRADERA_APP_ID"), os.getenv("TRADERA_APP_KEY")
     if not app_id or not app_key:
         sys.exit("Missing TRADERA_APP_ID / TRADERA_APP_KEY; existing feed unchanged")
-    queries = json.loads(WATCHLIST.read_text(encoding="utf-8")).get("queries", [])
+    manual_query = os.getenv("TRADERA_TEST_QUERY", "").strip()
+    queries = [manual_query] if manual_query else []
     if not isinstance(queries, list) or not all(isinstance(q, str) and 0 < len(q) <= 120 for q in queries):
         sys.exit("Invalid watchlist")
     if not queries:
-        print("No shared search queries configured; existing feed unchanged")
+        print("No manual test query supplied; existing feed unchanged")
         return
     listings = {}
     for query in queries[:20]:
