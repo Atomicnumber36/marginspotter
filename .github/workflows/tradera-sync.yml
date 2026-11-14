@@ -1,8 +1,11 @@
 name: Sync Tradera listings
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '17 */6 * * *'
+    inputs:
+      query:
+        description: "Exact product search term for this one-time test"
+        required: true
+        type: string
 permissions:
   contents: write
 concurrency:
@@ -20,6 +23,7 @@ jobs:
         env:
           TRADERA_APP_ID: "7762"
           TRADERA_APP_KEY: ${{ secrets.TRADERA_APP_KEY }}
+          TRADERA_TEST_QUERY: ${{ inputs.query }}
         run: python scripts/tradera_sync.py
       - name: Commit public feed if changed
         run: |
