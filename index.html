@@ -131,6 +131,15 @@ function renderFeed(){
   if(listing.endDate){const end=new Date(listing.endDate);if(Number.isFinite(end.getTime())){const ended=end.getTime()<Date.now();if(ended&&kind!=='ended')tag.textContent='Afsluttet';const label=ended?'Sluttede ':'Slutter ';info.append(el('span',label+end.toLocaleString('da-DK',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}),'sale-end'))}}
   if(listing.offersAllowed===true&&kind==='buy_now')info.append(el('span','Bud muligt','sale-option'));
   if(listing.purchaseRequestAllowed===true&&kind==='ended')info.append(el('span','Købsanmodning mulig','sale-option'));
+  const condition=listing.condition;
+  if(condition&&condition.grade!=='unknown'){
+   const c=el('details','','deal-breakdown');
+   c.append(el('summary','Stand: '+condition.label+' · Sælgers beskrivelse'));
+   const body=el('div','','deal-breakdown-rows');
+   for(const signal of (condition.signals||[]))body.append(el('div',signal.text,'muted'));
+   body.append(el('p','Automatisk tekstscreening – ikke verificeret stand. Billeder og funktion er ikke vurderet.','muted'));
+   c.append(body);info.append(c);
+  }else info.append(el('span','Stand ikke vurderet','sale-option'));
   const converted=listingDKK(listing);const price=el('div',converted===null?'Pris ukendt':money(converted),'listing-price');info.append(price);detail.append(info);card.append(detail);
   if(best){
    const {p,v}=best;
