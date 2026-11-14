@@ -65,6 +65,7 @@ def listing_type(item):
     """Classify only from explicit Tradera API fields; never infer offers from price."""
     raw_type = pick(item, "itemType", "ItemType", "listingType", "ListingType", "auctionType", "AuctionType")
     type_text = str(raw_type).lower() if isinstance(raw_type, str) else ""
+    type_code = int(raw_type) if isinstance(raw_type, (int, float)) and raw_type in (1, 3) else None
     buy = amount(pick(item, "buyItNowPrice", "BuyItNowPrice", "buyNowPrice", "BuyNowPrice"))
     bid = amount(pick(item, "maxBid", "MaxBid", "nextBid", "NextBid", "currentBid", "CurrentBid"))
     buy_flag = flag(item, "isBuyItNow", "IsBuyItNow", "buyItNow", "BuyItNow")
@@ -75,12 +76,16 @@ def listing_type(item):
     status = pick(item, "status", "Status", "itemStatus", "ItemStatus")
     if isinstance(status, str) and status.lower() in ("ended", "closed", "expired", "finished", "sold"):
         ended_flag = True
-    if "auction" in type_text or "auktion" in type_text:
+    if type_code == 1 or "auction" in type_text or "auktion" in type_text:
         auction_flag = True
-    if "buy" in type_text or "fixed" in type_text or "köp" in type_text:
+    if type_code == 3 or "buy" in type_text or "fixed" in type_text or "köp" in type_text:
         buy_flag = True
     if ended_flag is True:
         kind = "ended"
+    elif type_code == 3:
+        kind = "buy_now"
+    elif type_code == 1:
+        kind = "auction_buy_now" if buy is not None and buy > 0 else "auction"
     elif buy_flag is True and auction_flag is not True:
         kind = "buy_now"
     elif auction_flag is True and buy_flag is not True:
@@ -103,13 +108,16 @@ def normalize(item, query):
     if not item_id or not title:
         return None
     kind, offer_flag, request_flag, buy, bid = listing_type(item)
+    end_date = pick(item, "endDate", "EndDate", "endsAt", "EndsAt", "endTime", "EndTime")
+    if not isinstance(end_date, str):
+        end_date = None
     price = buy if kind == "buy_now" else (bid if bid is not None else buy)
     raw_url = pick(item, "itemUrl", "url", "link")
     url = raw_url if isinstance(raw_url, str) and raw_url.startswith("https://www.tradera.com/") else "https://www.tradera.com/item/" + str(item_id)
     return {"id": str(item_id), "query": query, "title": str(title), "url": url,
             "price": price, "currency": "SEK", "shipping": None,
             "pricingStatus": "unverified", "source": "Tradera",
-            "imageUrl": image_url(item), "listingType": kind, "offersAllowed": offer_flag, "purchaseRequestAllowed": request_flag, "buyNowPrice": buy, "currentBid": bid}
+            "imageUrl": image_url(item), "listingType": kind, "offersAllowed": offer_flag, "purchaseRequestAllowed": request_flag, "buyNowPrice": buy, "currentBid": bid, "endDate": end_date}
 
 def main():
     app_id, app_key = os.getenv("TRADERA_APP_ID"), os.getenv("TRADERA_APP_KEY")
