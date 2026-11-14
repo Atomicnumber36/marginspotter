@@ -19,6 +19,7 @@ export default {
       const response = await fetch(url,{headers:{'X-App-Id':String(env.TRADERA_APP_ID||'7762'),'X-App-Key':env.TRADERA_APP_KEY,'Accept':'application/json'}});
       if (!response.ok) return new Response(JSON.stringify({error:'Tradera returned HTTP '+response.status}),{status:502,headers});
       const data = await response.json();
+      if (Array.isArray(data?.errors) && data.errors.length) return new Response(JSON.stringify({error:'Tradera returned search errors'}),{status:502,headers});
       const pick=(o,...keys)=>keys.map(k=>o?.[k]).find(v=>v!==undefined&&v!==null);
       let items=Array.isArray(data)?data:pick(data,'items','results','searchResults','itemList');
       if (!Array.isArray(items)) items=pick(items,'items','results');
@@ -26,7 +27,7 @@ export default {
       const listings=items.slice(0,50).map(item=>{
         const id=pick(item,'id','itemId','Id'), title=pick(item,'title','shortDescription','name');
         if (!id||!title) return null;
-        let price=pick(item,'currentBid','price','buyItNowPrice');
+        let price=pick(item,'buyItNowPrice','maxBid','nextBid');
         if (price && typeof price==='object') price=pick(price,'amount','value');
         const rawUrl=pick(item,'itemUrl','url','link');
         return {id:String(id),title:String(title),price:Number.isFinite(Number(price))?Number(price):null,
