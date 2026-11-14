@@ -22,6 +22,27 @@ def pick(obj, *names):
             return obj[name]
     return None
 
+def image_url(item):
+    """Use only a real Tradera image URL, never an inferred listing image."""
+    sources = [
+        pick(item, "imageUrl", "thumbnailUrl", "primaryImageUrl", "image", "thumbnail",
+             "ImageUrl", "ThumbnailUrl", "PrimaryImageUrl", "Image", "Thumbnail"),
+        pick(item, "images", "Images", "imageUrls", "ImageUrls", "pictures", "Pictures"),
+    ]
+    for source in sources:
+        candidates = source if isinstance(source, list) else [source]
+        for candidate in candidates:
+            if isinstance(candidate, dict):
+                candidate = pick(candidate, "url", "imageUrl", "thumbnailUrl", "src",
+                                 "Url", "ImageUrl", "ThumbnailUrl")
+            if isinstance(candidate, str) and candidate.startswith("https://"):
+                parsed = urllib.parse.urlparse(candidate)
+                if parsed.hostname and (parsed.hostname == "tradera.com" or
+                    parsed.hostname.endswith(".tradera.com") or
+                    parsed.hostname.endswith(".tradera.net")):
+                    return candidate
+    return None
+
 def normalize(item, query):
     if not isinstance(item, dict):
         return None
@@ -40,7 +61,8 @@ def normalize(item, query):
     url = raw_url if isinstance(raw_url, str) and raw_url.startswith("https://www.tradera.com/") else "https://www.tradera.com/item/" + str(item_id)
     return {"id": str(item_id), "query": query, "title": str(title), "url": url,
             "price": price, "currency": "SEK", "shipping": None,
-            "pricingStatus": "unverified", "source": "Tradera"}
+            "pricingStatus": "unverified", "source": "Tradera",
+            "imageUrl": image_url(item)}
 
 def main():
     app_id, app_key = os.getenv("TRADERA_APP_ID"), os.getenv("TRADERA_APP_KEY")
