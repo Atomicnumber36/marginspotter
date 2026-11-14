@@ -8,7 +8,6 @@ import sys
 import urllib.error
 import urllib.parse
 import urllib.request
-from ai_condition import apply_ai_condition
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 WATCHLIST = ROOT / "config/tradera-watchlist.json"
@@ -201,7 +200,7 @@ def enrich(listings, headers):
                 pass
         if recent:
             for key in keys:
-                if item.get(key) is None or (key == "listingType" and item[key] == "unknown"):
+                if item.get(key) is None or (key == "description" and not item.get(key)) or (key == "listingType" and item[key] == "unknown"):
                     if old.get(key) is not None:
                         item[key] = old[key]
             item["detailCheckedAt"] = checked
@@ -226,6 +225,8 @@ def enrich(listings, headers):
                         item[key] = enriched[key]
                 if enriched.get("price") is not None:
                     item["price"] = enriched["price"]
+                if item.get("description"):
+                    item["condition"] = condition_signals(item["description"])
                 item["detailCheckedAt"] = now.isoformat()
         except (urllib.error.URLError, ValueError, TimeoutError):
             continue
@@ -269,7 +270,6 @@ def main():
         previous = {str(x["id"]): x for x in json.loads(OUTPUT.read_text(encoding="utf-8")).get("listings", [])} if OUTPUT.exists() else {}
     except (ValueError, KeyError, TypeError):
         previous = {}
-    apply_ai_condition(listings, previous)
     payload = {"updatedAt": dt.datetime.now(dt.timezone.utc).isoformat(), "status": "ok", "listings": list(listings.values())}
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
