@@ -22,26 +22,31 @@ def pick(obj, *names):
             return obj[name]
     return None
 
-def image_url(item):
-    """Use only a real Tradera image URL, never an inferred listing image."""
+def image_urls(item):
+    """Prioritize detailed listing photos instead of tiny search thumbnails."""
     sources = [
-        pick(item, "thumbnailLink", "ThumbnailLink", "imageUrl", "thumbnailUrl", "primaryImageUrl", "image", "thumbnail",
-             "ImageUrl", "ThumbnailUrl", "PrimaryImageUrl", "Image", "Thumbnail"),
-        pick(item, "imageLinks", "ImageLinks", "detailedImageLinks", "DetailedImageLinks", "images", "Images", "imageUrls", "ImageUrls", "pictures", "Pictures"),
+        pick(item, "detailedImageLinks", "DetailedImageLinks", "imageLinks", "ImageLinks",
+             "images", "Images", "imageUrls", "ImageUrls", "pictures", "Pictures"),
+        pick(item, "primaryImageUrl", "PrimaryImageUrl", "imageUrl", "ImageUrl"),
+        pick(item, "thumbnailLink", "ThumbnailLink", "thumbnailUrl", "ThumbnailUrl"),
     ]
+    found = []
     for source in sources:
-        candidates = source if isinstance(source, list) else [source]
-        for candidate in candidates:
+        for candidate in (source if isinstance(source, list) else [source]):
             if isinstance(candidate, dict):
-                candidate = pick(candidate, "url", "link", "thumbnailLink", "imageLink", "imageUrl", "thumbnailUrl", "src",
-                                 "Url", "ImageUrl", "ThumbnailUrl")
+                candidate = pick(candidate, "originalUrl", "OriginalUrl", "largeUrl", "LargeUrl",
+                                 "imageUrl", "ImageUrl", "url", "Url", "link", "imageLink", "src",
+                                 "thumbnailLink", "ThumbnailLink")
             if isinstance(candidate, str) and candidate.startswith("https://"):
-                parsed = urllib.parse.urlparse(candidate)
-                if parsed.hostname and (parsed.hostname == "tradera.com" or
-                    parsed.hostname.endswith(".tradera.com") or
-                    parsed.hostname.endswith(".tradera.net")):
-                    return candidate
-    return None
+                host = urllib.parse.urlparse(candidate).hostname or ""
+                if (host == "tradera.com" or host.endswith(".tradera.com") or
+                    host.endswith(".tradera.net")) and candidate not in found:
+                    found.append(candidate)
+    return found[:12]
+
+def image_url(item):
+    photos = image_urls(item)
+    return photos[0] if photos else None
 
 def flag(item, *names):
     value = pick(item, *names)
@@ -176,7 +181,7 @@ def normalize(item, query):
     return {"id": str(item_id), "query": query, "title": str(title), "url": url,
             "price": price, "currency": "SEK", "shipping": None,
             "pricingStatus": "unverified", "source": "Tradera",
-            "imageUrl": image_url(item), "description": description_text(item), "condition": condition_signals(description_text(item)), "listingType": kind, "offersAllowed": offer_flag, "purchaseRequestAllowed": request_flag, "buyNowPrice": buy, "currentBid": bid, "nextBid": next_bid, "startPrice": start_price, "bidCount": bid_count, "endDate": end_date}
+            "imageUrl": image_url(item), "imageUrls": image_urls(item), "description": description_text(item), "condition": condition_signals(description_text(item)), "listingType": kind, "offersAllowed": offer_flag, "purchaseRequestAllowed": request_flag, "buyNowPrice": buy, "currentBid": bid, "nextBid": next_bid, "startPrice": start_price, "bidCount": bid_count, "endDate": end_date}
 
 def enrich(listings, headers):
     """Read-only detail lookup for uncertain items, with a 12-hour local cache."""
@@ -188,7 +193,7 @@ def enrich(listings, headers):
             pass
     now = dt.datetime.now(dt.timezone.utc)
     pending = []
-    keys = ("description", "condition", "listingType", "offersAllowed", "purchaseRequestAllowed", "buyNowPrice", "currentBid", "nextBid", "startPrice", "bidCount", "endDate")
+    keys = ("imageUrl", "imageUrls", "description", "condition", "listingType", "offersAllowed", "purchaseRequestAllowed", "buyNowPrice", "currentBid", "nextBid", "startPrice", "bidCount", "endDate")
     for item in listings.values():
         old = previous.get(item["id"], {})
         checked = old.get("detailCheckedAt")
@@ -200,7 +205,7 @@ def enrich(listings, headers):
                 pass
         if recent:
             for key in keys:
-                if item.get(key) is None or (key == "description" and not item.get(key)) or (key == "listingType" and item[key] == "unknown"):
+                if item.get(key) is None or (key == "imageUrls" and not item.get(key)) or (key == "description" and not item.get(key)) or (key == "listingType" and item[key] == "unknown"):
                     if old.get(key) is not None:
                         item[key] = old[key]
             item["detailCheckedAt"] = checked
@@ -225,6 +230,9 @@ def enrich(listings, headers):
                         item[key] = enriched[key]
                 if enriched.get("price") is not None:
                     item["price"] = enriched["price"]
+                if enriched.get("imageUrls"):
+                    item["imageUrls"] = enriched["imageUrls"]
+                    item["imageUrl"] = enriched["imageUrls"][0]
                 if item.get("description"):
                     item["condition"] = condition_signals(item["description"])
                 item["detailCheckedAt"] = now.isoformat()
