@@ -1,0 +1,18 @@
+{
+  "name": "Margin Spotter",
+  "short_name": "MarginSpotter",
+  "description": "Din mobile radar til retrofund på Tradera",
+  "start_url": "./#overview",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f7f9fb",
+  "theme_color": "#f7f9fb",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
