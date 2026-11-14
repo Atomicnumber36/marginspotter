@@ -17,3 +17,7 @@ PriceCharting figures are reference estimates, not guaranteed Danish resale pric
 
 ## Status
 Project specification initialized; application code not yet implemented.
+
+## Website
+
+The GitHub Pages deployment workflow runs on pushes to main. Public site: https://atomicnumber36.github.io/marginspotter/
