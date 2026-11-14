@@ -1,5 +1,11 @@
 name: Sync Tradera listings
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/tradera_sync.py'
+      - 'config/tradera-watchlist.json'
+      - '.github/workflows/tradera-sync.yml'
   schedule:
     - cron: '*/5 * * * *'
   workflow_dispatch:
