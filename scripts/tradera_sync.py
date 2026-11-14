@@ -69,7 +69,7 @@ def listing_type(item):
     buy = amount(pick(item, "buyItNowPrice", "BuyItNowPrice", "buyNowPrice", "BuyNowPrice"))
     bid = amount(pick(item, "maxBid", "MaxBid", "currentBid", "CurrentBid"))
     next_bid = amount(pick(item, "nextBid", "NextBid"))
-    start_price = amount(pick(item, "startPrice", "StartPrice", "openingPrice", "OpeningPrice"))
+    start_price = amount(pick(item, "openingBid", "OpeningBid", "startPrice", "StartPrice", "openingPrice", "OpeningPrice"))
     bid_count = amount(pick(item, "bidCount", "BidCount", "numberOfBids", "NumberOfBids", "totalBids", "TotalBids"))
     buy_flag = flag(item, "isBuyItNow", "IsBuyItNow", "buyItNow", "BuyItNow")
     auction_flag = flag(item, "isAuction", "IsAuction")
@@ -77,6 +77,8 @@ def listing_type(item):
     request_flag = flag(item, "canSendPurchaseRequest", "CanSendPurchaseRequest", "acceptsPurchaseRequests", "AcceptsPurchaseRequests", "canRequestPurchase", "CanRequestPurchase")
     ended_flag = flag(item, "isEnded", "IsEnded", "isClosed", "IsClosed", "hasEnded", "HasEnded")
     status = pick(item, "status", "Status", "itemStatus", "ItemStatus")
+    if isinstance(status, dict):
+        ended_flag = flag(status, "ended", "Ended") if ended_flag is None else ended_flag
     if isinstance(status, str) and status.lower() in ("ended", "closed", "expired", "finished", "sold"):
         ended_flag = True
     if type_code == 1 or "auction" in type_text or "auktion" in type_text:
@@ -94,9 +96,7 @@ def listing_type(item):
         buy_flag = True
         if offer_flag is None:
             offer_flag = True
-    if ended_flag is True:
-        kind = "ended"
-    elif type_code == 3:
+    if type_code == 3:
         kind = "buy_now"
     elif type_code == 1:
         kind = "auction_buy_now" if buy is not None and buy > 0 else "auction"
@@ -112,6 +112,8 @@ def listing_type(item):
         kind = "auction_buy_now"
     else:
         kind = "unknown"
+    if ended_flag is True:
+        kind = "ended"
     return kind, offer_flag, request_flag, buy, bid, next_bid, start_price, bid_count
 
 def normalize(item, query):
@@ -125,6 +127,12 @@ def normalize(item, query):
     end_date = pick(item, "endDate", "EndDate", "endsAt", "EndsAt", "endTime", "EndTime")
     if not isinstance(end_date, str):
         end_date = None
+    if end_date:
+        try:
+            if dt.datetime.fromisoformat(end_date.replace("Z", "+00:00")) < dt.datetime.now(dt.timezone.utc):
+                kind = "ended"
+        except (ValueError, TypeError):
+            pass
     price = buy if kind == "buy_now" else (bid if bid is not None else (next_bid if next_bid is not None else (start_price if start_price is not None else buy)))
     raw_url = pick(item, "itemUrl", "url", "link")
     url = raw_url if isinstance(raw_url, str) and raw_url.startswith("https://www.tradera.com/") else "https://www.tradera.com/item/" + str(item_id)
@@ -161,7 +169,7 @@ def enrich(listings, headers):
             item["detailCheckedAt"] = checked
         elif item["listingType"] == "unknown" or item["offersAllowed"] is None or item["purchaseRequestAllowed"] is None:
             pending.append(item)
-    for item in pending[:20]:
+    for item in pending[:40]:
         request = urllib.request.Request(
             "https://api.tradera.com/v4/items/" + urllib.parse.quote(item["id"], safe=""),
             headers=headers)
