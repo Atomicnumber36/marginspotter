@@ -43,6 +43,58 @@ def image_url(item):
                     return candidate
     return None
 
+def flag(item, *names):
+    value = pick(item, *names)
+    if isinstance(value, bool):
+        return value
+    if isinstance(value, (int, float)) and value in (0, 1):
+        return bool(value)
+    if isinstance(value, str) and value.lower() in ("true", "false"):
+        return value.lower() == "true"
+    return None
+
+def amount(value):
+    if isinstance(value, dict):
+        value = pick(value, "amount", "value", "Amount", "Value")
+    try:
+        return float(value) if value is not None else None
+    except (ValueError, TypeError):
+        return None
+
+def listing_type(item):
+    """Classify only from explicit Tradera API fields; never infer offers from price."""
+    raw_type = pick(item, "itemType", "ItemType", "listingType", "ListingType", "auctionType", "AuctionType")
+    type_text = str(raw_type).lower() if isinstance(raw_type, str) else ""
+    buy = amount(pick(item, "buyItNowPrice", "BuyItNowPrice", "buyNowPrice", "BuyNowPrice"))
+    bid = amount(pick(item, "maxBid", "MaxBid", "nextBid", "NextBid", "currentBid", "CurrentBid"))
+    buy_flag = flag(item, "isBuyItNow", "IsBuyItNow", "buyItNow", "BuyItNow")
+    auction_flag = flag(item, "isAuction", "IsAuction")
+    offer_flag = flag(item, "acceptsOffers", "AcceptsOffers", "allowOffers", "AllowOffers", "isMakeOfferEnabled", "IsMakeOfferEnabled", "canMakeOffer", "CanMakeOffer")
+    request_flag = flag(item, "canSendPurchaseRequest", "CanSendPurchaseRequest", "acceptsPurchaseRequests", "AcceptsPurchaseRequests", "canRequestPurchase", "CanRequestPurchase")
+    ended_flag = flag(item, "isEnded", "IsEnded", "isClosed", "IsClosed", "hasEnded", "HasEnded")
+    status = pick(item, "status", "Status", "itemStatus", "ItemStatus")
+    if isinstance(status, str) and status.lower() in ("ended", "closed", "expired", "finished", "sold"):
+        ended_flag = True
+    if "auction" in type_text or "auktion" in type_text:
+        auction_flag = True
+    if "buy" in type_text or "fixed" in type_text or "köp" in type_text:
+        buy_flag = True
+    if ended_flag is True:
+        kind = "ended"
+    elif buy_flag is True and auction_flag is not True:
+        kind = "buy_now"
+    elif auction_flag is True and buy_flag is not True:
+        kind = "auction"
+    elif buy is not None and bid is None:
+        kind = "buy_now"
+    elif bid is not None and buy is None:
+        kind = "auction"
+    elif buy is not None and bid is not None:
+        kind = "auction_buy_now"
+    else:
+        kind = "unknown"
+    return kind, offer_flag, request_flag, buy, bid
+
 def normalize(item, query):
     if not isinstance(item, dict):
         return None
@@ -50,19 +102,14 @@ def normalize(item, query):
     title = pick(item, "title", "shortDescription", "name")
     if not item_id or not title:
         return None
-    price = pick(item, "buyItNowPrice", "maxBid", "nextBid")
-    if isinstance(price, dict):
-        price = pick(price, "amount", "value")
-    try:
-        price = float(price) if price is not None else None
-    except (ValueError, TypeError):
-        price = None
+    kind, offer_flag, request_flag, buy, bid = listing_type(item)
+    price = buy if kind == "buy_now" else (bid if bid is not None else buy)
     raw_url = pick(item, "itemUrl", "url", "link")
     url = raw_url if isinstance(raw_url, str) and raw_url.startswith("https://www.tradera.com/") else "https://www.tradera.com/item/" + str(item_id)
     return {"id": str(item_id), "query": query, "title": str(title), "url": url,
             "price": price, "currency": "SEK", "shipping": None,
             "pricingStatus": "unverified", "source": "Tradera",
-            "imageUrl": image_url(item)}
+            "imageUrl": image_url(item), "listingType": kind, "offersAllowed": offer_flag, "purchaseRequestAllowed": request_flag, "buyNowPrice": buy, "currentBid": bid}
 
 def main():
     app_id, app_key = os.getenv("TRADERA_APP_ID"), os.getenv("TRADERA_APP_KEY")
