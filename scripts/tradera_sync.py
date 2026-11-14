@@ -8,6 +8,7 @@ import sys
 import urllib.error
 import urllib.parse
 import urllib.request
+from ai_condition import apply_ai_condition
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 WATCHLIST = ROOT / "config/tradera-watchlist.json"
@@ -264,6 +265,11 @@ def main():
             if listing:
                 listings[listing["id"]] = listing
     enrich(listings, {"X-App-Id": app_id, "X-App-Key": app_key, "Accept": "application/json", "User-Agent": "MarginSpotter/0.1"})
+    try:
+        previous = {str(x["id"]): x for x in json.loads(OUTPUT.read_text(encoding="utf-8")).get("listings", [])} if OUTPUT.exists() else {}
+    except (ValueError, KeyError, TypeError):
+        previous = {}
+    apply_ai_condition(listings, previous)
     payload = {"updatedAt": dt.datetime.now(dt.timezone.utc).isoformat(), "status": "ok", "listings": list(listings.values())}
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
