@@ -178,8 +178,7 @@ $('refresh-feed').addEventListener('click',async()=>{
  await Promise.all([loadFeed(),checkSyncStatus()]);
  b.disabled=false;b.textContent='↻ Opdater';
 });
-loadFeed();checkSyncStatus();setInterval(()=>{if(!document.hidden)checkSyncStatus()},15000);b.disabled=false;b.textContent='↻ Opdater'});
-loadFeed();
+loadFeed();checkSyncStatus();setInterval(()=>{if(!document.hidden)checkSyncStatus()},15000);
 
 
 function activateTab(tab){
