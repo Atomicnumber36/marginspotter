@@ -223,7 +223,7 @@ def enrich(listings, headers):
                 pass
         # A recent detail check must not suppress a retry when the gallery is incomplete.
         # Search results commonly include only the cover image.
-        if recent and len(old.get("imageUrls") or []) >= 2:
+        if recent and len(old.get("imageUrls") or []) >= 2 and bool(old.get("description")):
             for key in keys:
                 if item.get(key) is None or (key == "imageUrls" and not item.get(key)) or (key == "description" and not item.get(key)) or (key == "listingType" and item[key] == "unknown"):
                     if old.get(key) is not None:
@@ -232,6 +232,13 @@ def enrich(listings, headers):
         elif (len(item.get("imageUrls") or []) < 2 or item.get("offersAllowed") is None
               or not item.get("description") or item["listingType"] == "unknown"):
             pending.append(item)
+    # Preserve previously fetched descriptions even when search results omit them.
+    for item in listings.values():
+        old = previous.get(item["id"], {})
+        if not item.get("description") and old.get("description"):
+            item["description"] = old["description"]
+            if old.get("descriptionDa"):
+                item["descriptionDa"] = old["descriptionDa"]
     # Keep previously collected full galleries when a search response has only a thumbnail.
     for item in listings.values():
         old = previous.get(item["id"], {})
@@ -242,6 +249,7 @@ def enrich(listings, headers):
     # Rotate through incomplete listings instead of retrying the same first 40
     # on every sync. An item checked most recently goes to the back of the queue.
     pending.sort(key=lambda item: (
+        bool(item.get("description")),
         len(item.get("imageUrls") or []) >= 2,
         previous.get(item["id"], {}).get("detailCheckedAt") or "",
         item["id"],
