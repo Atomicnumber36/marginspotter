@@ -259,10 +259,7 @@ def enrich(listings, headers):
 
 
 def translate_descriptions(listings, previous):
-    """Translate public seller descriptions server-side; retain original and cache translations."""
-    key = os.getenv("AZURE_TRANSLATOR_KEY", "").strip()
-    region = os.getenv("AZURE_TRANSLATOR_REGION", "").strip()
-    endpoint = os.getenv("AZURE_TRANSLATOR_ENDPOINT", "https://api.cognitive.microsofttranslator.com").rstrip("/")
+    """Offline translation with Argos Translate. Preserve seller originals."""
     pending = []
     for item in listings.values():
         original = item.get("description") or ""
@@ -273,33 +270,32 @@ def translate_descriptions(listings, previous):
             item["descriptionDa"] = old["descriptionDa"]
         else:
             pending.append(item)
-    if not pending or not key or not region:
-        if pending:
-            print("Translation not configured; keeping original descriptions for", len(pending), "listings")
+    if not pending:
         return
-    url = endpoint + "/translate?api-version=3.0&to=da"
-    for start in range(0, len(pending), 20):
-        batch = pending[start:start + 20]
-        body = json.dumps([{"text": item["description"][:4000]} for item in batch], ensure_ascii=False).encode("utf-8")
-        request = urllib.request.Request(url, data=body, method="POST", headers={
-            "Ocp-Apim-Subscription-Key": key,
-            "Ocp-Apim-Subscription-Region": region,
-            "Content-Type": "application/json; charset=UTF-8",
-            "Accept": "application/json",
-        })
-        try:
-            with urllib.request.urlopen(request, timeout=25) as response:
-                results = json.load(response)
-            if not isinstance(results, list) or len(results) != len(batch):
-                raise ValueError("Unexpected translation response")
-            for item, result in zip(batch, results):
-                translations = result.get("translations", []) if isinstance(result, dict) else []
-                translated = translations[0].get("text") if translations else None
+    try:
+        from argostranslate import translate
+        languages = {lang.code: lang for lang in translate.get_installed_languages()}
+        danish = languages.get("da")
+        if danish is None:
+            raise RuntimeError("Danish translation model unavailable")
+        for item in pending:
+            original = item["description"]
+            # Tradera descriptions are predominantly Swedish; prefer Swedish
+            # unless a simple English-language signal is present.
+            english_markers = ("the ", "this ", "with ", "condition", "shipping", "working", "game is ")
+            source = "en" if sum(marker in (" " + original.lower() + " ") for marker in english_markers) >= 2 else "sv"
+            language = languages.get(source)
+            if language is None:
+                continue
+            try:
+                translated = language.get_translation(danish).translate(original)
                 if isinstance(translated, str) and translated.strip():
                     item["descriptionDa"] = translated.strip()
-        except (urllib.error.URLError, ValueError, TimeoutError) as error:
-            print("Translation batch unavailable:", type(error).__name__)
-    print("Translated or reused", sum(bool(x.get("descriptionDa")) for x in listings.values()), "descriptions")
+            except (ValueError, RuntimeError, AttributeError):
+                continue
+    except (ImportError, RuntimeError) as error:
+        print("Offline translation unavailable:", str(error))
+    print("Danish descriptions:", sum(bool(x.get("descriptionDa")) for x in listings.values()))
 
 def main():
     app_id, app_key = os.getenv("TRADERA_APP_ID"), os.getenv("TRADERA_APP_KEY")
