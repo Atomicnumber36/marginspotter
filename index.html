@@ -236,6 +236,11 @@ body.deal-detail-open{overflow:hidden}
 /* Image zoom belongs to the full-screen listing detail, not feed previews. */
 #deals .feed-card:not(.expanded) .listing-gallery .listing-image{cursor:default}
 #deals .feed-card.expanded .listing-gallery .listing-image{cursor:zoom-in}
+
+/* Feed cards are previews; external navigation is available in detail view only. */
+#deals .feed-card .listing-title{display:block;font-size:1.06rem;font-weight:750;line-height:1.35;overflow-wrap:anywhere;color:var(--ink)}
+#deals .feed-card:not(.expanded) .open-listing{display:none!important}
+@media(max-width:390px){#deals .feed-card .listing-title{font-size:1.02rem}}
 </style>
 </head><body><main><header><div class="brand"><span class="brand-mark" aria-hidden="true">◎</span><div><h1>Flipit</h1></div></div><span id="network-status" class="network-status" aria-live="polite">● Live feed</span></header><nav class="dashboard-nav" aria-label="Hovedmenu" role="tablist"><button type="button" role="tab" data-tab="overview" aria-selected="true">Overblik</button><button type="button" role="tab" data-tab="create" aria-selected="false">+ Opret Spotter</button><button type="button" role="tab" data-tab="deals" aria-selected="false">Fund</button><button type="button" role="tab" data-tab="spotters" aria-selected="false">Mine Spottere</button><button type="button" role="tab" data-tab="tools" aria-selected="false">Beregner</button><button type="button" role="tab" data-tab="settings" aria-selected="false">Indstillinger</button></nav><div id="install-tip" class="install-tip" hidden><span>📱 Gem Flipit på din iPhone: Tryk <strong>Del</strong> i Safari og vælg <strong>Føj til hjemmeskærm</strong>.</span><button type="button" id="dismiss-install" class="secondary" aria-label="Skjul vejledning">×</button></div><div data-panel="overview"><div class="page-heading"><div><span class="eyebrow">DASHBOARD</span><h2>Dine muligheder</h2></div><button type="button" id="overview-create">+ Ny Spotter</button></div><div class="summary-grid" aria-label="Dashboard overblik"><div class="summary-tile"><span>Spottere</span><strong id="summary-spotters">0</strong></div><div class="summary-tile"><span>Annoncer</span><strong id="summary-listings">—</strong></div><div class="summary-tile"><span>Matches</span><strong id="summary-matches">—</strong></div></div></div><section id="spotter-create" data-panel="create"><div class="section-head"><h2>Opret Spotter</h2><span class="eyebrow">01 / Opsætning</span></div><form id="form"><div class="grid">
 <div class="full"><label for="name">Præcist produkt</label><input id="name" required maxlength="120" placeholder="Fx Pokémon Blue til Game Boy"></div><div class="full"><label for="aliases">Alternative søgenavne (valgfrit)</label><input id="aliases" maxlength="300" placeholder="Fx Pokemon Blue, Pokémon Blå"><small>Adskil med komma. Brug kun navne for præcis samme produkt.</small></div><div class="full"><label for="excluded">Ord der skal udelukkes (valgfrit)</label><input id="excluded" maxlength="300" placeholder="Fx reproduction, repro, tom æske"><small>Matchende annoncer markeres som frasorteret.</small></div>
@@ -338,8 +343,7 @@ function renderFeed(){
  $('summary-matches').textContent=String(products.length?scored.length:0);
  for(const {listing,matches,best} of visible){
   if(!listing?.url||!/^https:\/\//.test(listing.url))continue;
-  const card=el('div','','item feed-card'),a=el('a',String(listing.title||'Se annonce'));
-  a.href=listing.url;a.target='_blank';a.rel='noopener noreferrer';
+  const card=el('div','','item feed-card'),a=el('span',String(listing.title||'Annonce'),'listing-title');
   const detail=el('div','','listing-detail');
 let activeLightbox=null;
 function openPhotoLightbox(photos,start){
