@@ -102,77 +102,67 @@ header{display:flex;justify-content:space-between;align-items:center;gap:14px;pa
 .compact-feed-toolbar .feed-compact-select select{min-width:0;max-width:170px;width:auto;height:36px;min-height:36px;margin:0;padding:0 17px 0 0;border:0;background-color:transparent;box-shadow:none;font-size:.78rem;font-weight:600;color:#344c43;cursor:pointer}
 .compact-feed-toolbar .feed-compact-select select:focus{outline:2px solid #80bca4;outline-offset:1px}
 @media(max-width:760px){.compact-feed-toolbar{display:flex;gap:8px}.compact-feed-toolbar .feed-search-wrap{flex:1 1 100%;width:100%}.compact-feed-toolbar .feed-controls{width:100%;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px}.compact-feed-toolbar .feed-compact-select{min-width:0;padding:0 7px}.compact-feed-toolbar .feed-compact-select span{font-size:.69rem}.compact-feed-toolbar .feed-compact-select select{width:100%;max-width:none;font-size:13px;padding-right:12px}}
-</style><style>
-/* Flipit: neon-retro Miami arcade theme */
-:root{color-scheme:dark!important;color:#f9eafa!important;background:#130e2a!important;--flip-pink:#ff58b7;--flip-cyan:#57e6f4;--flip-purple:#32205b;--flip-yellow:#ffd27b}
-html{background:#130e2a}body{color:#f9eafa!important;background:radial-gradient(ellipse at 90% 0%,#50265b 0,transparent 43%),radial-gradient(ellipse at 5% 30%,#173f63 0,transparent 46%),#130e2a!important;min-height:100vh}
-main{max-width:1120px}header{background:linear-gradient(120deg,#2d194d 0%,#502b68 55%,#174b68 100%)!important;border:1px solid #b95eae!important;border-radius:22px!important;padding:30px!important;box-shadow:0 12px 34px #09061a55,inset 0 -3px 0 #ff58b766!important;overflow:hidden;isolation:isolate}header:after{content:"";position:absolute;inset:0;pointer-events:none;z-index:-1;background:repeating-linear-gradient(0deg,transparent 0 19px,#ffffff09 20px 21px),linear-gradient(0deg,#ff58b71a,transparent 55%)}header:before{content:"RETRO DEAL RADAR  •  EST. 2026"!important;color:#80f3f7!important;font-size:.68rem!important;letter-spacing:.18em!important;font-weight:800!important}header h1{color:#fff5ff!important;text-shadow:3px 3px 0 #a72e8c,0 0 22px #ff58b766!important;font-size:clamp(2.4rem,7vw,4.2rem)!important;letter-spacing:-.065em!important}header h1 span{color:inherit!important}header p,.network-status{color:#d7e9f5!important}
-.dashboard-nav{background:#170f2beF!important;border-bottom:1px solid #7e4a91!important;backdrop-filter:blur(16px);border-radius:12px;padding:9px!important}.dashboard-nav button{color:#d6c3e7!important;border-radius:9px!important}.dashboard-nav button:hover{background:#36264d!important}.dashboard-nav button[aria-selected="true"]{background:linear-gradient(120deg,#ff58b7,#ed72cd)!important;color:#210f30!important;border-color:#ffb7e6!important;box-shadow:0 3px 12px #ff58b744!important}
-section,.item,.summary-tile,#deals .feed-card{background:#211936!important;border:1px solid #594271!important;color:#f9eafa!important;box-shadow:0 7px 20px #09061a22!important}section{border-radius:17px!important}h2,h3,.stat,.summary-tile strong{color:#fff1ff!important}p,small,.muted,.meta,.section-intro,.summary-tile span{color:#bdaed2!important}label{color:#e5d2ed!important}input,select,textarea{background:#17122b!important;color:#fff1ff!important;border:1px solid #69517e!important;border-radius:10px!important}input::placeholder,textarea::placeholder{color:#a593bc!important}input:focus,select:focus,textarea:focus{outline:2px solid #57e6f4!important;border-color:#57e6f4!important}button:not(.dashboard-nav button){background:#ff58b7;color:#250e30;border-radius:10px}button.secondary{background:#34264c!important;color:#f6d8fb!important;border:1px solid #72548c!important}button.danger{background:#542642!important;color:#ffc4e5!important}.positive{color:#72f3d1!important}.negative{color:#ff8cba!important}.tag,.hint{background:#39254d!important;color:#f6b8e4!important}.tag.auction{background:#4e3450!important;color:#ffd27b!important}.tag.offer{background:#223e59!important;color:#8eeefa!important}.feed-card a,.inline-link{color:#83eefa!important}.summary-tile{border-top:2px solid #ff58b7!important}#deals .feed-card{border-radius:15px!important}#deals .feed-card .listing-info>a{color:#f9eafa!important}#deals .feed-card .deal-metrics,#deals .feed-card .offer-scenario,#deals .feed-card .deal-scenario{background:#2d2143!important;border-color:#60477c!important;color:#d8c6e8!important}#deals .feed-card .max-buy strong,#deals .feed-card .listing-price{color:#fff0fa!important}#deals .feed-card .price-label,#deals .feed-card .max-buy span{color:#bba8d2!important}#deals .feed-card .sale-end{color:#c5b0d7!important}
-@media(max-width:600px){header{padding:24px 20px!important}header h1{font-size:2.8rem!important}.dashboard-nav{border-radius:10px}}
-@media(prefers-reduced-motion:no-preference){header{background-size:150% 150%!important;animation:flipit-glow 16s ease-in-out infinite alternate}@keyframes flipit-glow{from{background-position:0% 50%}to{background-position:100% 50%}}}
-</style><style>
-/* Flipit cohesive retro theme: replace legacy light surfaces and inline sync styles */
-#install-tip.install-tip{background:#281d40!important;color:#f3e5fb!important;border:1px solid #76518b!important;box-shadow:none!important}
-#install-tip strong{color:#fff!important}#install-tip button{background:#44305c!important;color:#fff!important;border:1px solid #80599c!important}
-.sync-progress{background:#271d3d!important;border:1px solid #674b81!important;color:#f9efff!important;border-radius:14px!important;box-shadow:none!important}
-.sync-progress strong,#sync-stage{color:#f9efff!important}#sync-step-count,#sync-status{color:#cbb8dc!important}
-.sync-progress>div:nth-child(2){background:#463257!important}#sync-progress-fill{background:linear-gradient(90deg,#ff58b7,#6de9ef)!important}
-#sync-spinner{border-color:#735a8d!important;border-top-color:#6de9ef!important}
-.sync-progress a{color:#85e7f0!important;text-decoration:none!important}.sync-progress .sync-launch{display:inline-flex!important;align-items:center!important;justify-content:center!important;padding:9px 12px!important;border:1px solid #a75a9f!important;background:#43274e!important;border-radius:9px!important;color:#ffb6e6!important;font-size:.79rem!important;font-weight:750!important}
-.feed-toolbar.compact-feed-toolbar,.feed-search-wrap,.feed-controls,.feed-compact-select{background:transparent!important;color:#e9d8f1!important}
-.feed-search-wrap{background:#241b3a!important;border:1px solid #6c4b85!important;border-radius:11px!important;color:#ae9bc4!important;box-shadow:none!important}
-.feed-search-wrap input,#feed-search{background:transparent!important;border:0!important;color:#fff3ff!important;box-shadow:none!important;outline-offset:0!important}
-.feed-search-wrap:focus-within{border-color:#6de9ef!important;box-shadow:0 0 0 2px #6de9ef22!important}
-.feed-controls{gap:9px!important}.feed-compact-select{background:#241b3a!important;border:1px solid #6c4b85!important;border-radius:10px!important;box-shadow:none!important;padding:4px 9px!important}
-.feed-compact-select span{color:#c6b2d8!important}.feed-compact-select select{background:#241b3a!important;border:0!important;color:#fff0ff!important;min-width:0!important;box-shadow:none!important}
-.bottom-nav{background:#1b142eed!important;border-top:1px solid #63437c!important;box-shadow:0 -8px 24px #08051b55!important}
-.bottom-nav button{background:transparent!important;color:#cbb8df!important;border:1px solid transparent!important;box-shadow:none!important}
-.bottom-nav button[aria-selected="true"]{background:#4b285b!important;color:#ffb8e8!important;border:1px solid #a85a9f!important}
-.bottom-nav button.bottom-create{color:#8be7ec!important}
-#deals .feed-card .listing-image,#deals .feed-card .listing-detail,.listing-image{background:#2b2140!important;border-color:#60477a!important}
-#deals .feed-card .deal-foot,#deals .feed-card .seller-description,#deals .feed-card .original-description{color:#d7c8e4!important;border-color:#5e4677!important}
-#deals .feed-card .offer-enabled{background:#273c4b!important;color:#88e9ed!important;border-color:#416b7c!important}
-#deals .feed-card .open-listing{background:#3b2b53!important;color:#91ebf3!important;border-color:#72518e!important}
-#deals .feed-card .sale-type,#deals .feed-card .sale-option{background:#3b2b53!important;color:#e9d7f5!important}
-.network-status{background:#342449!important;border:1px solid #73518d!important;color:#a5f0eb!important}
-@media(max-width:760px){.bottom-nav{padding-top:8px!important}.bottom-nav button{padding:8px 1px!important;min-height:55px!important;border-radius:10px!important}.bottom-nav button span{font-size:1.25rem!important}.sync-progress{padding:13px!important}.feed-compact-select{min-width:0!important}}
-</style><style>
-/* Flipit clarity-first redesign */
-body{background:#151323!important;color:#f2edf7!important}
-main{max-width:980px!important}
-header{background:#211b32!important;border:1px solid #39304a!important;box-shadow:none!important;padding:22px 24px!important;border-radius:16px!important}
-header:after{display:none!important}header:before{content:"DIN DEAL-RADAR"!important;color:#a6d8d8!important;letter-spacing:.12em!important}
-header h1{font-size:clamp(2rem,6vw,3rem)!important;text-shadow:none!important;letter-spacing:-.04em!important;margin:6px 0!important}
-.dashboard-nav{background:#151323!important;border:0!important}
-.dashboard-nav button[aria-selected="true"]{background:#34283e!important;color:#f8d2eb!important;border-color:#5c435f!important;box-shadow:none!important}
-section{background:#201b2e!important;border:1px solid #3b3349!important;border-radius:15px!important;padding:19px!important;box-shadow:none!important}
-h2{font-size:1.12rem!important;letter-spacing:-.01em!important}
-.item,#deals .feed-card,.summary-tile{background:#292337!important;border:1px solid #40374e!important;box-shadow:none!important;border-radius:13px!important}
-.summary-tile{border-top:1px solid #51415c!important}
-button:not(.dashboard-nav button){box-shadow:none!important}
-.sync-progress{padding:10px 12px!important;background:#292337!important;border:1px solid #40374e!important;border-radius:11px!important;margin:10px 0 13px!important}
-.sync-progress>div:nth-child(2){height:4px!important;margin:7px 0 3px!important}
-#sync-stage{font-size:.84rem!important}#sync-status{font-size:.75rem!important;margin:4px 0!important}
-#sync-step-count{font-size:.72rem!important}
-.sync-progress .sync-launch{font-size:.74rem!important;padding:7px 9px!important}
-.feed-toolbar.compact-feed-toolbar{margin:12px 0 8px!important;gap:9px!important}
-.feed-search-wrap,.feed-compact-select{background:#292337!important;border:1px solid #4b405a!important;border-radius:10px!important}
-.feed-compact-select select{background:#292337!important}
-#feed-count,#live-search-status,#feed-status{font-size:.75rem!important;margin:5px 0!important}
-#deals .feed-card{padding:12px!important;gap:8px!important;margin:9px 0!important}
-#deals .feed-card .listing-info>a{font-size:.96rem!important;line-height:1.3!important}
-#deals .feed-card .listing-meta-line{gap:4px 7px!important}
-#deals .feed-card .deal-metrics{background:#211b30!important;border:0!important;border-radius:9px!important;padding:9px!important}
-#deals .feed-card .deal-foot{font-size:.76rem!important}
-#deals .feed-card .deal-foot>.muted{display:none!important}
-#deals .feed-card .seller-description,#deals .feed-card .original-description{font-size:.8rem!important}
-#deals .feed-card .deal-breakdown{margin-top:5px!important}
-#deals .feed-card .listing-price-line{gap:6px!important}
-.bottom-nav{background:#1c1829f5!important;border-top:1px solid #44374f!important}
-.bottom-nav button[aria-selected="true"]{background:#3b2b45!important;color:#f0c0df!important;border-color:#5d4566!important}
-@media(max-width:760px){main{padding:calc(10px + env(safe-area-inset-top)) 12px calc(100px + env(safe-area-inset-bottom))!important}header{padding:18px!important;margin-bottom:12px!important}header h1{font-size:2.3rem!important}section{padding:14px!important;margin-bottom:11px!important}.section-head{margin-bottom:10px!important}.sync-progress{margin-top:8px!important}.feed-controls{gap:7px!important}.feed-compact-select{padding:4px 6px!important}.bottom-nav button{font-size:.62rem!important}}
-@media(prefers-reduced-motion:no-preference){header{animation:none!important}}
+</style><style id="flipit-design-system">
+/* One coherent light theme replaces the three conflicting dark-theme layers. */
+:root{color-scheme:light;--ink:#25283b;--muted:#74798a;--line:#e8e7ee;--mint:#159f98;--coral:#ed8584;--violet:#7865ad;--surface:#fff;--canvas:#faf9fc}
+html,body{background:var(--canvas);color:var(--ink)}
+main{max-width:1080px}
+header{background:transparent;border:0;box-shadow:none;padding:16px 0 22px;border-radius:0;color:var(--ink)}
+header:before,header:after{display:none}
+.brand-mark{background:linear-gradient(135deg,var(--mint),var(--violet));color:white}
+.brand h1,.brand h1 span,header h1,h2,.page-heading h2{color:var(--ink)}
+header p,p,small,.meta,.muted,.section-intro{color:var(--muted)}
+section,.summary-tile,.item{background:var(--surface);border-color:var(--line);box-shadow:0 4px 18px #302b4508}
+.dashboard-nav{background:#faf9fcef;border-color:var(--line)}
+.dashboard-nav button{color:#64687c}
+.dashboard-nav button[aria-selected="true"],.bottom-nav button[aria-selected="true"]{background:#eeeaf8;color:#66509e;border-color:#e2dcf3}
+.dashboard-nav button[data-tab="create"],.bottom-nav button.bottom-create{color:var(--violet)}
+button{background:var(--violet);color:white}
+button.secondary{background:#f0edf8;color:#66509e}
+button.danger{background:#fff0ef;color:#ae4c54}
+input,select{background:white;color:var(--ink);border-color:#dedde7}
+input:focus,select:focus{outline-color:#a5dfd9;border-color:var(--mint)}
+button:focus-visible,a:focus-visible{outline-color:var(--mint)}
+.network-status{background:#e8f7f4;color:#127c75}
+.network-status.offline{background:#fff2e6;color:#9b692d}
+.summary-tile{border-radius:15px}
+.summary-tile strong,.stat{color:var(--ink)}
+.summary-tile:first-child{border-top:3px solid var(--mint)}
+.summary-tile:nth-child(2){border-top:3px solid var(--coral)}
+.summary-tile:nth-child(3){border-top:3px solid var(--violet)}
+.positive{color:#10877f}.negative{color:#c45761}
+.hint,.settings-shortcut{background:#f1f9f7;color:#426d69}
+.tag,.sale-type.buy_now{background:#e8f7f3;color:#167d75}
+.tag.auction,.sale-type.auction{background:#fff3df;color:#936424}
+.tag.offer{background:#f0eafa;color:#7054a5}
+.compact-feed-toolbar .feed-search-wrap{background:white;border-color:var(--line)}
+.compact-feed-toolbar .feed-search-wrap:focus-within{border-color:var(--mint)}
+#deals .feed-card{background:white;border:1px solid var(--line);border-radius:16px;padding:14px;gap:10px;box-shadow:0 3px 16px #302b450a;overflow:hidden}
+#deals .feed-card:hover{box-shadow:0 6px 20px #302b4511;transform:none}
+#deals .feed-card .listing-detail{display:grid;grid-template-columns:minmax(160px,32%) minmax(0,1fr);gap:15px;align-items:start}
+#deals .feed-card .listing-gallery{background:#f8f7fa;border:1px solid #f0edf3;border-radius:12px;overflow:hidden}
+#deals .feed-card .listing-gallery .listing-image{width:100%;height:180px;object-fit:contain;background:transparent;border:0;padding:7px}
+#deals .feed-card .listing-info{display:flex;flex-direction:column;align-items:stretch;min-width:0;gap:9px}
+#deals .feed-card .listing-info>a{color:var(--ink);font-size:1rem;line-height:1.32;font-weight:750;overflow-wrap:anywhere}
+#deals .feed-card .listing-meta-line{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+#deals .feed-card .listing-price-line{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;border:0;padding:3px 0}
+#deals .feed-card .listing-price{color:var(--ink);font-size:1.15rem}
+#deals .feed-card .price-label,#deals .feed-card .max-buy span,#deals .feed-card .deal-metrics small{color:var(--muted);font-size:.7rem}
+#deals .feed-card .deal-metrics{display:grid;grid-template-columns:1.25fr .75fr;gap:0;background:#f8f7fb;border:1px solid #efecf3;border-radius:11px;padding:11px 8px;margin:0}
+#deals .feed-card .deal-profit,#deals .feed-card .deal-roi{padding:0 10px;min-width:0}
+#deals .feed-card .deal-roi{border-left:1px solid #e7e2ed}
+#deals .feed-card .deal-metrics strong{font-size:1.24rem;line-height:1.2;overflow-wrap:anywhere}
+#deals .feed-card .deal-foot{border:0;padding:0;gap:8px}
+#deals .feed-card .decision.good{background:#e6f7f3;color:#127d75}
+#deals .feed-card .card-disclosures{border-top:1px solid var(--line);padding-top:9px}
+#deals .feed-card .card-disclosures summary{color:#666b80}
+#deals .feed-card .seller-description{background:#faf9fc;border-color:var(--line)}
+#deals .feed-card .open-listing{display:block;background:var(--violet);color:white!important;border-radius:10px;padding:11px;text-align:center;text-decoration:none}
+#deals .feed-card .open-listing:hover{background:#66529e}
+#deals .feed-card .photo-arrow{background:white;color:var(--violet);border:1px solid var(--line)}
+.bottom-nav{background:#ffffffef;border-color:var(--line)}
+@media(max-width:760px){#deals .feed-card{padding:12px}#deals .feed-card .listing-detail{grid-template-columns:108px minmax(0,1fr);gap:11px}#deals .feed-card .listing-gallery .listing-image{height:126px;padding:4px}#deals .feed-card .listing-info>a{font-size:.94rem}#deals .feed-card .deal-metrics{padding:8px 3px}#deals .feed-card .deal-profit,#deals .feed-card .deal-roi{padding:0 6px}#deals .feed-card .deal-metrics strong{font-size:1.05rem}#deals .feed-card .listing-price{font-size:1.04rem}}
+@media(max-width:390px){#deals .feed-card .listing-detail{grid-template-columns:88px minmax(0,1fr)}#deals .feed-card .listing-gallery .listing-image{height:108px}#deals .feed-card .deal-metrics strong{font-size:.98rem}}
 </style>
 </head><body><main><header><div class="brand"><span class="brand-mark" aria-hidden="true">◎</span><div><h1>Flipit</h1></div></div><span id="network-status" class="network-status" aria-live="polite">● Live feed</span></header><nav class="dashboard-nav" aria-label="Hovedmenu" role="tablist"><button type="button" role="tab" data-tab="overview" aria-selected="true">Overblik</button><button type="button" role="tab" data-tab="create" aria-selected="false">+ Opret Spotter</button><button type="button" role="tab" data-tab="deals" aria-selected="false">Fund</button><button type="button" role="tab" data-tab="spotters" aria-selected="false">Mine Spottere</button><button type="button" role="tab" data-tab="tools" aria-selected="false">Beregner</button><button type="button" role="tab" data-tab="settings" aria-selected="false">Indstillinger</button></nav><div id="install-tip" class="install-tip" hidden><span>📱 Gem Flipit på din iPhone: Tryk <strong>Del</strong> i Safari og vælg <strong>Føj til hjemmeskærm</strong>.</span><button type="button" id="dismiss-install" class="secondary" aria-label="Skjul vejledning">×</button></div><div data-panel="overview"><div class="page-heading"><div><span class="eyebrow">DASHBOARD</span><h2>Dine muligheder</h2></div><button type="button" id="overview-create">+ Ny Spotter</button></div><div class="summary-grid" aria-label="Dashboard overblik"><div class="summary-tile"><span>Spottere</span><strong id="summary-spotters">0</strong></div><div class="summary-tile"><span>Annoncer</span><strong id="summary-listings">—</strong></div><div class="summary-tile"><span>Matches</span><strong id="summary-matches">—</strong></div></div></div><section id="spotter-create" data-panel="create"><div class="section-head"><h2>Opret Spotter</h2><span class="eyebrow">01 / Opsætning</span></div><form id="form"><div class="grid">
 <div class="full"><label for="name">Præcist produkt</label><input id="name" required maxlength="120" placeholder="Fx Pokémon Blue til Game Boy"></div><div class="full"><label for="aliases">Alternative søgenavne (valgfrit)</label><input id="aliases" maxlength="300" placeholder="Fx Pokemon Blue, Pokémon Blå"><small>Adskil med komma. Brug kun navne for præcis samme produkt.</small></div><div class="full"><label for="excluded">Ord der skal udelukkes (valgfrit)</label><input id="excluded" maxlength="300" placeholder="Fx reproduction, repro, tom æske"><small>Matchende annoncer markeres som frasorteret.</small></div>
