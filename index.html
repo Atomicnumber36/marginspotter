@@ -90,7 +90,7 @@ header{display:flex;justify-content:space-between;align-items:center;gap:14px;pa
 #deals .feed-card .open-listing:hover{background:#255846;text-decoration:none}
 @media(min-width:700px){#deals .feed-card .listing-detail{grid-template-columns:minmax(200px,38%) minmax(0,1fr);align-items:start}#deals .feed-card .listing-gallery .listing-image{height:280px}}
 @media(max-width:480px){#deals .feed-card{padding:12px;border-radius:15px}#deals .feed-card .listing-gallery .listing-image{height:245px}#deals .feed-card .deal-metrics strong{font-size:1.13rem}}
-#deals .feed-toolbar #feed-type{min-width:0}#deals .feed-toolbar label[for=feed-type]{min-width:0}#deals .feed-card .offer-enabled{display:inline-flex;align-items:center;color:#1c7753;background:#eaf7ef;border:1px solid #d3ebdb;border-radius:7px;padding:5px 8px}#deals .feed-card .offer-scenario{display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%;padding:10px 12px;border:1px dashed #cbded1;border-radius:10px;background:#f8fbf8;font-size:.76rem;color:#577063}#deals .feed-card .offer-scenario strong{font-size:.95rem;color:#235940;white-space:nowrap}</style></head><body><main><header><div class="brand"><span class="brand-mark" aria-hidden="true">◎</span><div><h1>Margin<span>Spotter</span></h1></div></div><span id="network-status" class="network-status" aria-live="polite">● Live feed</span></header><nav class="dashboard-nav" aria-label="Hovedmenu" role="tablist"><button type="button" role="tab" data-tab="overview" aria-selected="true">Overblik</button><button type="button" role="tab" data-tab="create" aria-selected="false">+ Opret Spotter</button><button type="button" role="tab" data-tab="deals" aria-selected="false">Fund</button><button type="button" role="tab" data-tab="spotters" aria-selected="false">Mine Spottere</button><button type="button" role="tab" data-tab="tools" aria-selected="false">Beregner</button><button type="button" role="tab" data-tab="settings" aria-selected="false">Indstillinger</button></nav><div id="install-tip" class="install-tip" hidden><span>📱 Gem Margin Spotter på din iPhone: Tryk <strong>Del</strong> i Safari og vælg <strong>Føj til hjemmeskærm</strong>.</span><button type="button" id="dismiss-install" class="secondary" aria-label="Skjul vejledning">×</button></div><div data-panel="overview"><div class="page-heading"><div><span class="eyebrow">DASHBOARD</span><h2>Dine muligheder</h2></div><button type="button" id="overview-create">+ Ny Spotter</button></div><div class="summary-grid" aria-label="Dashboard overblik"><div class="summary-tile"><span>Spottere</span><strong id="summary-spotters">0</strong></div><div class="summary-tile"><span>Annoncer</span><strong id="summary-listings">—</strong></div><div class="summary-tile"><span>Matches</span><strong id="summary-matches">—</strong></div></div></div><section id="spotter-create" data-panel="create"><div class="section-head"><h2>Opret Spotter</h2><span class="eyebrow">01 / Opsætning</span></div><form id="form"><div class="grid">
+#deals .feed-toolbar #feed-type{min-width:0}#deals .feed-toolbar label[for=feed-type]{min-width:0}#deals .feed-card .offer-enabled{display:inline-flex;align-items:center;color:#1c7753;background:#eaf7ef;border:1px solid #d3ebdb;border-radius:7px;padding:5px 8px}#deals .feed-card .offer-scenario{display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%;padding:10px 12px;border:1px dashed #cbded1;border-radius:10px;background:#f8fbf8;font-size:.76rem;color:#577063}#deals .feed-card .offer-scenario strong{font-size:.95rem;color:#235940;white-space:nowrap}#deals .feed-card .deal-scenario{font-size:.73rem;color:#496a5b;font-weight:650;background:#f0f6f2;border-radius:7px;padding:7px 9px;align-self:stretch}</style></head><body><main><header><div class="brand"><span class="brand-mark" aria-hidden="true">◎</span><div><h1>Margin<span>Spotter</span></h1></div></div><span id="network-status" class="network-status" aria-live="polite">● Live feed</span></header><nav class="dashboard-nav" aria-label="Hovedmenu" role="tablist"><button type="button" role="tab" data-tab="overview" aria-selected="true">Overblik</button><button type="button" role="tab" data-tab="create" aria-selected="false">+ Opret Spotter</button><button type="button" role="tab" data-tab="deals" aria-selected="false">Fund</button><button type="button" role="tab" data-tab="spotters" aria-selected="false">Mine Spottere</button><button type="button" role="tab" data-tab="tools" aria-selected="false">Beregner</button><button type="button" role="tab" data-tab="settings" aria-selected="false">Indstillinger</button></nav><div id="install-tip" class="install-tip" hidden><span>📱 Gem Margin Spotter på din iPhone: Tryk <strong>Del</strong> i Safari og vælg <strong>Føj til hjemmeskærm</strong>.</span><button type="button" id="dismiss-install" class="secondary" aria-label="Skjul vejledning">×</button></div><div data-panel="overview"><div class="page-heading"><div><span class="eyebrow">DASHBOARD</span><h2>Dine muligheder</h2></div><button type="button" id="overview-create">+ Ny Spotter</button></div><div class="summary-grid" aria-label="Dashboard overblik"><div class="summary-tile"><span>Spottere</span><strong id="summary-spotters">0</strong></div><div class="summary-tile"><span>Annoncer</span><strong id="summary-listings">—</strong></div><div class="summary-tile"><span>Matches</span><strong id="summary-matches">—</strong></div></div></div><section id="spotter-create" data-panel="create"><div class="section-head"><h2>Opret Spotter</h2><span class="eyebrow">01 / Opsætning</span></div><form id="form"><div class="grid">
 <div class="full"><label for="name">Præcist produkt</label><input id="name" required maxlength="120" placeholder="Fx Pokémon Blue til Game Boy"></div><div class="full"><label for="aliases">Alternative søgenavne (valgfrit)</label><input id="aliases" maxlength="300" placeholder="Fx Pokemon Blue, Pokémon Blå"><small>Adskil med komma. Brug kun navne for præcis samme produkt.</small></div><div class="full"><label for="excluded">Ord der skal udelukkes (valgfrit)</label><input id="excluded" maxlength="300" placeholder="Fx reproduction, repro, tom æske"><small>Matchende annoncer markeres som frasorteret.</small></div>
 
 
@@ -131,8 +131,16 @@ function valuation(listing,p){
  const valid=[rate,shipping,fees,buffer].every(Number.isFinite)&&rate>0&&shipping>=0&&fees>=0&&buffer>=0&&buffer<=100;
  const price=listingDKK(listing),market=Number(p.loose),target=Number(p.target??20);
  if(!valid||price===null||!Number.isFinite(price)||price<0||!Number.isFinite(market)||market<=0||!Number.isFinite(target)||target<0)return null;
- const buy=price,invested=buy+shipping,resale=market*(1-buffer/100),profit=resale-fees-invested;
- return {profit,roi:invested>0?profit/invested*100:null,maxBid:(resale-fees)/(1+target/100)-shipping,rate,shipping,fees,buffer,target,market,buy,invested,resale,netResale:resale-fees};
+ const resale=market*(1-buffer/100),maxBid=(resale-fees)/(1+target/100)-shipping;
+ const kind=listing.listingType||'unknown';
+ const offerEligible=listing.offersAllowed===true||(kind==='buy_now'&&listing.offersAllowed!==false);
+ const isAuction=kind==='auction'||kind==='auction_buy_now';
+ const mode=isAuction?'max_bid':offerEligible?'offer_25':'listed';
+ // Auction: scenario at the maximum price that still meets the target ROI.
+ // Offer: scenario assumes a 25% lower price is accepted; neither is guaranteed.
+ const buy=isAuction?Math.max(0,maxBid):offerEligible?price*.75:price;
+ const invested=buy+shipping,profit=resale-fees-invested;
+ return {profit,roi:invested>0?profit/invested*100:null,maxBid,mode,listedPrice:price,rate,shipping,fees,buffer,target,market,buy,invested,resale,netResale:resale-fees};
 }
 function renderFeed(){
  const feed=$('feed');feed.replaceChildren();
@@ -223,18 +231,20 @@ function openPhotoLightbox(photos,start){
   const converted=listingDKK(listing);const price=el('div',converted===null?'Pris ukendt':money(converted),'listing-price');info.append(price);if(offerEligible&&converted!==null){const offer=el('div','','offer-scenario');offer.append(el('span','Ved 25 % lavere accepteret pris'),el('strong',money(converted*.75)));info.append(offer)}detail.append(info);card.append(detail);
   if(best){
    const {p,v}=best;
-   const meets=v.profit>0&&v.roi!==null&&v.roi>=v.target;
+   const meets=v.profit>0&&v.roi!==null&&v.roi+0.000001>=v.target&&v.maxBid>=0;
+   const scenario=el('div',v.mode==='max_bid'?'Scenarie: Køb ved maks. rentabelt bud':v.mode==='offer_25'?'Scenarie: Prisforslag på −25 % accepteres':'Scenarie: Køb til annoncepris','deal-scenario');info.append(scenario);
    const metrics=el('div','','deal-metrics');
-   const profit=el('div','','deal-profit');profit.append(el('small','Mulig fortjeneste ved annoncepris'),el('strong',(v.profit>=0?'+':'')+money(v.profit)));profit.classList.add(v.profit>=0?'positive':'negative');
+   const profit=el('div','','deal-profit');profit.append(el('small','Mulig fortjeneste ved forventet købspris'),el('strong',(v.profit>=0?'+':'')+money(v.profit)));profit.classList.add(v.profit>=0?'positive':'negative');
    const roi=el('div','','deal-roi');roi.append(el('small','Afkast på købsomkostninger'),el('strong',v.roi===null?'—':Math.round(v.roi)+' %'));
    metrics.append(profit,roi);info.append(metrics);
-   const foot=el('div','','deal-foot');foot.append(el('span','Din maks. købspris: '+(v.maxBid>=0?money(v.maxBid):'Ingen rentabel pris')));
-   const status=el('span',meets?'Inden for din grænse':'Over din grænse',meets?'decision good':'decision low');foot.append(status);info.append(foot);
+   const foot=el('div','','deal-foot');foot.append(el('span','Maks. rentabel købspris: '+(v.maxBid>=0?money(v.maxBid):'Ingen rentabel pris')));
+   const status=el('span',meets?'Opfylder afkastmål i scenariet':'Opfylder ikke afkastmål',meets?'decision good':'decision low');foot.append(status);info.append(foot);
    const breakdown=el('details','','deal-breakdown');
    breakdown.append(el('summary','Se regnestykket'));
    const rows=el('div','','deal-breakdown-rows');
    const addRow=(label,value)=>{const r=el('div','','deal-breakdown-row');r.append(el('span',label),el('strong',value));rows.append(r)};
-   addRow('Annoncepris',money(v.buy));
+   addRow('Annoncepris',money(v.listedPrice));
+   addRow(v.mode==='max_bid'?'Beregnet maks. bud':v.mode==='offer_25'?'Prisforslag (−25 %)':'Forventet købspris',money(v.buy));
    addRow('Købsfragt (skøn)',money(v.shipping));
    addRow('Samlet investering',money(v.invested));
    addRow('Forventet salgspris efter buffer',money(v.resale));
@@ -243,7 +253,7 @@ function openPhotoLightbox(photos,start){
    addRow('Mulig fortjeneste',money(v.profit));
    addRow('Afkast = fortjeneste / investering',v.roi===null?'—':v.roi.toFixed(1)+' %');
    addRow('Maks. købspris ved '+v.target+' % afkast',v.maxBid>=0?money(v.maxBid):'—');
-   breakdown.append(rows,el('p','Maks. købspris er beregnet ud fra dit afkastmål – ikke ud fra annoncens pris. Alle beløb er DKK.','muted'));
+   breakdown.append(rows,el('p','Scenariet forudsætter, at dit bud eller prisforslag accepteres. Ved auktion kan slutprisen blive højere. Alle beløb er DKK.','muted'));
    info.append(preview,breakdown);
   }else {info.append(preview,el('div','Ingen beregning','muted'))}
   const open=el('a','Se annonce ↗','open-listing');open.href=listing.url;open.target='_blank';open.rel='noopener noreferrer';card.append(open);
