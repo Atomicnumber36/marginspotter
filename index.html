@@ -264,7 +264,7 @@ function openPhotoLightbox(photos,start){
 }
 let lastFeedTimestamp=null;
 async function loadFeed(){try{
- const response=await fetch('./data/tradera-listings.json?v=da-20261115',{cache:'no-store'});
+ const response=await fetch('./data/tradera-listings.json?t='+Date.now(),{cache:'no-store'});
  if(!response.ok)throw Error('Feed HTTP '+response.status);
  const data=await response.json();if(!Array.isArray(data.listings)||data.status!=='ok')throw Error('Feed ikke klar');
  lastFeedTimestamp=data.updatedAt||null;cachedListings=data.listings;$('summary-listings').textContent=String(cachedListings.length);
@@ -295,6 +295,8 @@ $('refresh-feed').addEventListener('click',async()=>{
  b.disabled=false;b.textContent='↻ Opdater';
 });
 loadFeed();checkSyncStatus();setInterval(()=>{if(!document.hidden)checkSyncStatus()},15000);
+// Refresh the feed independently of workflow status (which may be delayed or rate-limited).
+setInterval(()=>{if(!document.hidden&&navigator.onLine)loadFeed()},30000);
 
 
 function activateTab(tab){
