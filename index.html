@@ -133,21 +133,37 @@ function valuation(listing,p){
  if(!valid||price===null||!Number.isFinite(price)||price<0||!Number.isFinite(market)||market<=0||!Number.isFinite(target)||target<0)return null;
  const resale=market*(1-buffer/100),maxBid=(resale-fees)/(1+target/100)-shipping;
  const kind=listing.listingType||'unknown';
- const offerEligible=listing.offersAllowed===true||(kind==='buy_now'&&listing.offersAllowed!==false);
- const isAuction=kind==='auction'||kind==='auction_buy_now';
- const mode=isAuction?'max_bid':offerEligible?'offer_25':'listed';
- // Auction: scenario at the maximum price that still meets the target ROI.
- // Offer: scenario assumes a 25% lower price is accepted; neither is guaranteed.
- const buy=isAuction?Math.max(0,maxBid):offerEligible?price*.75:price;
+ // Never assume a seller will accept a discounted offer or that an auction
+ // can be won at the maximum profitable bid.
+ const buy=price,mode='listed';
  const invested=buy+shipping,profit=resale-fees-invested;
- return {profit,roi:invested>0?profit/invested*100:null,maxBid,mode,listedPrice:price,rate,shipping,fees,buffer,target,market,buy,invested,resale,netResale:resale-fees};
+ const condition=listing.condition?.grade||'unknown';
+ const risk=['risk','untested'].includes(condition);
+ const title=' '+normalized(listing.title||'')+' ';
+ const productName=' '+normalized(p.name||'')+' ';
+ const boxed=/\\b(cib|complete in box|komplett|komplet|boxed|med æske|med kartong|originalkartong)\\b/i.test(title);
+ const loose=/\\b(loose|cart only|cartridge only|uden æske|utan kartong|endast kassett|kun kassette)\\b/i.test(title);
+ const expectedBoxed=/\\b(cib|complete in box|komplett|komplet|boxed|med æske|originalkartong)\\b/i.test(productName);
+ const expectedLoose=/\\b(loose|cart only|cartridge only|uden æske|kun kassette)\\b/i.test(productName);
+ const editionMismatch=(expectedBoxed&&loose)||(expectedLoose&&boxed);
+ const ended=kind==='ended'||(listing.endDate&&Number.isFinite(Date.parse(listing.endDate))&&Date.parse(listing.endDate)<Date.now());
+ const eligible=!risk&&!editionMismatch&&!ended&&kind!=='unknown'&&profit>0&&invested>0&&profit/invested*100>=target&&maxBid>=price;
+ const reasons=[];
+ if(risk)reasons.push(condition==='risk'?'Mulig defekt':'Varen er ikke testet');
+ if(editionMismatch)reasons.push('Udgave eller emballage matcher ikke');
+ if(ended)reasons.push('Annoncen er afsluttet');
+ if(kind==='unknown')reasons.push('Salgstypen er ukendt');
+ if(profit<=0)reasons.push('Ingen beregnet fortjeneste ved aktuel pris');
+ if(!reasons.length&&!eligible)reasons.push('Afkastmålet er ikke opfyldt ved aktuel pris');
+ if(kind==='auction'||kind==='auction_buy_now')reasons.push('Auktionsprisen kan stige');
+ return {profit,roi:invested>0?profit/invested*100:null,maxBid,mode,listedPrice:price,rate,shipping,fees,buffer,target,market,buy,invested,resale,netResale:resale-fees,eligible,reasons};
 }
 function renderFeed(){
  const feed=$('feed');feed.replaceChildren();
  const scored=cachedListings.map(listing=>{
   const matches=products.filter(p=>classifyTitle(p,listing.title)==='review');
   const evaluations=matches.map(p=>({p,v:valuation(listing,p)})).filter(x=>x.v);
-  evaluations.sort((a,b)=>b.v.profit-a.v.profit);
+  evaluations.sort((a,b)=>Number(b.v.eligible)-Number(a.v.eligible)||b.v.profit-a.v.profit);
   return {listing,matches,best:evaluations[0]||null};
  }).filter(x=>!products.length||x.matches.length);
  const search=normalized($('feed-search').value),sort=$('feed-sort').value,typeFilter=$('feed-type').value;
@@ -232,14 +248,14 @@ function openPhotoLightbox(photos,start){
   const converted=listingDKK(listing);const priceLine=el('div','','listing-price-line');const priceGroup=el('div','','price-group');priceGroup.append(el('span',kind==='auction'||kind==='auction_buy_now'?'Aktuelt bud':'Køb nu','price-label'));const price=el('div',converted===null?'Pris ukendt':money(converted),'listing-price');priceGroup.append(price);priceLine.append(priceGroup);if(offerEligible&&converted!==null){const offer=el('div','','offer-scenario');offer.append(el('span','Forslag −25 %'),el('strong',money(converted*.75)));priceLine.append(offer)}info.append(priceLine);detail.append(info);card.append(detail);
   if(best){
    const {p,v}=best;
-   const meets=v.profit>0&&v.roi!==null&&v.roi+0.000001>=v.target&&v.maxBid>=0;
+   const meets=v.eligible;
    const scenario=el('div',v.mode==='max_bid'?'Ved maks. bud':v.mode==='offer_25'?'Ved accepteret prisforslag':'Ved annoncepris','deal-scenario');
    const metrics=el('div','','deal-metrics');
    const profit=el('div','','deal-profit');profit.append(el('small','Mulig fortjeneste'),el('strong',(v.profit>=0?'+':'')+money(v.profit)));profit.classList.add(v.profit>=0?'positive':'negative');
    const roi=el('div','','deal-roi');roi.append(el('small','Forventet ROI'),el('strong',v.roi===null?'—':Math.round(v.roi)+' %'));
    metrics.append(profit,roi);info.append(metrics);
    const foot=el('div','','deal-foot');const maxLabel=el('div','','max-buy');maxLabel.append(el('span','Maks. rentabelt bud'),el('strong',v.maxBid>=0?money(v.maxBid):'—'));if(v.mode==='max_bid'){priceLine.append(maxLabel)}else{foot.append(maxLabel)}
-   const status=el('span',meets?'✓ Afkastmål opfyldt':'Afkastmål ikke opfyldt',meets?'decision good':'decision low');foot.append(status);info.append(foot);
+   const status=el('span',meets?'✓ Potentielt spot':'Ikke et bekræftet spot',meets?'decision good':'decision low');foot.append(status);if(v.reasons.length)foot.append(el('span',v.reasons.join(' · '),'muted'));info.append(foot);
    const breakdown=el('details','','deal-breakdown');
    breakdown.append(el('summary','Se regnestykket'));
    const rows=el('div','','deal-breakdown-rows');
@@ -254,7 +270,7 @@ function openPhotoLightbox(photos,start){
    addRow('Mulig fortjeneste',money(v.profit));
    addRow('Afkast = fortjeneste / investering',v.roi===null?'—':v.roi.toFixed(1)+' %');
    addRow('Maks. købspris ved '+v.target+' % afkast',v.maxBid>=0?money(v.maxBid):'—');
-   breakdown.append(rows,el('p','Scenariet forudsætter, at dit bud eller prisforslag accepteres. Ved auktion kan slutprisen blive højere. Alle beløb er DKK.','muted'));
+   breakdown.append(rows,el('p','Beregnet ved den aktuelle annoncepris eller budpris. Auktionens slutpris kan stige, og markedsværdien er din egen indtastede referencepris – ikke verificerede eBay-salg. Alle beløb er DKK.','muted'));
    const extra=el('details','','seller-extra');extra.append(el('summary','Sælgers beskrivelse'),preview);const disclosures=el('div','','card-disclosures');disclosures.append(breakdown,extra);info.append(disclosures);
   }else {const extra=el('details','','seller-extra');extra.append(el('summary','Sælgers beskrivelse'),preview);info.append(el('div','Ingen beregning','muted'),extra)}
   const open=el('a','Se annonce ↗','open-listing');open.href=listing.url;open.target='_blank';open.rel='noopener noreferrer';card.append(open);
