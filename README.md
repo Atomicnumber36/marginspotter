@@ -16,7 +16,16 @@ ROI = expected profit / (purchase price + inbound shipping).
 PriceCharting figures are reference estimates, not guaranteed Danish resale prices. Use conservative estimates and verify region, authenticity and condition.
 
 ## Status
-Project specification initialized; application code not yet implemented.
+Flipit has a live GitHub Pages web app with Tradera listing synchronization and resale-profit tools. Some listing galleries and seller descriptions may still be incomplete; these paths require regression testing.
+
+## Release checklist
+- Confirm Tradera listing galleries and seller descriptions are preserved across sync runs.
+- Check the deals view on narrow mobile screens and desktop.
+- Verify profit and ROI calculations with purchase price, shipping, and selling fees.
+- Test online refresh and offline fallback for the installed web app.
+- Prefer small, reversible changes and verify the published site after deployment.
+
+Development tracking: [Flipit quality issue #2](https://github.com/Atomicnumber36/marginspotter/issues/2).
 
 ## Website
 
