@@ -1,4 +1,4 @@
-# MarginSpotter
+# Flipit
 
 A mobile-first app for spotting resale opportunities across marketplaces.
 
