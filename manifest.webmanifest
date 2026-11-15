@@ -1,7 +1,7 @@
 {
-  "name": "Margin Spotter",
-  "short_name": "MarginSpotter",
-  "description": "Din mobile radar til retrofund på Tradera",
+  "name": "Flipit",
+  "short_name": "Flipit",
+  "description": "Find gode handler og spot fortjenesten på retrofund",
   "start_url": "./#overview",
   "scope": "./",
   "display": "standalone",
