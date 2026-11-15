@@ -438,11 +438,12 @@ function openPhotoLightbox(photos,start){
   const open=el('a','Åbn på Tradera ↗','open-listing');open.href=listing.url;open.target='_blank';open.rel='noopener noreferrer';card.append(open);
   const expand=el('button','Vis detaljer og beregning','deal-expand');expand.type='button';expand.setAttribute('aria-expanded','false');
   expand.onclick=()=>{
+    if(card.classList.contains('expanded')){card._closeDealDetail?.();return;}
     const overlay=document.createElement('div');overlay.className='deal-detail-backdrop';overlay.setAttribute('aria-hidden','true');
     const previousFocus=document.activeElement;
-    const close=()=>{card.classList.remove('expanded');card.removeAttribute('role');card.removeAttribute('aria-modal');card.removeAttribute('aria-label');overlay.remove();document.body.classList.remove('deal-detail-open');document.removeEventListener('keydown',onKey);expand.setAttribute('aria-expanded','false');expand.textContent='Vis detaljer og beregning';previousFocus?.focus()};
+    const close=()=>{card._closeDealDetail=null;card.classList.remove('expanded');card.removeAttribute('role');card.removeAttribute('aria-modal');card.removeAttribute('aria-label');overlay.remove();document.body.classList.remove('deal-detail-open');document.removeEventListener('keydown',onKey);expand.setAttribute('aria-expanded','false');expand.textContent='Vis detaljer og beregning';previousFocus?.focus()};
     const onKey=event=>{if(event.key==='Escape'){event.preventDefault();close()}else if(event.key==='Tab'){const controls=[...card.querySelectorAll('button:not([disabled]),a[href],summary,[tabindex="0"]')].filter(el=>el.getClientRects().length);if(!controls.length)return;const first=controls[0],last=controls[controls.length-1];if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus()}else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus()}}};
-    overlay.onclick=close;document.body.append(overlay);card.classList.add('expanded');card.setAttribute('role','dialog');card.setAttribute('aria-modal','true');card.setAttribute('aria-label','Announcedetaljer');document.body.classList.add('deal-detail-open');expand.setAttribute('aria-expanded','true');expand.textContent='← Tilbage til fund';document.addEventListener('keydown',onKey);card.scrollTop=0;expand.focus();
+    card._closeDealDetail=close;overlay.onclick=close;document.body.append(overlay);card.classList.add('expanded');card.setAttribute('role','dialog');card.setAttribute('aria-modal','true');card.setAttribute('aria-label','Announcedetaljer');document.body.classList.add('deal-detail-open');expand.setAttribute('aria-expanded','true');expand.textContent='← Tilbage til fund';document.addEventListener('keydown',onKey);card.scrollTop=0;expand.focus();
   };
   card.append(expand);
   feed.append(card);
