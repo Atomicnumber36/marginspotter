@@ -103,66 +103,66 @@ header{display:flex;justify-content:space-between;align-items:center;gap:14px;pa
 .compact-feed-toolbar .feed-compact-select select:focus{outline:2px solid #80bca4;outline-offset:1px}
 @media(max-width:760px){.compact-feed-toolbar{display:flex;gap:8px}.compact-feed-toolbar .feed-search-wrap{flex:1 1 100%;width:100%}.compact-feed-toolbar .feed-controls{width:100%;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px}.compact-feed-toolbar .feed-compact-select{min-width:0;padding:0 7px}.compact-feed-toolbar .feed-compact-select span{font-size:.69rem}.compact-feed-toolbar .feed-compact-select select{width:100%;max-width:none;font-size:13px;padding-right:12px}}
 </style><style id="flipit-design-system">
-/* One coherent light theme replaces the three conflicting dark-theme layers. */
-:root{color-scheme:light;--ink:#25283b;--muted:#74798a;--line:#e8e7ee;--mint:#159f98;--coral:#ed8584;--violet:#7865ad;--surface:#fff;--canvas:#faf9fc}
-html,body{background:var(--canvas);color:var(--ink)}
-main{max-width:1080px}
-header{background:transparent;border:0;box-shadow:none;padding:16px 0 22px;border-radius:0;color:var(--ink)}
+/* Image-led, single-source design rules; replaces previous design system. */
+:root{color-scheme:light;--ink:#24283a;--muted:#747b87;--line:#e9e9ee;--accent:#7565ac;--mint:#138e85}
+html,body{background:#fafafa;color:var(--ink)}
+main{max-width:1160px}
+header{background:transparent;border:0;box-shadow:none;padding:16px 0 20px;border-radius:0;color:var(--ink)}
 header:before,header:after{display:none}
-.brand-mark{background:linear-gradient(135deg,var(--mint),var(--violet));color:white}
+.brand-mark{background:#7565ac;color:white}
 .brand h1,.brand h1 span,header h1,h2,.page-heading h2{color:var(--ink)}
 header p,p,small,.meta,.muted,.section-intro{color:var(--muted)}
-section,.summary-tile,.item{background:var(--surface);border-color:var(--line);box-shadow:0 4px 18px #302b4508}
-.dashboard-nav{background:#faf9fcef;border-color:var(--line)}
-.dashboard-nav button{color:#64687c}
-.dashboard-nav button[aria-selected="true"],.bottom-nav button[aria-selected="true"]{background:#eeeaf8;color:#66509e;border-color:#e2dcf3}
-.dashboard-nav button[data-tab="create"],.bottom-nav button.bottom-create{color:var(--violet)}
-button{background:var(--violet);color:white}
-button.secondary{background:#f0edf8;color:#66509e}
-button.danger{background:#fff0ef;color:#ae4c54}
-input,select{background:white;color:var(--ink);border-color:#dedde7}
-input:focus,select:focus{outline-color:#a5dfd9;border-color:var(--mint)}
+section,.summary-tile,.item{background:#fff;border-color:var(--line);box-shadow:none}
+.dashboard-nav{background:#fafafaf2;border-color:var(--line)}
+.dashboard-nav button[aria-selected="true"],.bottom-nav button[aria-selected="true"]{background:#f1eef9;color:#68549e;border-color:#e5e0f0}
+button{background:var(--accent);color:#fff}
+button.secondary{background:#f1eef9;color:#68549e}
+button.danger{background:#fff0ef;color:#b44f56}
+input,select{background:#fff;color:var(--ink);border-color:#dedee5}
+input:focus,select:focus{outline-color:#b7e5e0;border-color:var(--mint)}
 button:focus-visible,a:focus-visible{outline-color:var(--mint)}
-.network-status{background:#e8f7f4;color:#127c75}
-.network-status.offline{background:#fff2e6;color:#9b692d}
-.summary-tile{border-radius:15px}
+.network-status{background:#eaf7f5;color:#137d75}
 .summary-tile strong,.stat{color:var(--ink)}
-.summary-tile:first-child{border-top:3px solid var(--mint)}
-.summary-tile:nth-child(2){border-top:3px solid var(--coral)}
-.summary-tile:nth-child(3){border-top:3px solid var(--violet)}
-.positive{color:#10877f}.negative{color:#c45761}
-.hint,.settings-shortcut{background:#f1f9f7;color:#426d69}
-.tag,.sale-type.buy_now{background:#e8f7f3;color:#167d75}
-.tag.auction,.sale-type.auction{background:#fff3df;color:#936424}
-.tag.offer{background:#f0eafa;color:#7054a5}
-.compact-feed-toolbar .feed-search-wrap{background:white;border-color:var(--line)}
-.compact-feed-toolbar .feed-search-wrap:focus-within{border-color:var(--mint)}
-#deals .feed-card{background:white;border:1px solid var(--line);border-radius:16px;padding:14px;gap:10px;box-shadow:0 3px 16px #302b450a;overflow:hidden}
-#deals .feed-card:hover{box-shadow:0 6px 20px #302b4511;transform:none}
-#deals .feed-card .listing-detail{display:grid;grid-template-columns:minmax(160px,32%) minmax(0,1fr);gap:15px;align-items:start}
-#deals .feed-card .listing-gallery{background:#f8f7fa;border:1px solid #f0edf3;border-radius:12px;overflow:hidden}
-#deals .feed-card .listing-gallery .listing-image{width:100%;height:180px;object-fit:contain;background:transparent;border:0;padding:7px}
-#deals .feed-card .listing-info{display:flex;flex-direction:column;align-items:stretch;min-width:0;gap:9px}
-#deals .feed-card .listing-info>a{color:var(--ink);font-size:1rem;line-height:1.32;font-weight:750;overflow-wrap:anywhere}
-#deals .feed-card .listing-meta-line{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
-#deals .feed-card .listing-price-line{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;border:0;padding:3px 0}
-#deals .feed-card .listing-price{color:var(--ink);font-size:1.15rem}
-#deals .feed-card .price-label,#deals .feed-card .max-buy span,#deals .feed-card .deal-metrics small{color:var(--muted);font-size:.7rem}
-#deals .feed-card .deal-metrics{display:grid;grid-template-columns:1.25fr .75fr;gap:0;background:#f8f7fb;border:1px solid #efecf3;border-radius:11px;padding:11px 8px;margin:0}
-#deals .feed-card .deal-profit,#deals .feed-card .deal-roi{padding:0 10px;min-width:0}
-#deals .feed-card .deal-roi{border-left:1px solid #e7e2ed}
-#deals .feed-card .deal-metrics strong{font-size:1.24rem;line-height:1.2;overflow-wrap:anywhere}
-#deals .feed-card .deal-foot{border:0;padding:0;gap:8px}
-#deals .feed-card .decision.good{background:#e6f7f3;color:#127d75}
-#deals .feed-card .card-disclosures{border-top:1px solid var(--line);padding-top:9px}
-#deals .feed-card .card-disclosures summary{color:#666b80}
-#deals .feed-card .seller-description{background:#faf9fc;border-color:var(--line)}
-#deals .feed-card .open-listing{display:block;background:var(--violet);color:white!important;border-radius:10px;padding:11px;text-align:center;text-decoration:none}
-#deals .feed-card .open-listing:hover{background:#66529e}
-#deals .feed-card .photo-arrow{background:white;color:var(--violet);border:1px solid var(--line)}
-.bottom-nav{background:#ffffffef;border-color:var(--line)}
-@media(max-width:760px){#deals .feed-card{padding:12px}#deals .feed-card .listing-detail{grid-template-columns:108px minmax(0,1fr);gap:11px}#deals .feed-card .listing-gallery .listing-image{height:126px;padding:4px}#deals .feed-card .listing-info>a{font-size:.94rem}#deals .feed-card .deal-metrics{padding:8px 3px}#deals .feed-card .deal-profit,#deals .feed-card .deal-roi{padding:0 6px}#deals .feed-card .deal-metrics strong{font-size:1.05rem}#deals .feed-card .listing-price{font-size:1.04rem}}
-@media(max-width:390px){#deals .feed-card .listing-detail{grid-template-columns:88px minmax(0,1fr)}#deals .feed-card .listing-gallery .listing-image{height:108px}#deals .feed-card .deal-metrics strong{font-size:.98rem}}
+.positive{color:#138e85}.negative{color:#c55761}
+.hint,.settings-shortcut{background:#f1f8f6;color:#466c66}
+.compact-feed-toolbar .feed-search-wrap{background:#fff;border-color:var(--line)}
+#deals{max-width:1100px}
+#feed{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;align-items:start}
+#feed>.empty-state{grid-column:1/-1}
+#deals .feed-card{display:flex;flex-direction:column;min-width:0;margin:0;padding:0;gap:0;background:white;border:1px solid #e8e8ed;border-radius:18px;overflow:hidden;box-shadow:0 4px 20px #25233d0b;transition:box-shadow .15s}
+#deals .feed-card:hover{box-shadow:0 8px 25px #25233d14;transform:none}
+#deals .feed-card .listing-detail{display:flex;flex-direction:column;gap:0;min-width:0}
+#deals .feed-card .listing-gallery{border:0;border-radius:0;background:#f7f7f9;overflow:hidden}
+#deals .feed-card .listing-gallery .listing-image{display:block;width:100%;height:310px;object-fit:contain;background:transparent;border:0;border-radius:0;padding:16px}
+#deals .feed-card .photo-controls{padding:5px 15px 12px;margin:0;border:0}
+#deals .feed-card .photo-arrow{background:#fff;border:1px solid #e6e6ed;color:#63549b}
+#deals .feed-card .listing-info{display:flex;flex-direction:column;align-items:stretch;gap:12px;min-width:0;padding:20px 21px 10px}
+#deals .feed-card .listing-info>a{color:var(--ink);font-size:1.1rem;line-height:1.35;font-weight:750;overflow-wrap:anywhere}
+#deals .feed-card .listing-meta-line{display:flex;align-items:center;gap:6px 10px;flex-wrap:wrap}
+#deals .feed-card .listing-price-line{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;border:0;padding:0}
+#deals .feed-card .price-group,#deals .feed-card .market-group,#deals .feed-card .offer-scenario{display:flex;flex-direction:column;align-items:flex-start;gap:4px;min-width:0}
+#deals .feed-card .price-label,#deals .feed-card .deal-metrics small{color:#7a7f8d;font-size:.72rem;font-weight:550}
+#deals .feed-card .listing-price,#deals .feed-card .market-value{font-size:1.15rem;font-weight:750;color:var(--ink);line-height:1.2}
+#deals .feed-card .deal-metrics{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;background:transparent;border:0;border-radius:0;padding:0;margin:0}
+#deals .feed-card .deal-profit{display:flex;flex-direction:column;gap:4px;min-width:0}
+#deals .feed-card .deal-profit strong{font-size:1.9rem;letter-spacing:-.045em;line-height:1.1;color:var(--mint);overflow-wrap:anywhere}
+#deals .feed-card .deal-profit.negative strong{color:#c55761}
+#deals .feed-card .deal-roi{display:flex;flex-direction:column;gap:4px;min-width:0;padding:0;border:0;text-align:right}
+#deals .feed-card .deal-roi strong{font-size:1.13rem;color:var(--ink)}
+#deals .feed-card .deal-foot{border:0;padding:0;margin:0;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+#deals .feed-card .deal-foot .max-buy{display:none}
+#deals .feed-card .decision{border-radius:7px;padding:4px 7px}
+#deals .feed-card .card-disclosures{border-top:1px solid var(--line);padding-top:11px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+#deals .feed-card .card-disclosures details{min-width:0}
+#deals .feed-card .card-disclosures details[open]{grid-column:1/-1}
+#deals .feed-card .card-disclosures summary{color:#777b89;font-size:.75rem;white-space:normal}
+#deals .feed-card .seller-description{background:#fafafa;border-color:var(--line)}
+#deals .feed-card .open-listing{display:block;align-self:stretch;margin:10px 20px 20px;text-align:center;background:#7565ac;color:white!important;border-radius:10px;padding:13px;font-weight:750;text-decoration:none}
+#deals .feed-card .open-listing:hover{background:#66559f}
+.bottom-nav{background:#ffffffed;border-color:var(--line)}
+.bottom-nav button.bottom-create{color:var(--accent)}
+@media(max-width:760px){#feed{grid-template-columns:1fr;gap:16px}#deals .feed-card .listing-gallery .listing-image{height:290px;padding:14px}#deals .feed-card .listing-info{padding:17px 17px 8px;gap:11px}#deals .feed-card .open-listing{margin:10px 17px 17px}#deals .feed-card .deal-profit strong{font-size:1.7rem}}
+@media(max-width:390px){#deals .feed-card .listing-gallery .listing-image{height:245px}#deals .feed-card .listing-info>a{font-size:1.02rem}#deals .feed-card .deal-profit strong{font-size:1.5rem}}
 </style>
 </head><body><main><header><div class="brand"><span class="brand-mark" aria-hidden="true">◎</span><div><h1>Flipit</h1></div></div><span id="network-status" class="network-status" aria-live="polite">● Live feed</span></header><nav class="dashboard-nav" aria-label="Hovedmenu" role="tablist"><button type="button" role="tab" data-tab="overview" aria-selected="true">Overblik</button><button type="button" role="tab" data-tab="create" aria-selected="false">+ Opret Spotter</button><button type="button" role="tab" data-tab="deals" aria-selected="false">Fund</button><button type="button" role="tab" data-tab="spotters" aria-selected="false">Mine Spottere</button><button type="button" role="tab" data-tab="tools" aria-selected="false">Beregner</button><button type="button" role="tab" data-tab="settings" aria-selected="false">Indstillinger</button></nav><div id="install-tip" class="install-tip" hidden><span>📱 Gem Flipit på din iPhone: Tryk <strong>Del</strong> i Safari og vælg <strong>Føj til hjemmeskærm</strong>.</span><button type="button" id="dismiss-install" class="secondary" aria-label="Skjul vejledning">×</button></div><div data-panel="overview"><div class="page-heading"><div><span class="eyebrow">DASHBOARD</span><h2>Dine muligheder</h2></div><button type="button" id="overview-create">+ Ny Spotter</button></div><div class="summary-grid" aria-label="Dashboard overblik"><div class="summary-tile"><span>Spottere</span><strong id="summary-spotters">0</strong></div><div class="summary-tile"><span>Annoncer</span><strong id="summary-listings">—</strong></div><div class="summary-tile"><span>Matches</span><strong id="summary-matches">—</strong></div></div></div><section id="spotter-create" data-panel="create"><div class="section-head"><h2>Opret Spotter</h2><span class="eyebrow">01 / Opsætning</span></div><form id="form"><div class="grid">
 <div class="full"><label for="name">Præcist produkt</label><input id="name" required maxlength="120" placeholder="Fx Pokémon Blue til Game Boy"></div><div class="full"><label for="aliases">Alternative søgenavne (valgfrit)</label><input id="aliases" maxlength="300" placeholder="Fx Pokemon Blue, Pokémon Blå"><small>Adskil med komma. Brug kun navne for præcis samme produkt.</small></div><div class="full"><label for="excluded">Ord der skal udelukkes (valgfrit)</label><input id="excluded" maxlength="300" placeholder="Fx reproduction, repro, tom æske"><small>Matchende annoncer markeres som frasorteret.</small></div>
@@ -337,7 +337,7 @@ function openPhotoLightbox(photos,start){
     }
     if(hasTranslation){const original=el('details','','original-description');original.append(el('summary','Vis originaltekst'),el('p',originalDescription,'seller-description-text'));preview.append(original)}
   }else preview.append(el('p','Beskrivelse ikke tilgængelig i feedet – se den på Tradera.','seller-description-empty'));
-  const converted=listingDKK(listing);const priceLine=el('div','','listing-price-line');const priceGroup=el('div','','price-group');priceGroup.append(el('span',kind==='auction'||kind==='auction_buy_now'?'Aktuelt bud':'Køb nu','price-label'));const price=el('div',converted===null?'Pris ukendt':money(converted),'listing-price');priceGroup.append(price);priceLine.append(priceGroup);if(offerEligible&&converted!==null){const offer=el('div','','offer-scenario');offer.append(el('span','Forslag −25 %'),el('strong',money(converted*.75)));priceLine.append(offer)}info.append(priceLine);detail.append(info);card.append(detail);
+  const converted=listingDKK(listing);const priceLine=el('div','','listing-price-line');const priceGroup=el('div','','price-group');priceGroup.append(el('span',kind==='auction'||kind==='auction_buy_now'?'Aktuelt bud':'Køb nu','price-label'));const price=el('div',converted===null?'Pris ukendt':money(converted),'listing-price');priceGroup.append(price);priceLine.append(priceGroup);if(best){const marketGroup=el('div','','market-group');marketGroup.append(el('span','Markedsværdi','price-label'),el('strong',money(best.v.market),'market-value'));priceLine.append(marketGroup)}if(offerEligible&&converted!==null){const offer=el('div','','offer-scenario');offer.append(el('span','Forslag −25 %'),el('strong',money(converted*.75)));priceLine.append(offer)}info.append(priceLine);detail.append(info);card.append(detail);
   if(best){
    const {p,v}=best;
    const meets=v.eligible;
