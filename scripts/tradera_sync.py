@@ -239,7 +239,13 @@ def enrich(listings, headers):
             item["imageUrls"] = old["imageUrls"]
             item["imageUrl"] = old["imageUrls"][0]
     # Prioritize incomplete galleries: search results often contain only a cover photo.
-    pending.sort(key=lambda item: (len(item.get("imageUrls") or []) >= 2, bool(item.get("description"))))
+    # Rotate through incomplete listings instead of retrying the same first 40
+    # on every sync. An item checked most recently goes to the back of the queue.
+    pending.sort(key=lambda item: (
+        len(item.get("imageUrls") or []) >= 2,
+        previous.get(item["id"], {}).get("detailCheckedAt") or "",
+        item["id"],
+    ))
     for item in pending[:40]:
         request = urllib.request.Request(
             "https://api.tradera.com/v4/items/" + urllib.parse.quote(item["id"], safe=""),
