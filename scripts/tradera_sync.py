@@ -232,6 +232,12 @@ def enrich(listings, headers):
         elif (len(item.get("imageUrls") or []) < 2 or item.get("offersAllowed") is None
               or not item.get("description") or item["listingType"] == "unknown"):
             pending.append(item)
+    # Keep previously collected full galleries when a search response has only a thumbnail.
+    for item in listings.values():
+        old = previous.get(item["id"], {})
+        if len(old.get("imageUrls") or []) > len(item.get("imageUrls") or []):
+            item["imageUrls"] = old["imageUrls"]
+            item["imageUrl"] = old["imageUrls"][0]
     # Prioritize incomplete galleries: search results often contain only a cover photo.
     pending.sort(key=lambda item: (len(item.get("imageUrls") or []) >= 2, bool(item.get("description"))))
     for item in pending[:40]:
