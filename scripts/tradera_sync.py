@@ -227,8 +227,11 @@ def enrich(listings, headers):
                     if old.get(key) is not None:
                         item[key] = old[key]
             item["detailCheckedAt"] = checked
-        elif item.get("offersAllowed") is None or not item.get("description") or item["listingType"] == "unknown":
+        elif (len(item.get("imageUrls") or []) < 2 or item.get("offersAllowed") is None
+              or not item.get("description") or item["listingType"] == "unknown"):
             pending.append(item)
+    # Prioritize incomplete galleries: search results often contain only a cover photo.
+    pending.sort(key=lambda item: (len(item.get("imageUrls") or []) >= 2, bool(item.get("description"))))
     for item in pending[:40]:
         request = urllib.request.Request(
             "https://api.tradera.com/v4/items/" + urllib.parse.quote(item["id"], safe=""),
