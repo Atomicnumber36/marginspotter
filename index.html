@@ -143,7 +143,7 @@ function renderFeed(){
   return {listing,matches,best:evaluations[0]||null};
  }).filter(x=>!products.length||x.matches.length);
  const search=normalized($('feed-search').value),sort=$('feed-sort').value,typeFilter=$('feed-type').value;
- const visible=scored.filter(x=>{const kind=x.listing.listingType||'unknown';const typeMatches=typeFilter==='all'||(typeFilter==='buy_now'&&(kind==='buy_now'||kind==='auction_buy_now'))||(typeFilter==='auction'&&kind==='auction')||(typeFilter==='offers'&&x.listing.offersAllowed===true)||(typeFilter==='ended'&&kind==='ended');return typeMatches&&(!search||normalized(x.listing.title+' '+x.listing.query+' '+x.matches.map(p=>p.name).join(' ')).includes(search))});
+ const visible=scored.filter(x=>{const kind=x.listing.listingType||'unknown';const offerEligible=x.listing.offersAllowed===true||(kind==='buy_now'&&x.listing.offersAllowed!==false);const typeMatches=typeFilter==='all'||(typeFilter==='buy_now'&&(kind==='buy_now'||kind==='auction_buy_now'))||(typeFilter==='auction'&&kind==='auction')||(typeFilter==='offers'&&offerEligible)||(typeFilter==='ended'&&kind==='ended');return typeMatches&&(!search||normalized(x.listing.title+' '+x.listing.query+' '+x.matches.map(p=>p.name).join(' ')).includes(search))});
  visible.sort((a,b)=>sort==='roi'?(b.best?.v.roi??-Infinity)-(a.best?.v.roi??-Infinity):sort==='price'?(listingDKK(a.listing)??Infinity)-(listingDKK(b.listing)??Infinity):sort==='title'?String(a.listing.title).localeCompare(String(b.listing.title),'da'):(b.best?.v.profit??-Infinity)-(a.best?.v.profit??-Infinity));
  $('feed-count').textContent=visible.length+' af '+scored.length+' relevante annoncer';
  $('summary-matches').textContent=String(products.length?scored.length:0);
@@ -207,7 +207,7 @@ function openPhotoLightbox(photos,start){
   const types={auction:'Auktion',buy_now:'Køb nu',auction_buy_now:'Auktion · Køb nu',ended:'Afsluttet',unknown:'Type ukendt'};
   const tag=el('span',types[kind]||'Type ukendt','sale-type '+kind);info.append(tag);
   if(listing.endDate){const end=new Date(listing.endDate);if(Number.isFinite(end.getTime())){const ended=end.getTime()<Date.now();if(ended&&kind!=='ended')tag.textContent='Afsluttet';const label=ended?'Sluttede ':'Slutter ';info.append(el('span',label+end.toLocaleString('da-DK',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}),'sale-end'))}}
-  if(listing.offersAllowed===true)info.append(el('span','✓ Prisforslag muligt','sale-option offer-enabled'));
+  const offerEligible=listing.offersAllowed===true||(kind==='buy_now'&&listing.offersAllowed!==false);if(offerEligible)info.append(el('span',listing.offersAllowed===true?'✓ Prisforslag muligt':'Prisforslag normalt muligt · tjek Tradera','sale-option offer-enabled'));
   if(listing.purchaseRequestAllowed===true&&kind==='ended')info.append(el('span','Købsanmodning mulig','sale-option'));
   const description=typeof listing.description==='string'?listing.description.trim():'';
   const preview=el('div','','seller-description');
@@ -220,7 +220,7 @@ function openPhotoLightbox(photos,start){
       preview.append(toggle);
     }
   }else preview.append(el('p','Beskrivelse ikke tilgængelig i feedet – se den på Tradera.','seller-description-empty'));
-  const converted=listingDKK(listing);const price=el('div',converted===null?'Pris ukendt':money(converted),'listing-price');info.append(price);if(listing.offersAllowed===true&&converted!==null){const offer=el('div','','offer-scenario');offer.append(el('span','Ved 25 % lavere accepteret pris'),el('strong',money(converted*.75)));info.append(offer)}detail.append(info);card.append(detail);
+  const converted=listingDKK(listing);const price=el('div',converted===null?'Pris ukendt':money(converted),'listing-price');info.append(price);if(offerEligible&&converted!==null){const offer=el('div','','offer-scenario');offer.append(el('span','Ved 25 % lavere accepteret pris'),el('strong',money(converted*.75)));info.append(offer)}detail.append(info);card.append(detail);
   if(best){
    const {p,v}=best;
    const meets=v.profit>0&&v.roi!==null&&v.roi>=v.target;
