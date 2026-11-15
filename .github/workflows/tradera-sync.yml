@@ -27,13 +27,25 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Install offline translation models
+        run: |
+          pip install argostranslate
+          python - <<'PY'
+          import argostranslate.package
+          argostranslate.package.update_package_index()
+          packages = argostranslate.package.get_available_packages()
+          for source, target in (("sv", "da"), ("en", "da"), ("sv", "en")):
+              package = next((p for p in packages if p.from_code == source and p.to_code == target), None)
+              if package:
+                  argostranslate.package.install_from_path(package.download())
+              else:
+                  print(f"No direct model for {source}->{target}")
+          PY
       - name: Fetch read-only Tradera listings
         env:
           TRADERA_APP_ID: ${{ secrets.TRADERA_APP_ID || '7762' }}
           TRADERA_APP_KEY: ${{ secrets.TRADERA_APP_KEY }}
           TRADERA_TEST_QUERY: ${{ inputs.query }}
-          AZURE_TRANSLATOR_KEY: ${{ secrets.AZURE_TRANSLATOR_KEY }}
-          AZURE_TRANSLATOR_REGION: ${{ secrets.AZURE_TRANSLATOR_REGION }}
         run: python scripts/tradera_sync.py
       - name: Commit public feed if changed
         run: |
