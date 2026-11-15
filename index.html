@@ -220,6 +220,18 @@ button:focus-visible,a:focus-visible{outline-color:var(--mint)}
 #deals .feed-card:not(.expanded) .listing-gallery .listing-image{height:220px!important;max-height:220px!important}
 #deals .feed-card:not(.expanded) .offer-scenario{display:none}
 @media(max-width:760px){#deals .feed-card:not(.expanded) .listing-gallery .listing-image{height:200px!important;max-height:200px!important}}
+
+/* True full-screen listing detail; feed stays in place underneath. */
+body.deal-detail-open{overflow:hidden}
+.deal-detail-backdrop{position:fixed;inset:0;z-index:9997;background:#14121d99}
+#deals .feed-card.expanded{position:fixed!important;inset:0!important;z-index:9998!important;width:100%!important;height:100dvh!important;max-width:none!important;max-height:none!important;margin:0!important;padding:20px max(16px,calc((100vw - 720px)/2)) 90px!important;border-radius:0!important;overflow-y:auto!important;overscroll-behavior:contain;background:#fff!important;box-shadow:none!important;display:flex!important;flex-direction:column!important}
+#deals .feed-card.expanded .deal-expand{order:-1;position:sticky;top:0;z-index:3;align-self:stretch;width:100%;margin:0 0 16px;background:#fff;border:1px solid #d9d4e6;text-align:left}
+#deals .feed-card.expanded .listing-detail{display:flex!important;flex-direction:column!important;width:100%;gap:14px}
+#deals .feed-card.expanded .listing-gallery{width:100%}
+#deals .feed-card.expanded .listing-gallery .listing-image{height:min(52vh,440px)!important;max-height:440px!important}
+#deals .feed-card.expanded .listing-info{width:100%}
+#deals .feed-card.expanded .open-listing{margin:16px 0 0!important}
+@media(max-width:600px){#deals .feed-card.expanded{padding:12px 16px 72px!important}#deals .feed-card.expanded .listing-gallery .listing-image{height:36vh!important;max-height:320px!important}}
 </style>
 </head><body><main><header><div class="brand"><span class="brand-mark" aria-hidden="true">◎</span><div><h1>Flipit</h1></div></div><span id="network-status" class="network-status" aria-live="polite">● Live feed</span></header><nav class="dashboard-nav" aria-label="Hovedmenu" role="tablist"><button type="button" role="tab" data-tab="overview" aria-selected="true">Overblik</button><button type="button" role="tab" data-tab="create" aria-selected="false">+ Opret Spotter</button><button type="button" role="tab" data-tab="deals" aria-selected="false">Fund</button><button type="button" role="tab" data-tab="spotters" aria-selected="false">Mine Spottere</button><button type="button" role="tab" data-tab="tools" aria-selected="false">Beregner</button><button type="button" role="tab" data-tab="settings" aria-selected="false">Indstillinger</button></nav><div id="install-tip" class="install-tip" hidden><span>📱 Gem Flipit på din iPhone: Tryk <strong>Del</strong> i Safari og vælg <strong>Føj til hjemmeskærm</strong>.</span><button type="button" id="dismiss-install" class="secondary" aria-label="Skjul vejledning">×</button></div><div data-panel="overview"><div class="page-heading"><div><span class="eyebrow">DASHBOARD</span><h2>Dine muligheder</h2></div><button type="button" id="overview-create">+ Ny Spotter</button></div><div class="summary-grid" aria-label="Dashboard overblik"><div class="summary-tile"><span>Spottere</span><strong id="summary-spotters">0</strong></div><div class="summary-tile"><span>Annoncer</span><strong id="summary-listings">—</strong></div><div class="summary-tile"><span>Matches</span><strong id="summary-matches">—</strong></div></div></div><section id="spotter-create" data-panel="create"><div class="section-head"><h2>Opret Spotter</h2><span class="eyebrow">01 / Opsætning</span></div><form id="form"><div class="grid">
 <div class="full"><label for="name">Præcist produkt</label><input id="name" required maxlength="120" placeholder="Fx Pokémon Blue til Game Boy"></div><div class="full"><label for="aliases">Alternative søgenavne (valgfrit)</label><input id="aliases" maxlength="300" placeholder="Fx Pokemon Blue, Pokémon Blå"><small>Adskil med komma. Brug kun navne for præcis samme produkt.</small></div><div class="full"><label for="excluded">Ord der skal udelukkes (valgfrit)</label><input id="excluded" maxlength="300" placeholder="Fx reproduction, repro, tom æske"><small>Matchende annoncer markeres som frasorteret.</small></div>
@@ -425,7 +437,13 @@ function openPhotoLightbox(photos,start){
   }else {const extra=el('details','','seller-extra');extra.append(el('summary','Sælgers beskrivelse'),preview);info.append(el('div','Ingen beregning','muted'),extra)}
   const open=el('a','Åbn på Tradera ↗','open-listing');open.href=listing.url;open.target='_blank';open.rel='noopener noreferrer';card.append(open);
   const expand=el('button','Vis detaljer og beregning','deal-expand');expand.type='button';expand.setAttribute('aria-expanded','false');
-  expand.onclick=()=>{const expanded=card.classList.toggle('expanded');expand.setAttribute('aria-expanded',String(expanded));expand.textContent=expanded?'Skjul detaljer':'Vis detaljer og beregning'};
+  expand.onclick=()=>{
+    const overlay=document.createElement('div');overlay.className='deal-detail-backdrop';overlay.setAttribute('aria-hidden','true');
+    const previousFocus=document.activeElement;
+    const close=()=>{card.classList.remove('expanded');card.removeAttribute('role');card.removeAttribute('aria-modal');card.removeAttribute('aria-label');overlay.remove();document.body.classList.remove('deal-detail-open');document.removeEventListener('keydown',onKey);expand.setAttribute('aria-expanded','false');expand.textContent='Vis detaljer og beregning';previousFocus?.focus()};
+    const onKey=event=>{if(event.key==='Escape'){event.preventDefault();close()}else if(event.key==='Tab'){const controls=[...card.querySelectorAll('button:not([disabled]),a[href],summary,[tabindex="0"]')].filter(el=>el.getClientRects().length);if(!controls.length)return;const first=controls[0],last=controls[controls.length-1];if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus()}else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus()}}};
+    overlay.onclick=close;document.body.append(overlay);card.classList.add('expanded');card.setAttribute('role','dialog');card.setAttribute('aria-modal','true');card.setAttribute('aria-label','Announcedetaljer');document.body.classList.add('deal-detail-open');expand.setAttribute('aria-expanded','true');expand.textContent='← Tilbage til fund';document.addEventListener('keydown',onKey);card.scrollTop=0;expand.focus();
+  };
   card.append(expand);
   feed.append(card);
  }
