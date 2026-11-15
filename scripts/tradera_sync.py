@@ -258,6 +258,49 @@ def enrich(listings, headers):
             continue
 
 
+def translate_descriptions(listings, previous):
+    """Translate public seller descriptions server-side; retain original and cache translations."""
+    key = os.getenv("AZURE_TRANSLATOR_KEY", "").strip()
+    region = os.getenv("AZURE_TRANSLATOR_REGION", "").strip()
+    endpoint = os.getenv("AZURE_TRANSLATOR_ENDPOINT", "https://api.cognitive.microsofttranslator.com").rstrip("/")
+    pending = []
+    for item in listings.values():
+        original = item.get("description") or ""
+        old = previous.get(item["id"], {})
+        if not original:
+            continue
+        if old.get("description") == original and old.get("descriptionDa"):
+            item["descriptionDa"] = old["descriptionDa"]
+        else:
+            pending.append(item)
+    if not pending or not key or not region:
+        if pending:
+            print("Translation not configured; keeping original descriptions for", len(pending), "listings")
+        return
+    url = endpoint + "/translate?api-version=3.0&to=da"
+    for start in range(0, len(pending), 20):
+        batch = pending[start:start + 20]
+        body = json.dumps([{"text": item["description"][:4000]} for item in batch], ensure_ascii=False).encode("utf-8")
+        request = urllib.request.Request(url, data=body, method="POST", headers={
+            "Ocp-Apim-Subscription-Key": key,
+            "Ocp-Apim-Subscription-Region": region,
+            "Content-Type": "application/json; charset=UTF-8",
+            "Accept": "application/json",
+        })
+        try:
+            with urllib.request.urlopen(request, timeout=25) as response:
+                results = json.load(response)
+            if not isinstance(results, list) or len(results) != len(batch):
+                raise ValueError("Unexpected translation response")
+            for item, result in zip(batch, results):
+                translations = result.get("translations", []) if isinstance(result, dict) else []
+                translated = translations[0].get("text") if translations else None
+                if isinstance(translated, str) and translated.strip():
+                    item["descriptionDa"] = translated.strip()
+        except (urllib.error.URLError, ValueError, TimeoutError) as error:
+            print("Translation batch unavailable:", type(error).__name__)
+    print("Translated or reused", sum(bool(x.get("descriptionDa")) for x in listings.values()), "descriptions")
+
 def main():
     app_id, app_key = os.getenv("TRADERA_APP_ID"), os.getenv("TRADERA_APP_KEY")
     if not app_id or not app_key:
@@ -296,6 +339,7 @@ def main():
         previous = {str(x["id"]): x for x in json.loads(OUTPUT.read_text(encoding="utf-8")).get("listings", [])} if OUTPUT.exists() else {}
     except (ValueError, KeyError, TypeError):
         previous = {}
+    translate_descriptions(listings, previous)
     payload = {"updatedAt": dt.datetime.now(dt.timezone.utc).isoformat(), "status": "ok", "listings": list(listings.values())}
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
