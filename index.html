@@ -228,7 +228,7 @@ function openPhotoLightbox(photos,start){
       preview.append(toggle);
     }
   }else preview.append(el('p','Beskrivelse ikke tilgængelig i feedet – se den på Tradera.','seller-description-empty'));
-  const converted=listingDKK(listing);const priceLine=el('div','','listing-price-line');const price=el('div',converted===null?'Pris ukendt':money(converted),'listing-price');priceLine.append(price);if(offerEligible&&converted!==null){const offer=el('div','','offer-scenario');offer.append(el('span','Forslag −25 %'),el('strong',money(converted*.75)));priceLine.append(offer)}info.append(priceLine)detail.append(info);card.append(detail);
+  const converted=listingDKK(listing);const priceLine=el('div','','listing-price-line');const price=el('div',converted===null?'Pris ukendt':money(converted),'listing-price');priceLine.append(price);if(offerEligible&&converted!==null){const offer=el('div','','offer-scenario');offer.append(el('span','Forslag −25 %'),el('strong',money(converted*.75)));priceLine.append(offer)}info.append(priceLine);detail.append(info);card.append(detail);
   if(best){
    const {p,v}=best;
    const meets=v.profit>0&&v.roi!==null&&v.roi+0.000001>=v.target&&v.maxBid>=0;
