@@ -137,6 +137,42 @@ section,.item,.summary-tile,#deals .feed-card{background:#211936!important;borde
 #deals .feed-card .sale-type,#deals .feed-card .sale-option{background:#3b2b53!important;color:#e9d7f5!important}
 .network-status{background:#342449!important;border:1px solid #73518d!important;color:#a5f0eb!important}
 @media(max-width:760px){.bottom-nav{padding-top:8px!important}.bottom-nav button{padding:8px 1px!important;min-height:55px!important;border-radius:10px!important}.bottom-nav button span{font-size:1.25rem!important}.sync-progress{padding:13px!important}.feed-compact-select{min-width:0!important}}
+</style><style>
+/* Flipit clarity-first redesign */
+body{background:#151323!important;color:#f2edf7!important}
+main{max-width:980px!important}
+header{background:#211b32!important;border:1px solid #39304a!important;box-shadow:none!important;padding:22px 24px!important;border-radius:16px!important}
+header:after{display:none!important}header:before{content:"DIN DEAL-RADAR"!important;color:#a6d8d8!important;letter-spacing:.12em!important}
+header h1{font-size:clamp(2rem,6vw,3rem)!important;text-shadow:none!important;letter-spacing:-.04em!important;margin:6px 0!important}
+.dashboard-nav{background:#151323!important;border:0!important}
+.dashboard-nav button[aria-selected="true"]{background:#34283e!important;color:#f8d2eb!important;border-color:#5c435f!important;box-shadow:none!important}
+section{background:#201b2e!important;border:1px solid #3b3349!important;border-radius:15px!important;padding:19px!important;box-shadow:none!important}
+h2{font-size:1.12rem!important;letter-spacing:-.01em!important}
+.item,#deals .feed-card,.summary-tile{background:#292337!important;border:1px solid #40374e!important;box-shadow:none!important;border-radius:13px!important}
+.summary-tile{border-top:1px solid #51415c!important}
+button:not(.dashboard-nav button){box-shadow:none!important}
+.sync-progress{padding:10px 12px!important;background:#292337!important;border:1px solid #40374e!important;border-radius:11px!important;margin:10px 0 13px!important}
+.sync-progress>div:nth-child(2){height:4px!important;margin:7px 0 3px!important}
+#sync-stage{font-size:.84rem!important}#sync-status{font-size:.75rem!important;margin:4px 0!important}
+#sync-step-count{font-size:.72rem!important}
+.sync-progress .sync-launch{font-size:.74rem!important;padding:7px 9px!important}
+.feed-toolbar.compact-feed-toolbar{margin:12px 0 8px!important;gap:9px!important}
+.feed-search-wrap,.feed-compact-select{background:#292337!important;border:1px solid #4b405a!important;border-radius:10px!important}
+.feed-compact-select select{background:#292337!important}
+#feed-count,#live-search-status,#feed-status{font-size:.75rem!important;margin:5px 0!important}
+#deals .feed-card{padding:12px!important;gap:8px!important;margin:9px 0!important}
+#deals .feed-card .listing-info>a{font-size:.96rem!important;line-height:1.3!important}
+#deals .feed-card .listing-meta-line{gap:4px 7px!important}
+#deals .feed-card .deal-metrics{background:#211b30!important;border:0!important;border-radius:9px!important;padding:9px!important}
+#deals .feed-card .deal-foot{font-size:.76rem!important}
+#deals .feed-card .deal-foot>.muted{display:none!important}
+#deals .feed-card .seller-description,#deals .feed-card .original-description{font-size:.8rem!important}
+#deals .feed-card .deal-breakdown{margin-top:5px!important}
+#deals .feed-card .listing-price-line{gap:6px!important}
+.bottom-nav{background:#1c1829f5!important;border-top:1px solid #44374f!important}
+.bottom-nav button[aria-selected="true"]{background:#3b2b45!important;color:#f0c0df!important;border-color:#5d4566!important}
+@media(max-width:760px){main{padding:calc(10px + env(safe-area-inset-top)) 12px calc(100px + env(safe-area-inset-bottom))!important}header{padding:18px!important;margin-bottom:12px!important}header h1{font-size:2.3rem!important}section{padding:14px!important;margin-bottom:11px!important}.section-head{margin-bottom:10px!important}.sync-progress{margin-top:8px!important}.feed-controls{gap:7px!important}.feed-compact-select{padding:4px 6px!important}.bottom-nav button{font-size:.62rem!important}}
+@media(prefers-reduced-motion:no-preference){header{animation:none!important}}
 </style></head><body><main><header><div class="brand"><span class="brand-mark" aria-hidden="true">◎</span><div><h1>Flipit</h1></div></div><span id="network-status" class="network-status" aria-live="polite">● Live feed</span></header><nav class="dashboard-nav" aria-label="Hovedmenu" role="tablist"><button type="button" role="tab" data-tab="overview" aria-selected="true">Overblik</button><button type="button" role="tab" data-tab="create" aria-selected="false">+ Opret Spotter</button><button type="button" role="tab" data-tab="deals" aria-selected="false">Fund</button><button type="button" role="tab" data-tab="spotters" aria-selected="false">Mine Spottere</button><button type="button" role="tab" data-tab="tools" aria-selected="false">Beregner</button><button type="button" role="tab" data-tab="settings" aria-selected="false">Indstillinger</button></nav><div id="install-tip" class="install-tip" hidden><span>📱 Gem Flipit på din iPhone: Tryk <strong>Del</strong> i Safari og vælg <strong>Føj til hjemmeskærm</strong>.</span><button type="button" id="dismiss-install" class="secondary" aria-label="Skjul vejledning">×</button></div><div data-panel="overview"><div class="page-heading"><div><span class="eyebrow">DASHBOARD</span><h2>Dine muligheder</h2></div><button type="button" id="overview-create">+ Ny Spotter</button></div><div class="summary-grid" aria-label="Dashboard overblik"><div class="summary-tile"><span>Spottere</span><strong id="summary-spotters">0</strong></div><div class="summary-tile"><span>Annoncer</span><strong id="summary-listings">—</strong></div><div class="summary-tile"><span>Matches</span><strong id="summary-matches">—</strong></div></div></div><section id="spotter-create" data-panel="create"><div class="section-head"><h2>Opret Spotter</h2><span class="eyebrow">01 / Opsætning</span></div><form id="form"><div class="grid">
 <div class="full"><label for="name">Præcist produkt</label><input id="name" required maxlength="120" placeholder="Fx Pokémon Blue til Game Boy"></div><div class="full"><label for="aliases">Alternative søgenavne (valgfrit)</label><input id="aliases" maxlength="300" placeholder="Fx Pokemon Blue, Pokémon Blå"><small>Adskil med komma. Brug kun navne for præcis samme produkt.</small></div><div class="full"><label for="excluded">Ord der skal udelukkes (valgfrit)</label><input id="excluded" maxlength="300" placeholder="Fx reproduction, repro, tom æske"><small>Matchende annoncer markeres som frasorteret.</small></div>
 
