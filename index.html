@@ -264,11 +264,11 @@ function openPhotoLightbox(photos,start){
 }
 let lastFeedTimestamp=null;
 async function loadFeed(){try{
- const response=await fetch('./data/tradera-listings.json',{cache:'no-store'});
+ const response=await fetch('./data/tradera-listings.json?v=da-20261115',{cache:'no-store'});
  if(!response.ok)throw Error('Feed HTTP '+response.status);
  const data=await response.json();if(!Array.isArray(data.listings)||data.status!=='ok')throw Error('Feed ikke klar');
  lastFeedTimestamp=data.updatedAt||null;cachedListings=data.listings;$('summary-listings').textContent=String(cachedListings.length);
- $('feed-status').textContent=cachedListings.length+' annoncer · Opdateret '+(data.updatedAt?new Date(data.updatedAt).toLocaleTimeString('da-DK',{hour:'2-digit',minute:'2-digit'}):'ukendt');
+ $('feed-status').textContent=cachedListings.length+' annoncer · '+cachedListings.filter(x=>x.descriptionDa&&x.descriptionDa.trim()).length+' oversat til dansk · Opdateret '+(data.updatedAt?new Date(data.updatedAt).toLocaleTimeString('da-DK',{hour:'2-digit',minute:'2-digit'}):'ukendt');
  renderFeed();
  }catch(err){$('feed-status').textContent='Feed kunne ikke indlæses: '+err.message}}
 ['sek-rate','feed-shipping','feed-fees','feed-buffer'].forEach(id=>$(id).addEventListener('input',renderFeed));
