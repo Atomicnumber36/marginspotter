@@ -320,7 +320,7 @@ function openPhotoLightbox(photos,start){
     const img=document.createElement('img');img.alt='Annoncefoto: '+String(listing.title||'Tradera-annonce');img.loading='lazy';img.decoding='async';img.className='listing-image';
     let current=0;
     const counter=el('span','','photo-counter');
-    const show=index=>{current=(index+photos.length)%photos.length;img.src=photos[current];counter.textContent=(current+1)+' / '+photos.length};
+    const show=index=>{current=(index+photos.length)%photos.length;img.hidden=false;img.src=photos[current];counter.textContent=(current+1)+' / '+photos.length};
     img.onerror=()=>{if(current<photos.length-1)show(current+1);else{img.hidden=true;counter.textContent='Billede utilgængeligt'}};
     img.tabIndex=0;img.setAttribute('role','button');img.setAttribute('aria-label','Åbn billede i fuld skærm og zoom');img.onclick=()=>openPhotoLightbox(photos,current);img.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openPhotoLightbox(photos,current)}};
     gallery.append(img);
