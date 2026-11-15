@@ -32,6 +32,8 @@ jobs:
           TRADERA_APP_ID: ${{ secrets.TRADERA_APP_ID || '7762' }}
           TRADERA_APP_KEY: ${{ secrets.TRADERA_APP_KEY }}
           TRADERA_TEST_QUERY: ${{ inputs.query }}
+          AZURE_TRANSLATOR_KEY: ${{ secrets.AZURE_TRANSLATOR_KEY }}
+          AZURE_TRANSLATOR_REGION: ${{ secrets.AZURE_TRANSLATOR_REGION }}
         run: python scripts/tradera_sync.py
       - name: Commit public feed if changed
         run: |
