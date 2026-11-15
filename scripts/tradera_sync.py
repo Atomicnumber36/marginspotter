@@ -311,25 +311,39 @@ def main():
         print("No configured watchlist queries; existing feed unchanged")
         return
     listings = {}
+    # Fetch more than the first result page: newly listed bargains can otherwise
+    # be missed when a popular search produces many results.
     for query in queries[:20]:
-        url = BASE + "?" + urllib.parse.urlencode({"query": query, "pageNumber": 1})
-        request = urllib.request.Request(url, headers={"X-App-Id": app_id, "X-App-Key": app_key, "Accept": "application/json", "User-Agent": "MarginSpotter/0.1"})
-        try:
-            with urllib.request.urlopen(request, timeout=25) as response:
-                data = json.load(response)
-        except urllib.error.HTTPError as error:
-            sys.exit("Tradera search failed with HTTP " + str(error.code) + "; existing feed unchanged")
-        if isinstance(data, dict) and data.get("errors"):
-            sys.exit("Tradera search returned API errors; existing feed unchanged: " + json.dumps(data["errors"], ensure_ascii=False)[:500])
-        candidates = data if isinstance(data, list) else pick(data, "items", "results", "searchResults", "itemList")
-        if isinstance(candidates, dict):
-            candidates = pick(candidates, "items", "results")
-        if not isinstance(candidates, list):
-            sys.exit("Unexpected Tradera search response; existing feed unchanged")
-        for raw in candidates:
-            listing = normalize(raw, query)
-            if listing:
-                listings[listing["id"]] = listing
+        for page in range(1, 4):
+            url = BASE + "?" + urllib.parse.urlencode({"query": query, "pageNumber": page})
+            request = urllib.request.Request(url, headers={"X-App-Id": app_id, "X-App-Key": app_key, "Accept": "application/json", "User-Agent": "MarginSpotter/0.1"})
+            try:
+                with urllib.request.urlopen(request, timeout=25) as response:
+                    data = json.load(response)
+            except urllib.error.HTTPError as error:
+                # A later page failing should not erase listings already found.
+                if page > 1:
+                    print("Additional Tradera page failed:", query, page, error.code)
+                    break
+                sys.exit("Tradera search failed with HTTP " + str(error.code) + "; existing feed unchanged")
+            if isinstance(data, dict) and data.get("errors"):
+                if page > 1:
+                    print("Additional Tradera page returned errors:", query, page)
+                    break
+                sys.exit("Tradera search returned API errors; existing feed unchanged: " + json.dumps(data["errors"], ensure_ascii=False)[:500])
+            candidates = data if isinstance(data, list) else pick(data, "items", "results", "searchResults", "itemList")
+            if isinstance(candidates, dict):
+                candidates = pick(candidates, "items", "results")
+            if not isinstance(candidates, list):
+                if page > 1:
+                    break
+                sys.exit("Unexpected Tradera search response; existing feed unchanged")
+            if not candidates:
+                break
+            for raw in candidates:
+                listing = normalize(raw, query)
+                if listing:
+                    listings[listing["id"]] = listing
     enrich(listings, {"X-App-Id": app_id, "X-App-Key": app_key, "Accept": "application/json", "User-Agent": "MarginSpotter/0.1"})
     try:
         previous = {str(x["id"]): x for x in json.loads(OUTPUT.read_text(encoding="utf-8")).get("listings", [])} if OUTPUT.exists() else {}
