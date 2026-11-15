@@ -451,6 +451,17 @@ function activateTab(tab){
  window.scrollTo({top:0,behavior:'auto'});
 }
 document.querySelectorAll('[data-tab]').forEach(button=>button.addEventListener('click',()=>activateTab(button.dataset.tab)));
+// Keyboard navigation works consistently across all six app sections.
+const appTabs=[...document.querySelectorAll('[data-tab]')];
+appTabs.forEach((button,index)=>button.addEventListener('keydown',event=>{
+ if(!['ArrowRight','ArrowLeft','Home','End'].includes(event.key))return;
+ event.preventDefault();
+ const target=event.key==='Home'?0:event.key==='End'?appTabs.length-1:(index+(event.key==='ArrowRight'?1:-1)+appTabs.length)%appTabs.length;
+ const next=appTabs[target];
+ activateTab(next.dataset.tab);
+ next.focus();
+}));
+
 $('overview-create').addEventListener('click',()=>activateTab('create'));
 $('open-calculator').addEventListener('click',()=>activateTab('tools'));
 window.addEventListener('hashchange',()=>activateTab(location.hash.slice(1)));
