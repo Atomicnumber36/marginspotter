@@ -202,6 +202,24 @@ button:focus-visible,a:focus-visible{outline-color:var(--mint)}
 #deals .feed-card .deal-profit,#deals .feed-card .deal-roi{min-width:0;overflow-wrap:anywhere}
 #deals .feed-card .deal-profit strong,#deals .feed-card .deal-roi strong{line-height:1.2}
 @media(max-width:390px){#deals .feed-card .price-group,#deals .feed-card .market-group{padding:10px}}
+
+/* Browse-first cards: concise summary until the user opens a listing. */
+#deals .feed-card{position:relative}
+#deals .feed-card .deal-expand{display:block;width:calc(100% - 34px);margin:8px 17px 17px;padding:12px 14px;border:1px solid #c9c2df;border-radius:11px;background:#f5f2fc;color:#59478b;font:inherit;font-size:.88rem;font-weight:750;cursor:pointer}
+#deals .feed-card .deal-expand:focus-visible{outline:3px solid #6b55c8;outline-offset:2px}
+#deals .feed-card:not(.expanded) .listing-meta-line,
+#deals .feed-card:not(.expanded) .listing-info .deal-scenario,
+#deals .feed-card:not(.expanded) .listing-info .deal-foot,
+#deals .feed-card:not(.expanded) .listing-info .card-disclosures,
+#deals .feed-card:not(.expanded) .listing-info .seller-extra,
+#deals .feed-card:not(.expanded) .listing-gallery .photo-controls,
+#deals .feed-card:not(.expanded) .deal-roi,
+#deals .feed-card:not(.expanded) .open-listing{display:none!important}
+#deals .feed-card:not(.expanded) .listing-info{gap:9px}
+#deals .feed-card:not(.expanded) .deal-metrics{grid-template-columns:minmax(0,1fr)}
+#deals .feed-card:not(.expanded) .listing-gallery .listing-image{height:220px!important;max-height:220px!important}
+#deals .feed-card:not(.expanded) .offer-scenario{display:none}
+@media(max-width:760px){#deals .feed-card:not(.expanded) .listing-gallery .listing-image{height:200px!important;max-height:200px!important}}
 </style>
 </head><body><main><header><div class="brand"><span class="brand-mark" aria-hidden="true">◎</span><div><h1>Flipit</h1></div></div><span id="network-status" class="network-status" aria-live="polite">● Live feed</span></header><nav class="dashboard-nav" aria-label="Hovedmenu" role="tablist"><button type="button" role="tab" data-tab="overview" aria-selected="true">Overblik</button><button type="button" role="tab" data-tab="create" aria-selected="false">+ Opret Spotter</button><button type="button" role="tab" data-tab="deals" aria-selected="false">Fund</button><button type="button" role="tab" data-tab="spotters" aria-selected="false">Mine Spottere</button><button type="button" role="tab" data-tab="tools" aria-selected="false">Beregner</button><button type="button" role="tab" data-tab="settings" aria-selected="false">Indstillinger</button></nav><div id="install-tip" class="install-tip" hidden><span>📱 Gem Flipit på din iPhone: Tryk <strong>Del</strong> i Safari og vælg <strong>Føj til hjemmeskærm</strong>.</span><button type="button" id="dismiss-install" class="secondary" aria-label="Skjul vejledning">×</button></div><div data-panel="overview"><div class="page-heading"><div><span class="eyebrow">DASHBOARD</span><h2>Dine muligheder</h2></div><button type="button" id="overview-create">+ Ny Spotter</button></div><div class="summary-grid" aria-label="Dashboard overblik"><div class="summary-tile"><span>Spottere</span><strong id="summary-spotters">0</strong></div><div class="summary-tile"><span>Annoncer</span><strong id="summary-listings">—</strong></div><div class="summary-tile"><span>Matches</span><strong id="summary-matches">—</strong></div></div></div><section id="spotter-create" data-panel="create"><div class="section-head"><h2>Opret Spotter</h2><span class="eyebrow">01 / Opsætning</span></div><form id="form"><div class="grid">
 <div class="full"><label for="name">Præcist produkt</label><input id="name" required maxlength="120" placeholder="Fx Pokémon Blue til Game Boy"></div><div class="full"><label for="aliases">Alternative søgenavne (valgfrit)</label><input id="aliases" maxlength="300" placeholder="Fx Pokemon Blue, Pokémon Blå"><small>Adskil med komma. Brug kun navne for præcis samme produkt.</small></div><div class="full"><label for="excluded">Ord der skal udelukkes (valgfrit)</label><input id="excluded" maxlength="300" placeholder="Fx reproduction, repro, tom æske"><small>Matchende annoncer markeres som frasorteret.</small></div>
@@ -405,7 +423,10 @@ function openPhotoLightbox(photos,start){
    breakdown.append(rows,el('p','Beregnet ved den aktuelle annoncepris eller budpris. Auktionens slutpris kan stige, og markedsværdien er din egen indtastede referencepris – ikke verificerede eBay-salg. Alle beløb er DKK.','muted'));
    const extra=el('details','','seller-extra');extra.append(el('summary','Sælgers beskrivelse'),preview);const disclosures=el('div','','card-disclosures');disclosures.append(breakdown,extra);info.append(disclosures);
   }else {const extra=el('details','','seller-extra');extra.append(el('summary','Sælgers beskrivelse'),preview);info.append(el('div','Ingen beregning','muted'),extra)}
-  const open=el('a','Se annonce ↗','open-listing');open.href=listing.url;open.target='_blank';open.rel='noopener noreferrer';card.append(open);
+  const open=el('a','Åbn på Tradera ↗','open-listing');open.href=listing.url;open.target='_blank';open.rel='noopener noreferrer';card.append(open);
+  const expand=el('button','Vis detaljer og beregning','deal-expand');expand.type='button';expand.setAttribute('aria-expanded','false');
+  expand.onclick=()=>{const expanded=card.classList.toggle('expanded');expand.setAttribute('aria-expanded',String(expanded));expand.textContent=expanded?'Skjul detaljer':'Vis detaljer og beregning'};
+  card.append(expand);
   feed.append(card);
  }
  if(!visible.length){const empty=el('div','','empty-state');empty.append(el('h3',search?'Ingen annoncer passer til søgningen':products.length?'Ingen matches endnu':'Dine fund vises her'),el('p',search?'Prøv et andet søgeord eller ryd søgefeltet.':products.length?'Der er ingen annoncer, som matcher dine Spottere lige nu.':'Opret en Spotter med produktnavn og manuel markedspris for at komme i gang.'));const action=el('button',products.length?'Se mine Spottere':'+ Opret Spotter','secondary');action.onclick=()=>activateTab(products.length?'spotters':'create');empty.append(action);feed.append(empty)}
