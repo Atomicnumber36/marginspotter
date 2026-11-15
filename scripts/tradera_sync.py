@@ -221,7 +221,9 @@ def enrich(listings, headers):
                 recent = (now - dt.datetime.fromisoformat(checked.replace("Z", "+00:00"))).total_seconds() < 12 * 3600
             except (ValueError, TypeError):
                 pass
-        if recent:
+        # A recent detail check must not suppress a retry when the gallery is incomplete.
+        # Search results commonly include only the cover image.
+        if recent and len(old.get("imageUrls") or []) >= 2:
             for key in keys:
                 if item.get(key) is None or (key == "imageUrls" and not item.get(key)) or (key == "description" and not item.get(key)) or (key == "listingType" and item[key] == "unknown"):
                     if old.get(key) is not None:
