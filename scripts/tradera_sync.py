@@ -95,7 +95,7 @@ def listing_type(item):
     bid_count = amount(pick(item, "bidCount", "BidCount", "numberOfBids", "NumberOfBids", "totalBids", "TotalBids"))
     buy_flag = flag(item, "isBuyItNow", "IsBuyItNow", "buyItNow", "BuyItNow")
     auction_flag = flag(item, "isAuction", "IsAuction")
-    offer_flag = flag(item, "acceptsOffers", "AcceptsOffers", "allowOffers", "AllowOffers", "isMakeOfferEnabled", "IsMakeOfferEnabled", "canMakeOffer", "CanMakeOffer")
+    offer_flag = flag(item, "acceptsOffers", "AcceptsOffers", "allowOffers", "AllowOffers", "isMakeOfferEnabled", "IsMakeOfferEnabled", "canMakeOffer", "CanMakeOffer", "isPriceSuggestionEnabled", "IsPriceSuggestionEnabled", "priceSuggestionEnabled", "PriceSuggestionEnabled", "allowPriceSuggestions", "AllowPriceSuggestions", "acceptPriceSuggestions", "AcceptPriceSuggestions", "canSuggestPrice", "CanSuggestPrice", "isNegotiable", "IsNegotiable")
     request_flag = flag(item, "canSendPurchaseRequest", "CanSendPurchaseRequest", "acceptsPurchaseRequests", "AcceptsPurchaseRequests", "canRequestPurchase", "CanRequestPurchase")
     ended_flag = flag(item, "isEnded", "IsEnded", "isClosed", "IsClosed", "hasEnded", "HasEnded")
     status = pick(item, "status", "Status", "itemStatus", "ItemStatus")
@@ -114,10 +114,11 @@ def listing_type(item):
     has_suggested_label = isinstance(suggested_label, str) and any(
         term in suggested_label.lower() for term in ("föreslå pris", "föreslaget pris", "foresla pris", "suggested price", "make offer"))
     auction_evidence = auction_flag is True or bid is not None or next_bid is not None or start_price is not None or (bid_count is not None and bid_count > 0)
-    if (suggested is not None or has_suggested_label) and not auction_evidence:
-        buy_flag = True
+    if suggested is not None or has_suggested_label:
         if offer_flag is None:
             offer_flag = True
+        if not auction_evidence:
+            buy_flag = True
     if type_code == 3:
         kind = "buy_now"
     elif type_code == 1:
@@ -226,7 +227,7 @@ def enrich(listings, headers):
                     if old.get(key) is not None:
                         item[key] = old[key]
             item["detailCheckedAt"] = checked
-        elif not item.get("description") or item["listingType"] == "unknown":
+        elif item.get("offersAllowed") is None or not item.get("description") or item["listingType"] == "unknown":
             pending.append(item)
     for item in pending[:40]:
         request = urllib.request.Request(
