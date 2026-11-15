@@ -254,7 +254,9 @@ def enrich(listings, headers):
         previous.get(item["id"], {}).get("detailCheckedAt") or "",
         item["id"],
     ))
-    for item in pending[:40]:
+    batch_limit = max(1, min(int(os.getenv("TRADERA_DETAIL_BATCH_SIZE", "100")), 150))
+    print(f"Tradera detail enrichment: {len(pending)} candidates, processing up to {batch_limit}")
+    for item in pending[:batch_limit]:
         request = urllib.request.Request(
             "https://api.tradera.com/v4/items/" + urllib.parse.quote(item["id"], safe=""),
             headers=headers)
@@ -279,7 +281,14 @@ def enrich(listings, headers):
                 if item.get("description"):
                     item["condition"] = condition_signals(item["description"])
                 item["detailCheckedAt"] = now.isoformat()
-        except (urllib.error.URLError, ValueError, TimeoutError):
+        except urllib.error.HTTPError as error:
+            if error.code == 429:
+                print("Tradera detail rate limit reached; remaining items will be retried next sync")
+                break
+            print("Tradera detail request failed:", item["id"], error.code)
+            continue
+        except (urllib.error.URLError, ValueError, TimeoutError) as error:
+            print("Tradera detail request failed:", item["id"], type(error).__name__)
             continue
 
 
