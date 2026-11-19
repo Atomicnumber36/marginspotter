@@ -28,3 +28,5 @@ jobs:
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
+
+# Fresh workflow run to avoid duplicate artifacts from rerun attempts.
