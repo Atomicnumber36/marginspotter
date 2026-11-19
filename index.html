@@ -74,13 +74,14 @@ function render(){
   const valuationKey='flipit-market-value-'+String(item.id);
   const stored=localStorage.getItem(valuationKey);
   const valuation=el('details','valuation-details');
-  const summary=el('summary','evaluation valuation-trigger',stored!==null&&Number(stored)>0?'Prisvurdering':'Ikke prisvurderet');
+  const valuationLabel=amount=>{if(!Number.isFinite(amount)||amount<=0)return 'Ikke prisvurderet';const freight=item.shipping==null?null:Number(item.shipping);const maxBid=sekToDkk!==null&&freight!==null?Math.floor(amount/1.2-freight*sekToDkk):null;return 'Værdi: '+money(amount)+' kr.'+(maxBid===null?'':' · Maksbud: '+money(Math.max(0,maxBid))+' kr.')};
+  const summary=el('summary','evaluation valuation-trigger',valuationLabel(Number(stored)));
   const editor=el('form','valuation-editor');
   const valueInput=el('input');valueInput.type='number';valueInput.min='1';valueInput.step='1';valueInput.inputMode='decimal';valueInput.required=true;valueInput.placeholder='Beløb i kr.';valueInput.setAttribute('aria-label','Forventet markedsværdi i kroner');valueInput.value=stored||'';
   const confirm=el('button','','OK');confirm.type='submit';
   editor.append(valueInput,confirm);valuation.append(summary,editor);
   prices.append(left,valuation);body.append(prices);
-  editor.addEventListener('submit',event=>{event.preventDefault();const amount=Number(valueInput.value);if(!Number.isFinite(amount)||amount<=0)return;localStorage.setItem(valuationKey,String(amount));summary.textContent='Prisvurdering';valuation.open=false});
+  editor.addEventListener('submit',event=>{event.preventDefault();const amount=Number(valueInput.value);if(!Number.isFinite(amount)||amount<=0)return;localStorage.setItem(valuationKey,String(amount));summary.textContent=valuationLabel(amount);valuation.open=false});
   const meta=[];if(item.shipping!=null)meta.push('Fragt: '+dkk(Number(item.shipping)));else meta.push('Fragt ikke oplyst');if(item.endDate){const d=new Date(item.endDate);if(!isNaN(d))meta.push('Slutter '+d.toLocaleDateString('da-DK',{day:'numeric',month:'short'}))}body.append(el('p','sub',meta.join(' · ')));
   const desc=String(item.descriptionDa||item.description||'').trim();if(desc){const details=el('div','description'),preview=el('p','description-text',desc),toggle=el('button','description-toggle','Vis mere');toggle.type='button';toggle.setAttribute('aria-expanded','false');details.append(preview);if(desc.length>160){details.append(toggle);toggle.addEventListener('click',()=>{const expanded=details.classList.toggle('expanded');toggle.textContent=expanded?'Vis mindre':'Vis mere';toggle.setAttribute('aria-expanded',String(expanded))})}else details.classList.add('expanded');body.append(details)}
   const a=el('a','cta','Se annonce på Tradera');a.href=url;a.target='_blank';a.rel='noopener noreferrer';body.append(a);post.append(body);fragment.append(post);
