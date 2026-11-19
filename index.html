@@ -84,7 +84,9 @@ function render(){
     if(sekToDkk===null||item.price==null||!Number.isFinite(price)){evaluation.textContent='Afventer pris';valuationResult.textContent='Kan ikke beregne fortjeneste uden en gyldig købspris og valutakurs.';return}
     const cost=price*sekToDkk+(shipping===null?0:shipping*sekToDkk),profit=market-cost,roi=cost>0?profit/cost*100:null;
     evaluation.textContent=roi===null?'Kan ikke beregnes':(roi>=20?'20%+ potentiale':roi>=0?'Positivt potentiale':'Muligt tab');
-    valuationResult.textContent='Fortjeneste: '+money(Math.round(profit))+' kr. · ROI: '+(roi===null?'ukendt':new Intl.NumberFormat('da-DK',{maximumFractionDigits:1}).format(roi)+' %')+(shipping===null?' · Fragt ikke medregnet':'');
+    const maxTotal=market/1.20,maxBid=shipping===null?null:Math.floor(maxTotal-shipping*sekToDkk);
+    evaluation.textContent=shipping===null?'Afventer fragt':roi>=20?'Opfylder 20 % ROI':'Under 20 % ROI';
+    valuationResult.textContent='Fortjeneste: '+money(Math.round(profit))+' kr. · ROI: '+(roi===null?'ukendt':new Intl.NumberFormat('da-DK',{maximumFractionDigits:1}).format(roi)+' %')+' · Maks. samlet købspris for 20 % ROI: '+money(Math.floor(maxTotal))+' kr.'+(maxBid===null?' · Maksbud afventer fragtpris':' · Maksbud ekskl. fragt: '+money(maxBid)+' kr.')+(shipping===null?' · Fragt ikke medregnet i aktuel ROI':'');
   };
   valueInput.addEventListener('input',()=>{if(valueInput.value.trim())localStorage.setItem(valuationKey,valueInput.value);else localStorage.removeItem(valuationKey);calculate()});
   valueLabel.append(valueInput);valuation.append(valueLabel,valuationResult);body.append(valuation);calculate();
