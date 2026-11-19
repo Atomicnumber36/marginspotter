@@ -27,6 +27,8 @@ header{background:#000f;border-bottom:1px solid #252525}
 @media(min-width:600px){.post{border-color:#292929}}
 /* Full-bleed original FlipIt banner across the entire top area */
 header{background:transparent;border-bottom:0;backdrop-filter:none}.bar{max-width:none;width:100%;padding:0;gap:0;display:block}.logo{display:block;width:100%;height:auto;max-height:none;object-fit:cover;object-position:center}.status{display:none}
+/* Blend the black iPhone top area smoothly into the existing banner without changing its image or layout. */
+header{background:#000;isolation:isolate}header::after{content:"";position:absolute;inset:0 0 auto 0;height:65%;background:linear-gradient(to bottom,#000 0%,rgba(0,0,0,.92) 12%,rgba(0,0,0,.56) 38%,rgba(0,0,0,0) 100%);pointer-events:none;z-index:1}
 </style></head><body>
 <header><div class="bar"><img class="logo" src="./F97B4345-B8FB-45DE-92E1-26DC290785DB.png" alt="Flipit"><span class="status" id="status"><span class="dot"></span>Indlæser fund…</span></div></header>
 <main class="wrap"><div class="intro"><h1>Udforsk</h1><span class="count" id="count"></span></div><input class="search" id="search" type="search" placeholder="Søg efter spil eller konsol…" aria-label="Søg i fund">
