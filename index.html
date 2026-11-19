@@ -74,7 +74,17 @@ function render(){
   const valuationKey='flipit-market-value-'+String(item.id);
   const stored=localStorage.getItem(valuationKey);
   const valuation=el('details','valuation-details');
-  const valuationLabel=amount=>{if(!Number.isFinite(amount)||amount<=0)return 'Ikke prisvurderet';const freight=item.shipping==null?null:Number(item.shipping);const maxBid=sekToDkk!==null&&freight!==null?Math.floor(amount/1.2-freight*sekToDkk):null;return 'Værdi: '+money(amount)+' kr.'+(maxBid===null?'':' · Maksbud: '+money(Math.max(0,maxBid))+' kr.')};
+  const valuationLabel=amount=>{
+    if(!Number.isFinite(amount)||amount<=0)return 'Ikke prisvurderet';
+    if(sekToDkk===null||item.price==null||!Number.isFinite(Number(item.price)))return 'Vurdering afventer kurs';
+    const freight=item.shipping==null?null:Number(item.shipping);
+    const cost=(Number(item.price)+(freight===null?0:freight))*sekToDkk;
+    if(!Number.isFinite(cost)||cost<=0)return 'Pris ukendt';
+    const roi=(amount-cost)/cost*100;
+    const pct=new Intl.NumberFormat('da-DK',{maximumFractionDigits:0}).format(roi)+' %';
+    if(freight===null)return 'Foreløbig ROI: '+pct+' (uden fragt)';
+    return (roi>=20?'God handel':'Under 20 % mål')+' · ROI '+pct;
+  };
   const summary=el('summary','evaluation valuation-trigger',valuationLabel(Number(stored)));
   const editor=el('form','valuation-editor');
   const valueInput=el('input');valueInput.type='number';valueInput.min='1';valueInput.step='1';valueInput.inputMode='decimal';valueInput.required=true;valueInput.placeholder='Beløb i kr.';valueInput.setAttribute('aria-label','Forventet markedsværdi i kroner');valueInput.value=stored||'';
