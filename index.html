@@ -25,16 +25,14 @@ header{background:#000f;border-bottom:1px solid #252525}
 .cta{background:#238657;color:#fff}.empty{background:#111;border-color:#303030;color:#bbb}
 .footnote{color:#999}.lightbox{background:#000f}
 @media(min-width:600px){.post{border-color:#292929}}
-/* Banner belongs to the same scroll document as the feed and stays pinned at its top. */
-html{background:#fff}body{margin:0;background:#fff}
-.wrap{padding-top:0!important}
-.wrap>header{position:sticky;top:0;z-index:20;display:block;width:100vw;max-width:none;margin:0 0 0 calc(50% - 50vw);padding:0;border:0;background:transparent;backdrop-filter:none;overflow:visible}
-.wrap>header .bar{position:relative;display:block;width:100%;height:auto;max-width:none;margin:0;padding:0}
-.wrap>header .logo{position:relative;display:block;width:100%;height:auto;max-height:none;object-fit:contain;visibility:visible}
-.wrap>header .status{display:none}
+/* Restore fixed top banner using the uploaded original image. */
+header{position:sticky;top:0;z-index:20;background:#fff;border:0;backdrop-filter:none;margin:0;padding:0}
+header .bar{max-width:none;width:100%;display:block;padding:0;margin:0}
+header .logo{display:block;width:100%;height:auto;max-height:none;object-fit:contain;visibility:visible}
+header .status{display:none}
 </style></head><body>
-<main class="wrap">
-<header><div class="bar"><img class="logo" src="./F97B4345-B8FB-45DE-92E1-26DC290785DB.png" alt="Flipit"><span class="status" id="status"><span class="dot"></span>Indlæser fund…</span></div></header><div class="intro"><h1>Udforsk</h1><span class="count" id="count"></span></div><input class="search" id="search" type="search" placeholder="Søg efter spil eller konsol…" aria-label="Søg i fund">
+<header><div class="bar"><img class="logo" src="./F97B4345-B8FB-45DE-92E1-26DC290785DB.png" alt="Flipit"><span class="status" id="status"><span class="dot"></span>Indlæser fund…</span></div></header>
+<main class="wrap"><div class="intro"><h1>Udforsk</h1><span class="count" id="count"></span></div><input class="search" id="search" type="search" placeholder="Søg efter spil eller konsol…" aria-label="Søg i fund">
 <div class="feed" id="feed" aria-live="polite"><div class="empty">Henter annoncer fra Tradera…</div></div>
 <p class="footnote">Annoncerne er endnu ikke verificeret som gode handler. Prisvurdering og beregning af maksbud tilføjes, når vi har pålidelige markedspriser. Køb gennemføres kun på Tradera.</p></main>
 <script>
