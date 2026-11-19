@@ -176,6 +176,34 @@ def description_text(item):
     return ""
 
 
+def shipping_price(item):
+    """Read an explicitly quoted shipping amount; never guess from a shipping method."""
+    candidates = [
+        pick(item, "shippingPrice", "ShippingPrice", "shippingCost", "ShippingCost",
+             "shippingFee", "ShippingFee", "freightPrice", "FreightPrice",
+             "freightCost", "FreightCost", "shipping", "Shipping"),
+        pick(item, "shippingOptions", "ShippingOptions", "shippingMethods",
+             "ShippingMethods", "deliveryOptions", "DeliveryOptions"),
+    ]
+    def extract(value):
+        if isinstance(value, (int, float)):
+            return amount(value)
+        if isinstance(value, dict):
+            direct = pick(value, "price", "Price", "cost", "Cost", "fee", "Fee",
+                          "shippingPrice", "ShippingPrice", "shippingCost", "ShippingCost",
+                          "amount", "Amount")
+            return amount(direct)
+        if isinstance(value, list):
+            prices = [extract(v) for v in value]
+            prices = [v for v in prices if v is not None and v >= 0]
+            return min(prices) if prices else None
+        return None
+    for candidate in candidates:
+        value = extract(candidate)
+        if value is not None and value >= 0:
+            return value
+    return None
+
 def normalize(item, query):
     if not isinstance(item, dict):
         return None
@@ -197,7 +225,7 @@ def normalize(item, query):
     raw_url = pick(item, "itemUrl", "url", "link")
     url = raw_url if isinstance(raw_url, str) and raw_url.startswith("https://www.tradera.com/") else "https://www.tradera.com/item/" + str(item_id)
     return {"id": str(item_id), "query": query, "title": str(title), "url": url,
-            "price": price, "currency": "SEK", "shipping": None,
+            "price": price, "currency": "SEK", "shipping": shipping_price(item),
             "pricingStatus": "unverified", "source": "Tradera",
             "imageUrl": image_url(item), "imageUrls": image_urls(item), "description": description_text(item), "condition": condition_signals(description_text(item)), "listingType": kind, "offersAllowed": offer_flag, "purchaseRequestAllowed": request_flag, "buyNowPrice": buy, "currentBid": bid, "nextBid": next_bid, "startPrice": start_price, "bidCount": bid_count, "endDate": end_date}
 
@@ -211,7 +239,7 @@ def enrich(listings, headers):
             pass
     now = dt.datetime.now(dt.timezone.utc)
     pending = []
-    keys = ("imageUrl", "imageUrls", "description", "condition", "listingType", "offersAllowed", "purchaseRequestAllowed", "buyNowPrice", "currentBid", "nextBid", "startPrice", "bidCount", "endDate")
+    keys = ("shipping", "imageUrl", "imageUrls", "description", "condition", "listingType", "offersAllowed", "purchaseRequestAllowed", "buyNowPrice", "currentBid", "nextBid", "startPrice", "bidCount", "endDate")
     for item in listings.values():
         old = previous.get(item["id"], {})
         checked = old.get("detailCheckedAt")
@@ -223,15 +251,20 @@ def enrich(listings, headers):
                 pass
         # A recent detail check must not suppress a retry when the gallery is incomplete.
         # Search results commonly include only the cover image.
-        if recent and len(old.get("imageUrls") or []) >= 2 and bool(old.get("description")):
+        if recent and len(old.get("imageUrls") or []) >= 2 and bool(old.get("description")) and old.get("shipping") is not None:
             for key in keys:
                 if item.get(key) is None or (key == "imageUrls" and not item.get(key)) or (key == "description" and not item.get(key)) or (key == "listingType" and item[key] == "unknown"):
                     if old.get(key) is not None:
                         item[key] = old[key]
             item["detailCheckedAt"] = checked
         elif (len(item.get("imageUrls") or []) < 2 or item.get("offersAllowed") is None
-              or not item.get("description") or item["listingType"] == "unknown"):
+              or not item.get("description") or item["listingType"] == "unknown" or item.get("shipping") is None):
             pending.append(item)
+    # Preserve previously observed shipping costs when search omits them.
+    for item in listings.values():
+        old = previous.get(item["id"], {})
+        if item.get("shipping") is None and old.get("shipping") is not None:
+            item["shipping"] = old["shipping"]
     # Preserve previously fetched descriptions even when search results omit them.
     for item in listings.values():
         old = previous.get(item["id"], {})
