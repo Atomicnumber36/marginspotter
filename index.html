@@ -25,8 +25,14 @@ header{background:#000f;border-bottom:1px solid #252525}
 .cta{background:#238657;color:#fff}.empty{background:#111;border-color:#303030;color:#bbb}
 .footnote{color:#999}.lightbox{background:#000f}
 @media(min-width:600px){.post{border-color:#292929}}
-/* Full-bleed original FlipIt banner across the entire top area */
-header{background:transparent;border-bottom:0;backdrop-filter:none;margin-top:calc(-1 * env(safe-area-inset-top,0px));padding:0;top:calc(-1 * env(safe-area-inset-top,0px))}.bar{max-width:none;width:100%;padding:0;gap:0;display:block}.logo{display:block;width:100%;height:auto;max-height:none;object-fit:contain;object-position:center;visibility:visible}.status{display:none}
+/* Draw the actual uploaded banner through the iOS top safe area, not a flat colour. */
+html{background:#28102c}body{margin:0;background:#000}
+header{position:relative;top:auto;z-index:10;border:0;backdrop-filter:none;background:transparent;margin:calc(-1 * env(safe-area-inset-top,0px)) 0 0;padding:0;overflow:hidden}
+.bar{position:relative;max-width:none;width:100%;height:calc(100vw * 0.338 + env(safe-area-inset-top,0px));padding:0;margin:0;display:block}
+.logo{position:absolute;inset:0;display:block;width:100%;height:100%;max-height:none;object-fit:cover;object-position:center;visibility:visible}
+.status{display:none}
+@supports (height:100dvh){header{isolation:isolate}}
+
 </style></head><body>
 <header><div class="bar"><img class="logo" src="./F97B4345-B8FB-45DE-92E1-26DC290785DB.png" alt="Flipit"><span class="status" id="status"><span class="dot"></span>Indlæser fund…</span></div></header>
 <main class="wrap"><div class="intro"><h1>Udforsk</h1><span class="count" id="count"></span></div><input class="search" id="search" type="search" placeholder="Søg efter spil eller konsol…" aria-label="Søg i fund">
