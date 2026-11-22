@@ -371,7 +371,37 @@ def main():
     manual_query = os.getenv("TRADERA_TEST_QUERY", "").strip()
     watchlist = json.loads(WATCHLIST.read_text(encoding="utf-8"))
     configured = watchlist.get("queries", []) if isinstance(watchlist, dict) else None
-    queries = [manual_query] if manual_query else configured
+    categories = watchlist.get("categories", {}) if isinstance(watchlist, dict) else {}
+    enabled = watchlist.get("enabledCategories", []) if isinstance(watchlist, dict) else []
+    if categories and (not isinstance(categories, dict) or not isinstance(enabled, list)):
+        sys.exit("Invalid category configuration")
+    category_queries = []
+    for category in enabled:
+        terms = categories.get(category)
+        if not isinstance(terms, list) or not all(isinstance(t, str) and t.strip() for t in terms):
+            sys.exit("Invalid search terms for category: " + str(category))
+        category_queries.extend(terms)
+    queries = [manual_query] if manual_query else list(dict.fromkeys(category_queries + (configured or [])))
+    max_days = watchlist.get("maxDaysRemaining", 7)
+    if not isinstance(max_days, int) or isinstance(max_days, bool) or not 1 <= max_days <= 30:
+        sys.exit("maxDaysRemaining must be 1–30")
+    max_pages = watchlist.get("pagesPerQuery", 5)
+    if not isinstance(max_pages, int) or isinstance(max_pages, bool) or not 1 <= max_pages <= 10:
+        sys.exit("pagesPerQuery must be 1–10")
+    now = dt.datetime.now(dt.timezone.utc)
+    def eligible(listing):
+        if listing.get("listingType") == "ended":
+            return False
+        end = listing.get("endDate")
+        if not end:
+            return listing.get("listingType") == "buy_now"
+        try:
+            when = dt.datetime.fromisoformat(end.replace("Z", "+00:00"))
+            if when.tzinfo is None:
+                when = when.replace(tzinfo=dt.timezone.utc)
+            return now <= when <= now + dt.timedelta(days=max_days)
+        except (ValueError, TypeError):
+            return False
     if not isinstance(queries, list) or not all(isinstance(q, str) and 0 < len(q) <= 120 for q in queries):
         sys.exit("Invalid watchlist")
     if not queries:
@@ -380,8 +410,8 @@ def main():
     listings = {}
     # Fetch more than the first result page: newly listed bargains can otherwise
     # be missed when a popular search produces many results.
-    for query in queries[:20]:
-        for page in range(1, 4):
+    for query in queries[:30]:
+        for page in range(1, max_pages + 1):
             url = BASE + "?" + urllib.parse.urlencode({"query": query, "pageNumber": page})
             request = urllib.request.Request(url, headers={"X-App-Id": app_id, "X-App-Key": app_key, "Accept": "application/json", "User-Agent": "MarginSpotter/0.1"})
             try:
@@ -409,8 +439,9 @@ def main():
                 break
             for raw in candidates:
                 listing = normalize(raw, query)
-                if listing:
+                if listing and eligible(listing):
                     listings[listing["id"]] = listing
+    print("Search candidates filtered to", len(listings), "within", max_days, "days")
     enrich(listings, {"X-App-Id": app_id, "X-App-Key": app_key, "Accept": "application/json", "User-Agent": "MarginSpotter/0.1"})
     try:
         previous = {str(x["id"]): x for x in json.loads(OUTPUT.read_text(encoding="utf-8")).get("listings", [])} if OUTPUT.exists() else {}
