@@ -75,7 +75,7 @@ function render(){
   const roiKey='flipit-target-roi-'+String(item.id);
   const freightKey='flipit-manual-shipping-'+String(item.id);
   const stored=localStorage.getItem(valuationKey);
-  const storedRoi=Number(localStorage.getItem(roiKey));
+  const storedRoi=localStorage.getItem(roiKey)===null?20:Number(localStorage.getItem(roiKey));
   const targetRoi=Number.isFinite(storedRoi)&&storedRoi>=0&&storedRoi<=100?storedRoi:20;
   const hasShipping=item.shipping!=null&&Number.isFinite(Number(item.shipping))&&Number(item.shipping)>=0;
   const shippingDkk=hasShipping&&sekToDkk!==null?Number(item.shipping)*sekToDkk:null;
