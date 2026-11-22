@@ -10,6 +10,14 @@ on:
     - cron: '*/5 * * * *'
   workflow_dispatch:
     inputs:
+      categories:
+        description: "Comma-separated selected category IDs"
+        required: false
+        type: string
+      days:
+        description: "Maximum days until auction ends"
+        required: false
+        type: string
       query:
         description: "Exact product search term for this one-time test"
         required: false
@@ -50,6 +58,28 @@ jobs:
               else:
                   print(f"No direct model for {source}->{target}")
           PY
+      - name: Apply requested import settings
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.categories != '' }}
+        env:
+          SELECTED_CATEGORIES: ${{ inputs.categories }}
+          SELECTED_DAYS: ${{ inputs.days }}
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          p = Path("config/tradera-watchlist.json")
+          cfg = json.loads(p.read_text())
+          allowed = set(cfg.get("categories", {}))
+          selected = [v for v in os.environ["SELECTED_CATEGORIES"].split(",") if v]
+          if not selected or len(selected) != len(set(selected)) or any(v not in allowed for v in selected):
+              raise SystemExit("Invalid categories")
+          days = int(os.environ["SELECTED_DAYS"])
+          if not 1 <= days <= 30:
+              raise SystemExit("Invalid days")
+          cfg["enabledCategories"] = selected
+          cfg["maxDaysRemaining"] = days
+          p.write_text(json.dumps(cfg, ensure_ascii=False, indent=2) + "\\n")
+          PY
       - name: Fetch read-only Tradera listings
         env:
           TRADERA_APP_ID: ${{ secrets.TRADERA_APP_ID || '7762' }}
@@ -58,10 +88,10 @@ jobs:
         run: python scripts/tradera_sync.py
       - name: Commit public feed if changed
         run: |
-          if ! git diff --quiet -- data/tradera-listings.json; then
+          if ! git diff --quiet -- data/tradera-listings.json config/tradera-watchlist.json; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add data/tradera-listings.json
+            git add data/tradera-listings.json config/tradera-watchlist.json
             git commit -m "Update Tradera listings feed"
             # New commits may arrive while the API fetch is running.
             # Rebase our feed-only commit onto the newest main before pushing.
