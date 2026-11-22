@@ -78,7 +78,7 @@ jobs:
               raise SystemExit("Invalid days")
           cfg["enabledCategories"] = selected
           cfg["maxDaysRemaining"] = days
-          p.write_text(json.dumps(cfg, ensure_ascii=False, indent=2) + "\\n")
+          p.write_text(json.dumps(cfg, ensure_ascii=False, indent=2) + "\n")
           PY
       - name: Fetch read-only Tradera listings
         env:
