@@ -107,9 +107,9 @@ function render(){
     if(sekToDkk===null){summary.textContent='Vurdering afventer kurs';result.textContent='Valutakurs mangler – maksbud kan ikke beregnes endnu.';return}
     const freight=hasShipping?shippingDkk:Number(freightInput.value);
     const maxBidDkk=Math.max(0,(resale/(1+roi/100)-freight)/1.05);
-    const maxBidSek=Math.max(0,Math.floor(maxBidDkk/sekToDkk));
-    summary.textContent='Maksbud: '+money(maxBidSek)+' SEK';
-    result.textContent='Anbefalet maksbud: '+money(maxBidSek)+' SEK (ca. '+money(maxBidSek*sekToDkk)+' kr.) · mål '+roi+' % ROI';
+    const maxBidRoundedDkk=Math.floor(maxBidDkk);
+    summary.textContent='Maksbud: '+money(maxBidRoundedDkk)+' kr.';
+    result.textContent='Anbefalet maksbud: '+money(maxBidRoundedDkk)+' kr. · mål '+roi+' % ROI';
   }
   valueInput.addEventListener('input',()=>{if(Number(valueInput.value)>0)localStorage.setItem(valuationKey,valueInput.value);else localStorage.removeItem(valuationKey);updateCalculation()});
   roiInput.addEventListener('input',()=>{localStorage.setItem(roiKey,roiInput.value);updateCalculation()});
