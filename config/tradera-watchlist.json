@@ -1,8 +1,11 @@
 {
   "enabledCategories": [
-    "nintendo"
+    "nintendo",
+    "playstation",
+    "xbox",
+    "sega"
   ],
-  "maxDaysRemaining": 1,
+  "maxDaysRemaining": 30,
   "pagesPerQuery": 5,
   "categories": {
     "nintendo": [
