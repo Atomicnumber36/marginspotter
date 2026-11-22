@@ -47,7 +47,14 @@ header{position:relative;top:auto;background:#000;isolation:isolate}header::afte
 .post-actions .action:not(.tradera-action):not(.bookmark){width:42px;height:42px;display:grid;place-items:center;border-radius:10px;background:#ffffff0b}
 .post-actions .tradera-action{margin-left:auto;padding:11px 15px;border-radius:10px;min-height:42px;box-sizing:border-box;font-size:.79rem}
 .post-actions .bookmark{margin-left:0;flex:0 0 42px;width:42px;height:42px;border-radius:10px}
-@media(min-width:600px){.post{border-radius:18px}.body{padding:19px}.post-actions{padding:13px 19px 16px}}</style></head><body>
+@media(min-width:600px){.post{border-radius:18px}.body{padding:19px}.post-actions{padding:13px 19px 16px}}/* Compact title and action toolbar directly below the image */
+.body .listing-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 15px;min-width:0}
+.body .listing-heading .title{flex:1 1 auto;min-width:0;margin:0;font-size:1.04rem;line-height:1.3;overflow-wrap:anywhere}
+.body .listing-heading .post-actions{display:flex;align-items:center;flex:0 0 auto;gap:6px;margin:0;padding:0;border:0;background:transparent}
+.body .listing-heading .post-actions .action:not(.tradera-action):not(.bookmark),.body .listing-heading .post-actions .bookmark{height:36px;width:36px;flex:0 0 36px;border-radius:9px}
+.body .listing-heading .post-actions .action svg{width:20px;height:20px}
+.body .listing-heading .post-actions .tradera-action{margin:0;min-height:36px;padding:9px 10px;font-size:.71rem;line-height:1.15;border-radius:9px;white-space:nowrap}
+@media(max-width:380px){.body .listing-heading{gap:8px}.body .listing-heading .post-actions{gap:4px}.body .listing-heading .post-actions .tradera-action{padding:8px;font-size:.67rem}.body .listing-heading .title{font-size:.96rem}}</style></head><body>
 <header><div class="bar"><img class="logo" src="./F97B4345-B8FB-45DE-92E1-26DC290785DB.png" alt="Flipit"><span class="status" id="status"><span class="dot"></span>Indlæser fund…</span></div></header>
 <main class="wrap"><div class="intro"><h1>Udforsk</h1><span class="count" id="count"></span></div><input class="search" id="search" type="search" placeholder="Søg efter spil eller konsol…" aria-label="Søg i fund">
 <div class="controls"><label>Type<select id="filterType"><option value="all">Alle</option><option value="auction">Auktioner</option><option value="buy_now">Køb nu</option></select></label><label>Makspris<select id="filterPrice"><option value="all">Alle priser</option><option value="250">250 kr.</option><option value="500">500 kr.</option><option value="1000">1.000 kr.</option><option value="2000">2.000 kr.</option></select></label><label>Sortér efter<select id="sortBy"><option value="default">Standard</option><option value="priceAsc">Billigste</option><option value="priceDesc">Dyreste</option><option value="ending">Slutter snart</option></select></label><button type="button" id="clearFilters">Nulstil</button></div><div class="feed" id="feed" aria-live="polite"><div class="empty">Henter annoncer fra Tradera…</div></div>
@@ -85,7 +92,7 @@ function render(){
   }else photo.append(el('span','missing','Intet billede'));post.append(photo);
   const actions=el('div','post-actions');const share=el('button','action');share.type='button';share.innerHTML=icon('share');share.setAttribute('aria-label','Del annonce');share.onclick=async()=>{if(navigator.share){try{await navigator.share({title:String(item.title||'Flipit fund'),url})}catch(e){}}else if(navigator.clipboard){await navigator.clipboard.writeText(url);share.setAttribute('aria-label','Link kopieret')}};const bookmark=el('button','action bookmark'+(saved.has(String(item.id))?' saved':''));
  bookmark.type='button';bookmark.innerHTML=icon('heart');const updateBookmark=()=>{const on=saved.has(String(item.id));bookmark.classList.toggle('saved',on);bookmark.setAttribute('aria-label',on?'Fjern fra gemte fund':'Gem fund');bookmark.setAttribute('aria-pressed',String(on))};updateBookmark();bookmark.onclick=()=>{const id=String(item.id);if(saved.has(id))saved.delete(id);else saved.add(id);localStorage.setItem(savedKey,JSON.stringify([...saved]));updateBookmark()};const traderaLink=el('a','action tradera-action','Se på Tradera');traderaLink.href=url;traderaLink.target='_blank';traderaLink.rel='noopener noreferrer';traderaLink.setAttribute('aria-label','Se annonce på Tradera');actions.append(share,traderaLink,bookmark);if(post._dots)post.append(post._dots);
-  const body=el('div','body');body.append(el('h2','title',String(item.title||'Ukendt vare')));
+  const body=el('div','body');const heading=el('div','listing-heading');heading.append(el('h2','title',String(item.title||'Ukendt vare')),actions);body.append(heading);
   const prices=el('div','prices'),left=el('div','price');
   const amount=Number(item.price);left.append(document.createTextNode(Number.isFinite(amount)&&item.price!==null?dkk(amount):'Pris ukendt'));
   if(item.buyNowPrice!=null&&Number(item.buyNowPrice)!==amount)left.append(el('small','', ' · Køb nu '+dkk(Number(item.buyNowPrice))));
@@ -135,7 +142,7 @@ function render(){
   updateCalculation();
   const meta=[];if(item.shipping!=null)meta.push('Fragt: '+dkk(Number(item.shipping)));else meta.push('Fragt ikke oplyst');if(item.endDate){const d=new Date(item.endDate);if(!isNaN(d))meta.push('Slutter '+d.toLocaleDateString('da-DK',{day:'numeric',month:'short'}))}body.append(el('p','sub',meta.join(' · ')));
   const desc=String(item.descriptionDa||item.description||'').trim();if(desc){const details=el('div','description'),preview=el('p','description-text',desc),toggle=el('button','description-toggle','Vis mere');toggle.type='button';toggle.setAttribute('aria-expanded','false');details.append(preview);if(desc.length>160){details.append(toggle);toggle.addEventListener('click',()=>{const expanded=details.classList.toggle('expanded');toggle.textContent=expanded?'Vis mindre':'Vis mere';toggle.setAttribute('aria-expanded',String(expanded))})}else details.classList.add('expanded');body.append(details)}
-  post.append(body,actions);fragment.append(post);
+  post.append(body);fragment.append(post);
  }
  feed.append(fragment);
 }
