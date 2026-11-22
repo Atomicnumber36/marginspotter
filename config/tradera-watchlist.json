@@ -1,3 +1,41 @@
 {
+  "enabledCategories": [
+    "nintendo",
+    "playstation",
+    "xbox",
+    "sega"
+  ],
+  "maxDaysRemaining": 7,
+  "pagesPerQuery": 5,
+  "categories": {
+    "nintendo": [
+      "Nintendo 64",
+      "Super Nintendo",
+      "NES spel",
+      "Game Boy",
+      "Game Boy Advance",
+      "Nintendo DS",
+      "Nintendo GameCube",
+      "Nintendo Wii",
+      "Pokémon spel"
+    ],
+    "playstation": [
+      "PlayStation 1 spel",
+      "PlayStation 2",
+      "PlayStation 3",
+      "PSP spel",
+      "PS Vita"
+    ],
+    "xbox": [
+      "Xbox original",
+      "Xbox 360",
+      "Xbox One"
+    ],
+    "sega": [
+      "Sega Mega Drive",
+      "Sega Dreamcast",
+      "Sega Saturn"
+    ]
+  },
   "queries": []
 }
