@@ -1,6 +1,8 @@
 {
-  "enabledCategories": [],
-  "maxDaysRemaining": 7,
+  "enabledCategories": [
+    "nintendo"
+  ],
+  "maxDaysRemaining": 1,
   "pagesPerQuery": 5,
   "categories": {
     "nintendo": [
